@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import SignInForm from './components/SignInForm'
 import { signIn } from './api/auth'
 import { getStatus } from './api/status'
-import { setToken } from './api/init'
+import { getDecodedToken } from './api/token'
 
 class App extends Component {
   state = {
-    decodedToken: null
+    // Restore the previous signed in data
+    decodedToken: getDecodedToken()
   }
 
   OnSignIn = ({ email, password}) => {
