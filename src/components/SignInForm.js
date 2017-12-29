@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-class SignInForm extends Component {
-  render () {
+function SignInForm({
+}) {
     return (
       <form
       >
@@ -28,7 +28,6 @@ class SignInForm extends Component {
         </button>
       </form>
     )
-  }
 }
 
 export default SignInForm
