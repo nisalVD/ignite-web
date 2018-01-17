@@ -22,8 +22,10 @@ const styles = {
   },
 };
 
-function NavBar(props) {
-  const { classes } = props;
+function NavBar({
+    classes,
+    isAuthenticated = false,
+}) {
   return (
     <div className={classes.root}>
       <AppBar position="fixed" color="#FAFAFA">
@@ -34,9 +36,19 @@ function NavBar(props) {
                 <img src={IgniteLogo} alt="Ignite Logo" class="ignite-logo"/>
             </div>
             </Typography>
-            <div className="annoying-div">
-                <button type="button" className="login-button">SIGN IN</button>
-            </div>
+            {!!isAuthenticated ? (
+                <div className="annoying-div">
+                    <button type="button" className="user-button">
+                        USER &nbsp;
+                        <i className="fa fa-user-o fa-lg"/>
+                    </button>
+                </div>
+            ) : (
+                <div className="annoying-div">
+                    <button type="button" className="login-button">SIGN IN</button>
+                </div>
+            )
+            }
         </Toolbar>
       </AppBar>
     </div>

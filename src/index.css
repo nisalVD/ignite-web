@@ -29,6 +29,18 @@ body {
   outline: none;
 }
 
+.user-button {
+  font-size: 20px;
+  border-style: solid;
+  border-color: #4F5153;
+  background: none;
+  padding: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-width: 0.5px;
+  font-weight: 100;
+}
+
 .annoying-div {
   padding-right: 10%;
 }
@@ -39,5 +51,6 @@ body {
 
 body{
   font-family: 'Raleway', sans-serif;
-  padding-top: 10px;
+  font-weight: 100;
+  padding-top: 100px;
 }

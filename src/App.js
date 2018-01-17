@@ -44,8 +44,7 @@ class App extends Component {
             </div>
           ) : (
             <div>
-              <NavBar/>
-              < br/> <br /> <br />
+              <NavBar isAuthenticated={false}/>
               <SignInForm
                 OnSignIn={ this.OnSignIn }
               />
