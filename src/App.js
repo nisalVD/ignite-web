@@ -1,5 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
+
 import SignInForm from './components/SignInForm'
+import HomePage from './components/HomePage'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import { signIn, signOutNow } from './api/auth'
@@ -28,30 +31,17 @@ class App extends Component {
 
   render() {
     const { decodedToken } = this.state
-
+    const signedIn = !!decodedToken
     return (
-      <div className="App">
-        {
-          !!decodedToken ? (
-            <div>
-              <p>Email: { decodedToken.email }</p>
-              <p>Signed in At: { new Date(decodedToken.iat *1000).toISOString()}</p>
-              <p>Expires At: { new Date(decodedToken.exp *1000).toISOString()}</p>
-              <button
-                onClick={ this.onSignOut }
-              >
-                SignOut
-              </button>
-            </div>
-          ) : (
-            <div>
-              <NavBar isAuthenticated={false}/>
-              {/* <SignInForm OnSignIn={ this.OnSignIn }/> */}
-              <Footer/>
-            </div>
-          )
-        }
-      </div>
+     
+
+      <Router>
+        <div className="App">
+          <NavBar isAuthenticated={signedIn}/>
+          <Route exact path="/" component={HomePage}/>
+          <Footer/>
+        </div>
+      </Router>
     );
   }
 
