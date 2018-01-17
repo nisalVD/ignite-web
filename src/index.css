@@ -4,6 +4,7 @@ body {
   font-family: sans-serif;
 }
 
+
 .ignite-logo {
   width: 100px;
   height: 60px;
@@ -13,7 +14,6 @@ body {
   font-size: 20px;
   border: none;
   background: none;
-
 }
 
 .login-button:hover{
@@ -49,6 +49,46 @@ body {
   padding-left: 10%;
 }
 
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.volunteer-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 42px;
+}
+
+.home-sign-up-button {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sign-up-button {
+  border: none;
+  background: #FF7115;
+  font-size: 20px;
+  color: white;
+  padding: 20px 50px 20px 50px;
+}
+
+.sign-up-button:hover {
+  cursor: pointer;
+}
+
+.ignite-banner{
+  width: 100%;
+  height: auto;
+  filter: grayscale(50%);
+}
+
 .footer {
   right: 0;
   left: 0;
@@ -56,12 +96,11 @@ body {
   text-align: center;
   width: 100%;
   height: 40px;
-  background-color: white
+  background-color: white;
 }
 
 body{
   font-family: 'Raleway', sans-serif;
   font-weight: 300;
-  padding-top: 100px;
-  background: dodgerblue;
+  padding-top: 65px;
 }
