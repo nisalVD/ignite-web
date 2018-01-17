@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SignInForm from './components/SignInForm'
 import NavBar from './components/NavBar'
+import Footer from './components/Footer'
 import { signIn, signOutNow } from './api/auth'
 import { getStatus } from './api/status'
 import { getDecodedToken } from './api/token'
@@ -45,9 +46,8 @@ class App extends Component {
           ) : (
             <div>
               <NavBar isAuthenticated={false}/>
-              <SignInForm
-                OnSignIn={ this.OnSignIn }
-              />
+              {/* <SignInForm OnSignIn={ this.OnSignIn }/> */}
+              <Footer/>
             </div>
           )
         }
