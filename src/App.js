@@ -45,6 +45,7 @@ class App extends Component {
           ) : (
             <div>
               <NavBar/>
+              < br/> <br /> <br />
               <SignInForm
                 OnSignIn={ this.OnSignIn }
               />

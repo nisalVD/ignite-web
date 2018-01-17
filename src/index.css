@@ -37,6 +37,7 @@ body {
   padding-left: 10%;
 }
 
-*{
+body{
   font-family: 'Raleway', sans-serif;
+  padding-top: 10px;
 }

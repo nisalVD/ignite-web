@@ -26,7 +26,7 @@ function NavBar(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="#FAFAFA">
+      <AppBar position="fixed" color="#FAFAFA">
         <Toolbar>
 
           <Typography type="title" color="inherit" className={classes.flex}>
