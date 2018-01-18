@@ -86,7 +86,7 @@ body {
 .ignite-banner{
   width: 100%;
   height: auto;
-  filter: grayscale(50%);
+  filter: grayscale(20%);
 }
 
 .footer {
@@ -103,4 +103,12 @@ body{
   font-family: 'Raleway', sans-serif;
   font-weight: 300;
   padding-top: 65px;
+}
+
+a {
+  text-decoration: none; /* no underline */
+}
+
+a:visited {
+  text-decoration: none;
 }

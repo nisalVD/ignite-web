@@ -13,7 +13,7 @@ function HomePage ({
                     <h1>VOLUNTEER PORTAL</h1>
                 </div>
                 <div className="home-sign-up-button">
-                    <button type="button" className="sign-up-button">SIGN UP NOW</button>
+                    <a href="./sign-up"><button type="button" className="sign-up-button">SIGN UP NOW</button></a>
                 </div>
             </div>
         )
