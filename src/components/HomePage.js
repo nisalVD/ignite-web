@@ -24,14 +24,14 @@ function HomePage ({
                     <h1>VOLUNTEER PORTAL</h1>
                 </div>
                 {!!isAuthenticated ? (
-                    <div className="home-sign-up-button">
-                        <a href="./sign-up"><button type="button" className="sign-up-button">SIGN UP NOW</button></a>
-                    </div>
-                ) : (
                     <div>
                         <div className="home-sign-up-button">
                             <a href="./modules"><button type="button" className="sign-up-button">MODULES</button></a>
                         </div>
+                    </div>
+                ) : (
+                    <div className="home-sign-up-button">
+                        <a href="./sign-up"><button type="button" className="sign-up-button">SIGN UP NOW</button></a>
                     </div>
                 )
                 }
