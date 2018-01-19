@@ -1,5 +1,5 @@
 import React from 'react'
-import UserInfoForm from "./UserInfoForm"
+import UserInfoFormSignIn from "./UserInfoFormSignIn"
 
 
 function SignInPage ({
@@ -16,7 +16,7 @@ function SignInPage ({
                     </div>
                 </div>
 
-                <UserInfoForm/>
+                <UserInfoFormSignIn/>
             </div>
         )
     }

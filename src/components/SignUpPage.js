@@ -1,4 +1,5 @@
 import React from 'react'
+import UserInfoFormSignUp from "./UserInfoFormSignUp"
 
 function SignUpPage ({
 
@@ -6,7 +7,12 @@ function SignUpPage ({
     {
         return (
             <div>
-               Sign Up Page
+               <div className="sign-up-page">
+                SIGN UP
+
+                <UserInfoFormSignUp/>
+
+                </div>
             </div>
         )
     }

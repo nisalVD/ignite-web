@@ -1,11 +1,11 @@
 import React from 'react'
 
-function UserInfoForm ({
+function UserInfoFormSignIn ({
     OnSignIn
 })
     {
         return (
-            <div className="user-info-form">
+            <div className="user-info-form-sign-in">
               <form
                 onSubmit={event => {
                   // Prevent default form submission
@@ -44,4 +44,4 @@ function UserInfoForm ({
     }
 
 
-export default UserInfoForm
+export default UserInfoFormSignIn

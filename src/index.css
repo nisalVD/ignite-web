@@ -155,7 +155,7 @@ padding: 30px;
   padding-left: 60%;
 }
 
-.user-info-form {
+.user-info-form-sign-in {
   background: white;
   width: 35%;
   height: 800px;
@@ -167,6 +167,20 @@ padding: 30px;
   padding-left: 80px;
   padding-top: 90px;
 }
+
+.user-info-form-sign-up {
+  background: white;
+  width: 35%;
+  height: 1500px;
+  margin-left: 30%;
+  margin-top: 2.5%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  position: relative;
+  text-align: left;
+  padding-left: 80px;
+  padding-top: 90px;
+}
+
 
 .sign-in-button{
   border: none;
@@ -187,4 +201,12 @@ input {
   width: 80%;
   height: 50px;
   font-size: 30px;
+}
+.sign-up-page {
+  width: 100%;
+  height: 1800px;
+  background: #e5e5e5;
+  text-align: center;
+  font-size: 36px;
+  padding-top: 50px;
 }
