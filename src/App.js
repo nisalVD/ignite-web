@@ -9,6 +9,8 @@ import { signIn, signOutNow } from './api/auth'
 import { getStatus } from './api/status'
 import { getDecodedToken } from './api/token'
 import ModuleList from './components/ModuleList'
+import CodeOfConduct from './components/CodeOfConduct'
+
 
 
 class App extends Component {
@@ -42,7 +44,8 @@ class App extends Component {
           <NavBar isAuthenticated={signedIn}/>
           <Switch>
             <Route exact path="/" component={HomePage}/>
-            <Route exact path="/module" component={ModuleList}/>            
+            <Route exact path="/module" component={ModuleList}/>
+            <Route exact path="/code-of-conduct-module" component={CodeOfConduct}/>                                    
           </Switch>
           <Footer/>
         </div>
