@@ -78,6 +78,13 @@ function CodeOfConduct (){
                 <li>Ignite knows leaders can offer a variety of talents and resources. Leadership is seen to be anything that influence a young person, therefore driving a car is seen as an opportunity to lead, not just in ‘how’ you drive but the conversation and relationships that are built during this time. Please don’t ever underestimate your influence on a young person no matter how small you feel your input is. </li>
             <br></br>                
             </ol>
+            <br></br>                
+                <h1>Test</h1>
+                <h2>Instructions – Select whether you agree or disagree with each of the following statements. </h2>
+            <br></br>
+                <h1>Question 1:</h1>
+                <p>I’m God’s gift to Springvale. I understand young people and they need me. Ignite is a great place for me to connect with young people but I don’t really need the team.</p>
+                <br></br>
          </div>
           
     )
