@@ -33,7 +33,7 @@ function NavBar({
 
           <Typography type="title" color="inherit" className={classes.flex}>
             <div className="annoying-div-2">
-                <img src={IgniteLogo} alt="Ignite Logo" class="ignite-logo"/>
+                <a href="/"><img src={IgniteLogo} alt="Ignite Logo" class="ignite-logo"/></a>
             </div>
             </Typography>
             {!!isAuthenticated ? (
@@ -45,7 +45,7 @@ function NavBar({
                 </div>
             ) : (
                 <div className="annoying-div">
-                    <button type="button" className="login-button">SIGN IN</button>
+                    <a href="./sign-in"><button type="button" className="login-button">SIGN IN</button></a>
                 </div>
             )
             }
