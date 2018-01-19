@@ -40,7 +40,7 @@ class App extends Component {
         <div className="App">
           <NavBar isAuthenticated={signedIn}/>
           <Switch>
-            <Route exact path="/" component={HomePage}/>
+            <Route exact path="/" render={()=><HomePage isAuthenticated={signedIn}/>}/>
             <Route exact path="/sign-in" component={SignInPage}/>
             <Route exact path="/sign-up" component={SignUpPage}/>
           </Switch>
