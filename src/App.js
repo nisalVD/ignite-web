@@ -4,6 +4,7 @@ import SignInForm from './components/SignInForm'
 import HomePage from './components/HomePage'
 import SignInPage from './components/SignInPage'
 import SignUpPage from './components/SignUpPage'
+import CalendarPage from './components/CalendarPage'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import { signIn, signOutNow } from './api/auth'
@@ -32,7 +33,8 @@ class App extends Component {
 
   render() {
     const { decodedToken } = this.state
-    const signedIn = !!decodedToken
+    // const signedIn = !!decodedToken
+    const signedIn = true
     return (
      
 
@@ -43,6 +45,7 @@ class App extends Component {
             <Route exact path="/" render={()=><HomePage isAuthenticated={signedIn}/>}/>
             <Route exact path="/sign-in" component={SignInPage}/>
             <Route exact path="/sign-up" component={SignUpPage}/>
+            <Route exact path="/calendar" component={CalendarPage}/>
           </Switch>
           <Footer/>
         </div>
