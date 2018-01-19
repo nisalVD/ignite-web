@@ -15,8 +15,8 @@ function HomePage ({
                 <div className="home-sign-up-button">
                     <a href="./sign-up"><button type="button" className="sign-up-button">SIGN UP NOW</button></a>
                 </div>
-        {/* {console.log(isAuthenticated)} */}
-            </div>
+            {/* {console.log(isAuthenticated)} */}
+        </div>
 
 )
     }
