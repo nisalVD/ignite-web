@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
-
+import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 import SignInForm from './components/SignInForm'
 import HomePage from './components/HomePage'
+import SignInPage from './components/SignInPage'
+import SignUpPage from './components/SignUpPage'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import { signIn, signOutNow } from './api/auth'
@@ -38,7 +39,11 @@ class App extends Component {
       <Router>
         <div className="App">
           <NavBar isAuthenticated={signedIn}/>
-          <Route exact path="/" component={HomePage}/>
+          <Switch>
+            <Route exact path="/" component={HomePage}/>
+            <Route exact path="/sign-in" component={SignInPage}/>
+            <Route exact path="/sign-up" component={SignUpPage}/>
+          </Switch>
           <Footer/>
         </div>
       </Router>
