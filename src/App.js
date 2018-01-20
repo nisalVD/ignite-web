@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
+
 import SignInForm from './components/SignInForm'
 import HomePage from './components/HomePage'
 import SignInPage from './components/SignInPage'
@@ -12,6 +13,8 @@ import { getStatus } from './api/status'
 import { getDecodedToken } from './api/token'
 import AdminPage from './components/AdminPage';
 import Redirect from 'react-router-dom/Redirect';
+import ModuleList from './components/ModuleList'
+import CodeOfConduct from './components/CodeOfConduct'
 
 class App extends Component {
   state = {
@@ -88,6 +91,8 @@ class App extends Component {
               )
             )} />
 
+            <Route exact path="/module" component={ModuleList}/>
+            <Route exact path="/code-of-conduct-module" component={CodeOfConduct}/>                                    
           </Switch>
           <Footer/>
         </div>
