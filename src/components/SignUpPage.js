@@ -2,7 +2,7 @@ import React from 'react'
 import UserInfoFormSignUp from "./UserInfoFormSignUp"
 
 function SignUpPage ({
-
+    onSignUp
 })
     {
         return (
@@ -10,7 +10,7 @@ function SignUpPage ({
                <div className="sign-up-page">
                 SIGN UP
 
-                <UserInfoFormSignUp/>
+                <UserInfoFormSignUp onSignUp={onSignUp}/>
 
                 </div>
             </div>

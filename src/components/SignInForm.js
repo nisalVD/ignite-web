@@ -1,7 +1,7 @@
 import React from 'react'
 
 function SignInForm({
-  OnSignIn
+  onSignIn
 }) {
     return (
       <form
@@ -14,7 +14,7 @@ function SignInForm({
           // Get entered values
           const email = elements.email.value
           const password = elements.password.value
-          OnSignIn({ email, password })
+          onSignIn({ email, password })
         }}
       >     Sign In Page
       <div class="container">
