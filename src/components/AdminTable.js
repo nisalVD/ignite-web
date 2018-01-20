@@ -5,6 +5,7 @@ import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Ta
 import Paper from 'material-ui/Paper';
 import TableFooter from 'material-ui/Table/TableFooter';
 import TableSortLabel from 'material-ui/Table/TableSortLabel';
+import Button from 'material-ui/Button';
 
 const styles = theme => ({
   root: {
@@ -19,17 +20,17 @@ const styles = theme => ({
 });
 
 let id = 0;
-function createData(iD, firstName, lastName, email) {
+function createData(iD, firstName, lastName, email, password, dateOfBirth, address, postCode, state) {
   id += 1;
-  return { id, iD, firstName, lastName, email };
+  return { id, iD, firstName, lastName, email, password, dateOfBirth, address, postCode, state };
 }
 
 const data = [
-  createData(1, 'David', 'Holmes', 'david@gmail.com'),
-  createData(2, 'Nisal', 'Don', 'nisal@gmail.com'),
-  createData(3, 'Patrick', 'Smith', 'patrick@gmail.com'),
-  createData(4, 'Ruegen', 'Aschenbrenner', 'ruegen@gmail.com'),
-  createData(5, 'Matt', 'McKenzie', 'matt@gmail.com'),
+  createData(1, 'David', 'Holmes', 'david@gmail.com', 'password', '1/1/1990', '123 Sesame Street', '1111', 'VIC'),
+  createData(2, 'Nisal', 'Don', 'nisal@gmail.com', 'password', '1/1/1990', '123 Sesame Street', '1111', 'VIC'),
+  createData(3, 'Patrick', 'Smith', 'patrick@gmail.com', 'password', '1/1/1990', '123 Sesame Street', '1111', 'VIC'),
+  createData(4, 'Ruegen', 'Aschenbrenner', 'ruegen@gmail.com', 'password', '1/1/1990', '123 Sesame Street', '1111', 'VIC'),
+  createData(5, 'Matt', 'McKenzie', 'matt@gmail.com', 'password', '1/1/1990', '123 Sesame Street', '1111', 'VIC'),
 ];
 
 function AdminTable(props) {
@@ -43,18 +44,28 @@ function AdminTable(props) {
             <TableCell numeric>ID</TableCell>
             <TableCell>First Name</TableCell>
             <TableCell>Last Name</TableCell>
-            <TableCell >Email</TableCell>
+            <TableCell>Email</TableCell>
+            <TableCell>Password</TableCell>
+            <TableCell numeric>Date of Birth</TableCell>
+            <TableCell>Address</TableCell>
+            <TableCell numeric >Post Code</TableCell>
+            <TableCell>State</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map(n => {
-            return (
+              return (
               <TableRow className="row" hover key={n.id}>
                 <TableCell numeric>{n.iD}</TableCell>
                 <TableCell>{n.firstName}</TableCell>
                 <TableCell >{n.lastName}</TableCell>
                 <TableCell >{n.email}</TableCell>
-              </TableRow>
+                <TableCell>{n.password}</TableCell>
+                <TableCell numeric>{n.dateOfBirth}</TableCell>
+                <TableCell>{n.address}</TableCell>
+                <TableCell numeric>{n.postCode}</TableCell>
+                <TableCell>{n.state}</TableCell>
+            </TableRow>
             );
           })}
         </TableBody>
