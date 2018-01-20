@@ -11,6 +11,7 @@ import { signIn, signOutNow } from './api/auth'
 import { getStatus } from './api/status'
 import { getDecodedToken } from './api/token'
 import AdminPage from './components/AdminPage';
+import Redirect from 'react-router-dom/Redirect';
 
 class App extends Component {
   state = {
@@ -18,7 +19,7 @@ class App extends Component {
     decodedToken: getDecodedToken()
   }
 
-  OnSignIn = ({ email, password}) => {
+  onSignIn = ({ email, password}) => {
     console.log('App Recieved', {email, password})
     signIn({email, password})
       .then(decodedToken => {
@@ -34,8 +35,9 @@ class App extends Component {
 
   render() {
     const { decodedToken } = this.state
-    // const signedIn = !!decodedToken
-    const signedIn = true
+    console.log(decodedToken)
+    const signedIn = !!decodedToken
+    // const signedIn = false
     return (
      
 
@@ -45,7 +47,14 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={()=><HomePage isAuthenticated={signedIn}/>}/>
             <Route exact path="/admin" component={AdminPage}/>
-            <Route exact path="/sign-in" component={SignInPage}/>
+            <Route exact path="/sign-in" render={()=> (
+              signedIn ? (
+                <Redirect to='/' />
+              ) : (
+                <SignInPage onSignIn={this.onSignIn}/>
+              )
+            )} />
+
             <Route exact path="/sign-up" component={SignUpPage}/>
             <Route exact path="/calendar" component={CalendarPage}/>
           </Switch>

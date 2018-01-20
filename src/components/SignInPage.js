@@ -3,7 +3,7 @@ import UserInfoFormSignIn from "./UserInfoFormSignIn"
 
 
 function SignInPage ({
-
+    onSignIn
 })
     {
         return (
@@ -16,7 +16,7 @@ function SignInPage ({
                     </div>
                 </div>
 
-                <UserInfoFormSignIn/>
+                <UserInfoFormSignIn onSignIn = {onSignIn}/>
             </div>
         )
     }

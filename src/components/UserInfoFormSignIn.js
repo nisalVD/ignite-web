@@ -1,7 +1,7 @@
 import React from 'react'
 
 function UserInfoFormSignIn ({
-    OnSignIn
+    onSignIn
 })
     {
         return (
@@ -16,7 +16,7 @@ function UserInfoFormSignIn ({
                   // Get entered values
                   const email = elements.email.value
                   const password = elements.password.value
-                  OnSignIn({ email, password })
+                  onSignIn({ email, password })
                 }}
               > 
                 <label>
@@ -37,7 +37,7 @@ function UserInfoFormSignIn ({
                   name="password"
                 />
                 <br />
-                <button type="button" className="sign-in-button">SIGN IN</button>
+                <button className="sign-in-button">SIGN IN</button>
               </form>
             </div>
         )
