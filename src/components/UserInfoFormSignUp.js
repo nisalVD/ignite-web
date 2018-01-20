@@ -1,7 +1,7 @@
 import React from 'react'
 
 function UserInfoFormSignUp ({
-    OnSignIn
+    onSignUp
 })
     {
         return (
@@ -16,7 +16,16 @@ function UserInfoFormSignUp ({
                   // Get entered values
                   const email = elements.email.value
                   const password = elements.password.value
-                  OnSignIn({ email, password })
+                  const passwordConfirmation = elements.passwordConfirmation.value
+                  const firstName = elements.firstName.value
+                  const lastName = elements.lastName.value
+                  const dateOfBirth = elements.dateOfBirth.value
+                  const address = elements.address.value
+                  const postCode = elements.postCode.value
+                  const state = elements.state.value
+
+                  console.log(elements)
+                  onSignUp({ email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state })
                 }}
               > 
                 <label>
@@ -44,7 +53,7 @@ function UserInfoFormSignUp ({
                 <br />
                 <input
                   type="password"
-                  name="password-confirmation"
+                  name="passwordConfirmation"
                 />
                 <br /><br />
                 <label>
@@ -101,7 +110,7 @@ function UserInfoFormSignUp ({
                   name="state"
                 />
                 <br />
-                <button type="button" className="sign-in-button">SIGN UP</button>
+                <button className="sign-in-button">SIGN UP</button>
               </form>
             </div>
         )
