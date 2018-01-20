@@ -9,8 +9,14 @@ const style = {
   display: 'inline-block',
 };
 
-const Module = ({name}) => (
-  <div className="modules">
+const Module = ({
+  name,
+  clickModule,
+  moduleId
+}) => (
+  <div onClick={(e) => {
+    clickModule(e, moduleId)
+  }} className="modules">
     <Paper style={style} zDepth={3} >
         {name}
     </Paper>

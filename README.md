@@ -32,3 +32,7 @@
 * [ ] Profile picture upload and add to live chat + render in nav bar next to first name
 * [ ] Autofill sign in and profile page change details fields
 * [ ] Add camping, mentoring and sports Ignite icons (google drive) to relevant modules
+
+
+### Readme
+* Render the code of conduct as MD
