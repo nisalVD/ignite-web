@@ -80,7 +80,14 @@ class App extends Component {
               )
             )} />
 
-            <Route exact path="/calendar" component={CalendarPage}/>
+            <Route exact path="/calendar" render={()=> (
+              signedIn ? (
+                <CalendarPage/>
+              ) : (
+                <Redirect to='/' />
+              )
+            )} />
+
           </Switch>
           <Footer/>
         </div>
