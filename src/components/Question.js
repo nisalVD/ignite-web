@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router'
 import { 
   listQuestions, 
   addMarking 
 } from '../api/question'
-import { Redirect } from 'react-router-dom'
 
 
 class Question extends Component {
@@ -38,9 +38,10 @@ class Question extends Component {
     markingData.module = this.props.moduleId
     addMarking(markingData)
       .then(res => console.log(res.data))
-      .then(<Redirect to="/modules"/>)
+      .then(
+        this.props.history.push('/modules')
+      )
       .catch(error => console.log(error.message))
-
   }
 
   render () {
@@ -78,4 +79,4 @@ class Question extends Component {
   }
 }
 
-export default Question
+export default withRouter(Question)
