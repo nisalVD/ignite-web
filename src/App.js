@@ -15,6 +15,7 @@ import AdminPage from './components/AdminPage';
 import Redirect from 'react-router-dom/Redirect';
 import ModuleList from './components/ModuleList'
 import CodeOfConduct from './components/CodeOfConduct'
+import Question from './components/Question'
 
 class App extends Component {
   state = {
@@ -27,7 +28,6 @@ class App extends Component {
     // console.log('App Recieved', {email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state})
     signUp({email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state})
       .then(decodedToken => {
-        console.log('signed up', decodedToken)
         this.setState({ decodedToken })
       })
       .catch(error => {
@@ -36,10 +36,10 @@ class App extends Component {
   }
 
   onSignIn = ({ email, password}) => {
-    console.log('App Recieved', {email, password})
+    // console.log('App Recieved', {email, password})
     signIn({email, password})
       .then(decodedToken => {
-        console.log('signed in', decodedToken)
+        // console.log('signed in', decodedToken)
         this.setState({ decodedToken })
       })
       .catch(error => {
@@ -55,7 +55,6 @@ class App extends Component {
 
   render() {
     const { decodedToken } = this.state
-    console.log(decodedToken)
     const signedIn = !!decodedToken
     // const signedIn = false
     return (
@@ -91,7 +90,12 @@ class App extends Component {
               )
             )} />
 
-            <Route exact path="/modules" component={ModuleList}/>
+            <Route exact path="/modules" render={()=>
+                <ModuleList userId={decodedToken.sub}/>
+              }/>
+            <Route exact path="/module/:id/questions" render={({match})=>
+                <Question moduleId={match.params.id} userId={decodedToken.sub}/>
+              }/>
             <Route exact path="/code-of-conduct-module" component={CodeOfConduct}/>                                    
           </Switch>
           <Footer/>

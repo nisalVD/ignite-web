@@ -9,7 +9,8 @@ class ModuleList extends Component {
   state = {
     modules: null,
     modalOpen: false,
-    content: ''
+    content: '',
+    selectedModuleContent: ''
   }
   componentDidMount () {
     listModules()
@@ -17,10 +18,16 @@ class ModuleList extends Component {
   }
   clickModule(e, moduleId) {
     this.setState({modalOpen: true})
+    const {modules} = this.state
+    const selectedModuleContent = modules.map(module => {
+        if (module._id === moduleId){
+          return module.content
+        }
+      }).filter(module => module!=null)[0]
+      this.setState({selectedModuleContent})
   }
   render () {
-    const {modules} = this.state
-    console.log(modules && modules)
+    const {modules, selectedModuleContent} = this.state
     return (
         <div className="back-bit">
           { modules && 
@@ -37,9 +44,8 @@ class ModuleList extends Component {
               describedby: "full_description"
             }}>
               <button onClick={() => this.setState({modalOpen: false})}>Close</button>
-              <h1 id="heading">H1</h1>
-              <div id="full_description">
-                <p>Description goes here.</p>
+              <div>
+                <p>{selectedModuleContent}</p>
               </div>
           </Modal>
         </div>

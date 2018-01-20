@@ -288,3 +288,9 @@ iframe {
 .back-bit {
   margin-top: 100px;
 }
+
+/* change this css */
+.questions{
+  padding-top: 100px;
+  padding-left: 50px;
+}
