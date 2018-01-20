@@ -294,3 +294,16 @@ iframe {
   padding-top: 100px;
   padding-left: 50px;
 }
+
+/* change this as well */
+.button {
+  display: block;
+  width: 115px;
+  height: 25px;
+  background: #4E9CAF;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}

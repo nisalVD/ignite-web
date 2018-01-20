@@ -10,7 +10,8 @@ class ModuleList extends Component {
     modules: null,
     modalOpen: false,
     content: '',
-    selectedModuleContent: ''
+    selectedModule: '',
+    questionUrl: null
   }
   componentDidMount () {
     listModules()
@@ -19,15 +20,18 @@ class ModuleList extends Component {
   clickModule(e, moduleId) {
     this.setState({modalOpen: true})
     const {modules} = this.state
-    const selectedModuleContent = modules.map(module => {
+    const selectedModule = modules.map(module => {
         if (module._id === moduleId){
-          return module.content
+          return module
         }
       }).filter(module => module!=null)[0]
-      this.setState({selectedModuleContent})
+    this.setState({selectedModule})
+
+    const questionUrl = `module/${selectedModule._id}/questions`
+    this.setState({questionUrl})
   }
   render () {
-    const {modules, selectedModuleContent} = this.state
+    const {modules, selectedModule, questionUrl} = this.state
     return (
         <div className="back-bit">
           { modules && 
@@ -45,7 +49,8 @@ class ModuleList extends Component {
             }}>
               <button onClick={() => this.setState({modalOpen: false})}>Close</button>
               <div>
-                <p>{selectedModuleContent}</p>
+                <p>{selectedModule.content}</p>
+                <Link className="button" to={questionUrl}>Questions</Link>
               </div>
           </Modal>
         </div>
