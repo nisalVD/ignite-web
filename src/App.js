@@ -3,6 +3,8 @@ import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 
 import SignInForm from './components/SignInForm'
 import HomePage from './components/HomePage'
+import SignInPage from './components/SignInPage'
+import SignUpPage from './components/SignUpPage'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import { signIn, signOutNow } from './api/auth'
@@ -43,7 +45,9 @@ class App extends Component {
         <div className="App">
           <NavBar isAuthenticated={signedIn}/>
           <Switch>
-            <Route exact path="/" component={HomePage}/>
+            <Route exact path="/" render={()=><HomePage isAuthenticated={signedIn}/>}/>
+            <Route exact path="/sign-in" component={SignInPage}/>
+            <Route exact path="/sign-up" component={SignUpPage}/>
             <Route exact path="/module" component={ModuleList}/>
             <Route exact path="/code-of-conduct-module" component={CodeOfConduct}/>                                    
           </Switch>
