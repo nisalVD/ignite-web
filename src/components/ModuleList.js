@@ -1,7 +1,10 @@
-import React from 'react';
-import Module from './Module';
+import React, { Component } from 'react'
+import Module from './Module'
 
-function ModuleList (){
+import { listModules } from '../api/module'
+
+class ModuleList extends Component {
+  render () {
     return (
         <div className="back-bit">
           <Module name="Code of Conduct"/>
@@ -9,6 +12,7 @@ function ModuleList (){
           <Module name="Module 3"/>          
         </div>
     )
+  }
 }
 
 export default ModuleList;

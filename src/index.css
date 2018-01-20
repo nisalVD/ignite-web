@@ -139,6 +139,7 @@ a:visited {
   padding-top: 50px;
 }
 
+
 .sign-in-blue-box {
 position: absolute;
 width: 80%;
@@ -282,4 +283,8 @@ iframe {
 
 .content-box h2{
   color:#FF7115;
+}
+
+.back-bit {
+  margin-top: 100px;
 }

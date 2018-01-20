@@ -91,7 +91,7 @@ class App extends Component {
               )
             )} />
 
-            <Route exact path="/module" component={ModuleList}/>
+            <Route exact path="/modules" component={ModuleList}/>
             <Route exact path="/code-of-conduct-module" component={CodeOfConduct}/>                                    
           </Switch>
           <Footer/>
