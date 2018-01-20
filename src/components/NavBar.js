@@ -40,7 +40,7 @@ function NavBar({
             {!!isAuthenticated ? (
                 <div className="nav-parent-div">
                     <a href="./calendar"><img src={CalendarIcon} alt="Google Calendar Icon" class="nav-icon"/></a>
-                    <a href="https://www.facebook.com" target="_blank"><img src={FacebookIcon} alt="Facebook Icon" class="nav-icon"/></a>
+                    <a href="https://www.facebook.com/Igniteau/" target="_blank"><img src={FacebookIcon} alt="Facebook Icon" class="nav-icon"/></a>
                     <a href="./live-chat"><img src={LiveChatIcon} alt="Live Chat Icon" class="nav-icon"/></a>
                     {/* <a href="./blog">blog</a>  */}
                 <div className="annoying-div">
