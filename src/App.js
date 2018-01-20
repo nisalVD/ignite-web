@@ -10,6 +10,7 @@ import Footer from './components/Footer'
 import { signIn, signOutNow } from './api/auth'
 import { getStatus } from './api/status'
 import { getDecodedToken } from './api/token'
+import AdminPage from './components/AdminPage';
 
 class App extends Component {
   state = {
@@ -43,6 +44,7 @@ class App extends Component {
           <NavBar isAuthenticated={signedIn}/>
           <Switch>
             <Route exact path="/" render={()=><HomePage isAuthenticated={signedIn}/>}/>
+            <Route exact path="/admin" component={AdminPage}/>
             <Route exact path="/sign-in" component={SignInPage}/>
             <Route exact path="/sign-up" component={SignUpPage}/>
             <Route exact path="/calendar" component={CalendarPage}/>

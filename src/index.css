@@ -50,14 +50,14 @@ body {
 }
 
 .annoying-div {
-  padding-right: 10%;
+  padding-right: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .annoying-div-2 {
-  padding-left: 10%;
+  padding-left: 5%;
 }
 
 .nav-parent-div {
