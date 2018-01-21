@@ -6,7 +6,7 @@ import Paper from 'material-ui/Paper';
 import TableFooter from 'material-ui/Table/TableFooter';
 import TableSortLabel from 'material-ui/Table/TableSortLabel';
 import Button from 'material-ui/Button';
-import { getUserData } from '../api/adminData'
+import { getModuleData } from '../api/adminData'
 import Modal from 'react-modal';
 
 
@@ -26,7 +26,7 @@ const styles = theme => ({
 class ModulesTable extends Component {
 
   state = {
-    userData: null,
+    moduleData: null,
     selectedID: null,
     modalOpen: false
   }
@@ -37,16 +37,16 @@ class ModulesTable extends Component {
   }
   
   componentDidMount(){
-    getUserData()
-    .then(userData => this.setState({userData}) )
+    getModuleData()
+    .then(moduleData => this.setState({moduleData}) )
   }
   
   render(){
     
-    // console.log(this.state.userData)
+    // console.log(this.state.moduleData)
     const { classes } = this.props;
     console.log(this.state.selectedID && this.state.selectedID._id)
-    const { userData, selectedID, firstName } = this.state;
+    const { moduleData, selectedID, firstName } = this.state;
 
   return (
     <div>
@@ -60,10 +60,10 @@ class ModulesTable extends Component {
             }}>
               <div>
                 <h1>WARNING:</h1>
-                Are you sure you want to delete module: {selectedID && selectedID.firstName} {selectedID && selectedID.lastName}?
+                Are you sure you want to delete {selectedID && selectedID.name}?
                 <br /><br />
                 <button>Yes</button>
-                <button>No</button>
+                <button onClick={() => this.setState({modalOpen: false})}>No</button>
                 <button className="admin-close-button" onClick={() => this.setState({modalOpen: false})}>X</button>
               </div>
           </Modal>
@@ -76,11 +76,11 @@ class ModulesTable extends Component {
           </TableRow>
         </TableHead>
         <TableBody>
-          {userData && userData.map(n => {
+          {moduleData && moduleData.map(n => {
               return (
             //   <TableRow onClick={this.getID.bind(this, n)} className="row" hover key={n._id}>
               <TableRow className="row" hover key={n._id}>
-                <TableCell>{n.firstName}</TableCell>
+                <TableCell>{n.name}</TableCell>
                 <TableCell><button onClick={this.getID.bind(this, n)}>Delete</button></TableCell>
             </TableRow>
             );
