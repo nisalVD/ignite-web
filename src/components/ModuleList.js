@@ -1,14 +1,107 @@
-import React from 'react';
-import Module from './Module';
+import React, { Component } from 'react'
+import Module from './Module'
+import { Link } from 'react-router-dom'
+import Modal from 'react-modal'
 
-function ModuleList (){
+import { listModules } from '../api/module'
+import { checkMarking } from '../api/question'
+
+class ModuleList extends Component {
+  state = {
+    modules: null,
+    modalOpen: false,
+    content: '',
+    selectedModule: '',
+    questionUrl: null,
+    isModuleFinished: {}
+  }
+  componentDidMount () {
+    listModules()
+      .then(modules => this.setState({modules}))
+      .then(() => {
+        checkMarking(this.props.userId)
+        .then(userMarking => {
+          userMarking.map(marking => {
+              const moduleId = marking.module
+            if (marking.correct === false) {
+              this.setState({isModuleFinished: {
+                [moduleId]: false
+              }})
+            }
+            else {
+              this.setState({isModuleFinished: {
+                [moduleId]: true
+              }})
+            }
+          })
+        })
+      })
+  }
+   clickModule(e, selectedModule) {
+    this.setState({modalOpen: true})
+    this.setState({selectedModule})
+    const questionUrl = `module/${selectedModule._id}/questions`
+    this.setState({questionUrl})
+    // const questionUrl = `module/${selectedModule._id}/questions`
+    // this.setState({questionUrl})
+  }
+  render () {
+    const {modules, selectedModule, questionUrl, isModuleFinished} = this.state
+    console.log('selected Module', selectedModule)
+    console.log('questionUrl',  questionUrl)
     return (
         <div className="back-bit">
-          <Module name="Code of Conduct"/>
-          <Module name="Module 2"/>
-          <Module name="Module 3"/>          
+          { modules && 
+            modules.map(module => {
+            return <Module isCompleted={isModuleFinished[module._id]} 
+              selectedModule={module} 
+              clickModule={this.clickModule.bind(this)} 
+              key={module._id} 
+              name={module.name} />
+            })
+          }
+          <Modal
+            isOpen={this.state.modalOpen}
+            style={customStyles}
+            ariaHideApp={false}
+            aria={{
+              labelledby: "heading",
+              describedby: "full_description"
+            }}>
+              <button onClick={() => this.setState({modalOpen: false})}>Close</button>
+              <div>
+                <p>{selectedModule.content}</p>
+                <Link className="button" to={questionUrl}>Questions</Link>
+              </div>
+          </Modal>
         </div>
     )
+  }
+}
+
+const customStyles = {
+  overlay : {
+    position          : 'fixed',
+    top               : 20,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(255, 255, 255, 0.75)'
+  },
+  content : {
+    position                   : 'absolute',
+    top                        : '80px',
+    left                       : '80px',
+    right                      : '80px',
+    bottom                     : '80px',
+    border                     : '1px solid #ccc',
+    background                 : '#fff',
+    overflow                   : 'auto',
+    WebkitOverflowScrolling    : 'touch',
+    borderRadius               : '4px',
+    outline                    : 'none',
+    padding                    : '20px'
+  }
 }
 
 export default ModuleList;

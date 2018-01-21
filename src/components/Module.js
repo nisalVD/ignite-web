@@ -9,10 +9,20 @@ const style = {
   display: 'inline-block',
 };
 
-const Module = ({name}) => (
-  <div className="modules">
+const Module = ({
+  name,
+  clickModule,
+  selectedModule,
+  isCompleted
+}) => (
+  <div onClick={(e) => {
+    clickModule(e, selectedModule)
+  }} className="modules">
     <Paper style={style} zDepth={3} >
-        {name}
+      {name}
+      <div classname={!!isCompleted && "module-completed"} >
+        <strong>Completed</strong>
+      </div>
     </Paper>
   </div>
 );
