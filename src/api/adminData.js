@@ -9,3 +9,8 @@ export function getModuleData(){
     return api.get('/modules')
     .then(res => res.data)
 }
+
+export function deleteModuleData(id){
+    return api.delete(`/module/${id}`)
+    .then(res => res.data)
+}
