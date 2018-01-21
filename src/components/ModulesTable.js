@@ -23,7 +23,7 @@ const styles = theme => ({
 });
 
 
-class AdminTable extends Component {
+class ModulesTable extends Component {
 
   state = {
     userData: null,
@@ -59,40 +59,34 @@ class AdminTable extends Component {
               describedby: "full_description"
             }}>
               <div>
-                <h1>Volunteer Information</h1>
-                Name: {selectedID && selectedID.firstName} {selectedID && selectedID.lastName}
+                <h1>WARNING:</h1>
+                Are you sure you want to delete module: {selectedID && selectedID.firstName} {selectedID && selectedID.lastName}?
                 <br /><br />
-                Date of Birth: {selectedID && selectedID.dateOfBirth}
-                <br /><br />
-                Email: {selectedID && selectedID.email}
-                <br /><br />
-                Mobile: {selectedID && selectedID.mobileNumber}
-                <br /><br />
-                Address: {selectedID && selectedID.address}, {selectedID && selectedID.postCode} {selectedID && selectedID.state}
-
-              <button className="admin-close-button" onClick={() => this.setState({modalOpen: false})}>X</button>
+                <button>Yes</button>
+                <button>No</button>
+                <button className="admin-close-button" onClick={() => this.setState({modalOpen: false})}>X</button>
               </div>
           </Modal>
     <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>First Name</TableCell>
-            <TableCell>Last Name</TableCell>
-            <TableCell>Email</TableCell>
+            <TableCell>Module</TableCell>
+            <TableCell>Delete?</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {userData && userData.map(n => {
               return (
-              <TableRow onClick={this.getID.bind(this, n)} className="row" hover key={n._id}>
+            //   <TableRow onClick={this.getID.bind(this, n)} className="row" hover key={n._id}>
+              <TableRow className="row" hover key={n._id}>
                 <TableCell>{n.firstName}</TableCell>
-                <TableCell >{n.lastName}</TableCell>
-                <TableCell >{n.email}</TableCell>
+                <TableCell><button onClick={this.getID.bind(this, n)}>Delete</button></TableCell>
             </TableRow>
             );
           })}
         </TableBody>
+        <TableFooter><button>Add New Module + </button></TableFooter>
       </Table>
     </Paper>
     </div>
@@ -100,7 +94,7 @@ class AdminTable extends Component {
  }
 }
 
-AdminTable.propTypes = {
+ModulesTable.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
@@ -125,8 +119,8 @@ const customStyles = {
     WebkitOverflowScrolling    : 'touch',
     borderRadius               : '4px',
     outline                    : 'none',
-    padding                    : '5%'
+    padding                    : '5%',
   }
 }
 
-export default withStyles(styles)(AdminTable);
+export default withStyles(styles)(ModulesTable);

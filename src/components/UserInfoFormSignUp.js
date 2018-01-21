@@ -23,9 +23,10 @@ function UserInfoFormSignUp ({
                   const address = elements.address.value
                   const postCode = elements.postCode.value
                   const state = elements.state.value
+                  const mobileNumber = elements.mobileNumber.value
 
                   console.log(elements)
-                  onSignUp({ email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state })
+                  onSignUp({ email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state, mobileNumber })
                 }}
               > 
                 <label>
@@ -108,6 +109,15 @@ function UserInfoFormSignUp ({
                 <input
                   type="text"
                   name="state"
+                />
+                <br />< br />
+                <label>
+                {'mobile number'}
+                </label>
+                <br />
+                <input
+                  type="text"
+                  name="mobileNumber"
                 />
                 <br />
                 <button className="sign-in-button">SIGN UP</button>

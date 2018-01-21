@@ -23,9 +23,9 @@ class App extends Component {
     error: null
   }
 
-  onSignUp = ({ email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state }) => {
-    // console.log('App Recieved', {email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state})
-    signUp({email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state})
+  onSignUp = ({ email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state, mobileNumber }) => {
+    // console.log('App Recieved', {email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state, mobileNumber})
+    signUp({email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state, mobileNumber})
       .then(decodedToken => {
         console.log('signed up', decodedToken)
         this.setState({ decodedToken })
@@ -66,7 +66,14 @@ class App extends Component {
           <NavBar isAuthenticated={signedIn}/>
           <Switch>
             <Route exact path="/" render={()=><HomePage isAuthenticated={signedIn} onSignOut={this.onSignOut}/>}/>
-            <Route exact path="/admin" component={AdminPage}/>
+            {/* <Route exact path="/admin" component={AdminPage}/> */}
+            <Route exact path="/admin" render={()=> (
+              decodedToken === null || decodedToken.admin === false ? (
+                <Redirect to='/' />
+              ) : (
+                <AdminPage/>
+              )
+            )} />
             <Route exact path="/sign-in" render={()=> (
               signedIn ? (
                 <Redirect to='/' />

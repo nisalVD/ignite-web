@@ -19,41 +19,43 @@
 * [x] Logout button logic
 * [x] Make Sign Up and Sign In forms work
 * [x] User profile button link to profile page
+* [x] ADD MOBILE NUMBER AS REQUIREMENT - BACKEND AND SIGN UP (NEEDED FOR SMS)
+* [x] Add Admin Route security 
+* [x] HOOK UP BACKEND TO ADMIN PANEL
+* [x] Make Admin Table Clickable - Dialog 
+* [x] View User Data Table - Dialog Popup?
 
 ---------------------------------------------------------------
 
-ADMIN PANEL:
-* View User Data Table - Dialog Popup?
-* Add New Modules
-* Send SMS + Email Updates to All Users
 
-PROFILE:
+* MUST GET DONE - MVP -------------
+
+
+[ ] ADMIN PANEL:
+* Add New Modules - List of All Possible Modules - Delete or Add New Ones - Link directly to Module and can Add Questions
+* View Completed Modules per User
+
+[ ] PROFILE:
 * Log Out Button
 * Modules + Other Checklist and a button link to Modules
 * Change Details Form Button (Form Dialog Material UI)
-* Support Section - Admin contact details to profile page under Support section (Phone Number + Email + Link to Live Chat?)
+* Support Section - Admin contact details to profile page under Support section (Phone Number + Email)
 * Image / File Uploading (Photo ID, Working w/ Children's Check?)
-*Profile Image?
 
 
-* MUST GET DONE -------------
-
-* [ ] Profile Page
 * [ ] Module Pages
-* [ ] Admin Page
 
-* [ ] Password Confirmation on Sign Up
-* [ ] ADD MOBILE NUMBER AS REQUIREMENT - BACKEND AND SIGN UP (NEEDED FOR SMS)
 * [ ] Blog - FIGMA UPDATES ON SIGNED IN HOME PAGE - Admin create new post button > Form Dialog Material UI + SCROSS DOWN INDICATOR ON HOME PAGE
-* [ ] Make Admin Panel
-* [ ] HOOK UP BACKEND TO ADMIN PANEL
-* [ ] Make Admin Table Clickable
-* [ ] Add Admin route security 
+
 * [ ] Add Bearer
-* [ ] Deploy
-* [ ] Handover README Notes / Presentation
+* [ ] Deploy (Remember to Add Admin Account)
+* [ ] Handover README Notes (Remember to Add Admin Account) / Presentation
 
 * LATER --------------
+* [ ] View and Download Uploaded Files per User
+* [ ] Send SMS + Email Updates to All Users From Admin Console
+* [ ] Profile Image on Profile Page
+* [ ] Password Confirmation on Sign Up - verification on front end
 * [ ] Better Admin Panel Table?https://devexpress.github.io/devextreme-reactive/react/grid/demos/featured/controlled-mode/
 * [ ] First Name on User Button - material Letter Avatar instead?
 * [ ] https://www.npmjs.com/package/react-alert FOR SIGNED IN / OUT ALERTS
@@ -61,6 +63,5 @@ PROFILE:
 * [ ] Add live chat - Not that useful
 * [ ] Mobile responsiveness - Later!
 * [ ] Autofill sign in and profile page change details fields
-* [ ] Add camping, mentoring and sports Ignite icons (google drive) to relevant modules
 
 

@@ -188,7 +188,7 @@ padding: 30px;
 .user-info-form-sign-up {
   background: white;
   width: 35%;
-  height: 1500px;
+  height: 1600px;
   margin-left: 30%;
   margin-top: 2.5%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -313,4 +313,14 @@ iframe {
 
 .row {
   cursor: pointer;
+}
+
+.admin-close-button {
+  font-size: 30px;
+  background: none;
+  border: 1px solid #ccc;
+  color: #ccc;
+  position: absolute;
+  top: 5%;
+  right: 5%;
 }
