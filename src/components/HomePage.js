@@ -4,7 +4,6 @@ import IgniteBanner from '../img/ignite_banner.jpg';
 
 function HomePage ({
     isAuthenticated = false,
-    onSignOut
 })
 {
     return (
@@ -13,7 +12,6 @@ function HomePage ({
                 <img src={IgniteBanner} alt="Ignite Banner" class="ignite-banner"/>
                 <div className="volunteer-title">
                     <h1>VOLUNTEER PORTAL</h1>
-                    <button onClick={(event => onSignOut())}>LOG OUT</button>
                 </div>
                 
                 {!!isAuthenticated ? (

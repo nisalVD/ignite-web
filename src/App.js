@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
-
 import SignInForm from './components/SignInForm'
 import HomePage from './components/HomePage'
+import ProfilePage from './components/ProfilePage'
 import SignInPage from './components/SignInPage'
 import SignUpPage from './components/SignUpPage'
 import CalendarPage from './components/CalendarPage'
@@ -63,8 +63,9 @@ class App extends Component {
       <Router>
         <div className="App">
           <NavBar isAuthenticated={signedIn}/>
+
           <Switch>
-            <Route exact path="/" render={()=><HomePage isAuthenticated={signedIn} onSignOut={this.onSignOut}/>}/>
+            <Route exact path="/" render={()=><HomePage isAuthenticated={signedIn}/>}/>
             {/* <Route exact path="/admin" component={AdminPage}/> */}
             <Route exact path="/admin" render={()=> (
               decodedToken === null || decodedToken.admin === false ? (
@@ -78,6 +79,14 @@ class App extends Component {
                 <Redirect to='/' />
               ) : (
                 <SignInPage onSignIn={this.onSignIn}/>
+              )
+            )} />
+
+            <Route exact path="/profile" render={()=> (
+              signedIn ? (
+                <ProfilePage onSignIn={this.onSignIn} onSignOut={this.onSignOut}/>
+              ) : (
+                <Redirect to='/' />
               )
             )} />
 

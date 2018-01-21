@@ -33,7 +33,6 @@ function NavBar({
     <div className={classes.root}>
       <AppBar position="fixed" color="#FAFAFA">
         <Toolbar>
-
             <div className="annoying-div-2">
                 <a href="/"><img src={IgniteLogo} alt="Ignite Logo" class="ignite-logo"/></a>
             </div>
@@ -42,7 +41,6 @@ function NavBar({
                     <a href="./calendar"><img src={CalendarIcon} alt="Google Calendar Icon" class="nav-icon"/></a>
                     <a href="https://www.facebook.com/Igniteau/" target="_blank"><img src={FacebookIcon} alt="Facebook Icon" class="nav-icon"/></a>
                     <a href="./live-chat"><img src={LiveChatIcon} alt="Live Chat Icon" class="nav-icon"/></a>
-                    {/* <a href="./blog">blog</a>  */}
                 <div className="annoying-div">
                     <a href="./profile"><button type="button" className="user-button">
                         USER &nbsp;
@@ -56,7 +54,7 @@ function NavBar({
                     <a href="./sign-in"><button type="button" className="login-button">SIGN IN</button></a>
                 </div>
             )
-            }
+            } 
         </Toolbar>
       </AppBar>
     </div>

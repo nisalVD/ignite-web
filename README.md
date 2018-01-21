@@ -7,7 +7,6 @@
 
 * [x] Add switch statement router
 * [x] Button home page functionality
-
 * [x] Test container on home page image
 * [x] Create Sign In and Sign Up Page Components
 * [x] Create Sign In Components
@@ -25,6 +24,9 @@
 * [x] Make Admin Table Clickable - Dialog 
 * [x] View User Data Table - Dialog Popup?
 * [x] Delete Modules
+* [x] List of All Modules
+* [x] List question count for a module
+* [x] Log Out Button on Profile Page
 
 
 ---------------------------------------------------------------
@@ -34,29 +36,29 @@
 
 
 [ ] ADMIN PANEL:
-* [ ] List of All Modules
-* [ ] Link directly to Module
-* [ ] Add New Modules
-* [ ] Add Questions to Modules
-* [ ]View Completed Modules per User
 
+* [D/N] Add New Modules > Draft.js
+* [D] Style Question and Content pages
+* [N] Add Questions to Modules 
+* [N] View List of Completed Modules per User
+* [N] Link ModuleList Name Cell directly to Module - Nisal
+
+                   DIV CONTAINER IN NAV WITH ITEMS - DISPLAY FLEX AND SPACE AROUND / BETWEEN
 [ ] PROFILE:
-* Log Out Button
-* Modules + Other Checklist and a button link to Modules
-* Change Details Form Button (Form Dialog Material UI)
-* Support Section - Admin contact details to profile page under Support section (Phone Number + Email)
-* Image / File Uploading (Photo ID, Working w/ Children's Check?)
+* [N/D] Completed Modules + Other Checklist and a button link to Modules
+* [N/D] Change Details Form Button (Modal form)
+* [D] Support Section - Admin contact details to profile page under Support section (Phone Number + Email)
+
+* [N/D] Blog - FIGMA UPDATES ON SIGNED IN HOME PAGE - Admin create new post button > Modal > Draft.js
 
 
-* [ ] Module Pages
-
-* [ ] Blog - FIGMA UPDATES ON SIGNED IN HOME PAGE - Admin create new post button > Modal + SCROSS DOWN INDICATOR ON HOME PAGE
-
-* [ ] Add Bearer
 * [ ] Deploy (Remember to Add Admin Account)
 * [ ] Handover README Notes (Remember to Add Admin Account) / Presentation
 
 * LATER --------------
+* [ ] Add Bearer
+* [ ] Image / File Uploading (Photo ID, Working w/ Children's Check?) (Profile Page)
+* [ ] SCROLL DOWN INDICATOR ON HOME PAGE
 * [ ] View and Download Uploaded Files per User
 * [ ] Send SMS + Email Updates to All Users From Admin Console
 * [ ] Profile Image on Profile Page

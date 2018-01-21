@@ -6,9 +6,9 @@ import Paper from 'material-ui/Paper';
 import TableFooter from 'material-ui/Table/TableFooter';
 import TableSortLabel from 'material-ui/Table/TableSortLabel';
 import Button from 'material-ui/Button';
-import { getModuleData, deleteModuleData, getQuestionData } from '../api/adminData'
+import { getModuleData, deleteModuleData, getQuestionData } from '../api/adminData';
 import Modal from 'react-modal';
-
+import Link from 'react-router';
 
 const styles = theme => ({
   root: {
