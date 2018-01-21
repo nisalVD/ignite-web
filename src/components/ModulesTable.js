@@ -6,7 +6,7 @@ import Paper from 'material-ui/Paper';
 import TableFooter from 'material-ui/Table/TableFooter';
 import TableSortLabel from 'material-ui/Table/TableSortLabel';
 import Button from 'material-ui/Button';
-import { getModuleData, deleteModuleData } from '../api/adminData'
+import { getModuleData, deleteModuleData, getQuestionData } from '../api/adminData'
 import Modal from 'react-modal';
 
 
@@ -28,7 +28,8 @@ class ModulesTable extends Component {
   state = {
     moduleData: null,
     selectedID: null,
-    modalOpen: false
+    modalOpen: false,
+    questionData: 0,
 }
 
   deleteModuleContent(){
@@ -50,18 +51,32 @@ class ModulesTable extends Component {
     }) 
 }
 
+  handleCloseModal () {
+    this.setState({ modalOpen: false });
+  }
+
+  questionData(n){
+    const questionData = this.state.questionData
+    const mappedQuestion = questionData && questionData.filter(questionData => questionData.module === n._id )
+    return mappedQuestion.length
+  }
+
   getID(selectedID){
     this.setState({selectedID})
     this.setState({modalOpen: true})
   }
   
-  componentDidMount(){
+  async componentDidMount(){
     getModuleData()
-    .then(moduleData => this.setState({moduleData}) )
+    .then(moduleData => this.setState({moduleData}))
+    const questionData = await getQuestionData()
+    this.setState({questionData: questionData})
+    
   }
   
   render(){
-    
+
+    console.log("question data", this.state.questionData )
     console.log("moduleData", this.state.moduleData)
     const { classes } = this.props;
     console.log(this.state.selectedID && this.state.selectedID._id)
@@ -71,6 +86,7 @@ class ModulesTable extends Component {
     <div>
        <Modal
             isOpen={this.state.modalOpen}
+            onRequestClose={this.handleCloseModal.bind(this)}
             style={customStyles}
             ariaHideApp={false}
             aria={{
@@ -91,15 +107,18 @@ class ModulesTable extends Component {
         <TableHead>
           <TableRow>
             <TableCell>Module</TableCell>
+            <TableCell>Questions</TableCell>
+            <TableCell>Add Questions?</TableCell>
             <TableCell>Delete?</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {!!moduleData && moduleData.map(n => {
               return (
-            //   <TableRow onClick={this.getID.bind(this, n)} className="row" hover key={n._id}>
               <TableRow className="row" hover key={n._id}>
                 <TableCell>{n.name}</TableCell>
+                <TableCell>{this.questionData.bind(this, n)()}</TableCell>
+                <TableCell><button>Add Questions</button></TableCell>
                 <TableCell><button onClick={this.getID.bind(this, n)}>Delete</button></TableCell>
             </TableRow>
             );

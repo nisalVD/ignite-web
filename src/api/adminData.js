@@ -14,3 +14,8 @@ export function deleteModuleData(id){
     return api.delete(`/module/${id}`)
     .then(res => res.data)
 }
+
+export function getQuestionData(){
+    return api.get(`/questions`)
+    .then(res => res.data)
+}

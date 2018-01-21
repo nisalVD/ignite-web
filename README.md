@@ -24,6 +24,8 @@
 * [x] HOOK UP BACKEND TO ADMIN PANEL
 * [x] Make Admin Table Clickable - Dialog 
 * [x] View User Data Table - Dialog Popup?
+* [x] Delete Modules
+
 
 ---------------------------------------------------------------
 
@@ -32,8 +34,11 @@
 
 
 [ ] ADMIN PANEL:
-* Add New Modules - List of All Possible Modules - Delete or Add New Ones - Link directly to Module and can Add Questions
-* View Completed Modules per User
+* [ ] List of All Modules
+* [ ] Link directly to Module
+* [ ] Add New Modules
+* [ ] Add Questions to Modules
+* [ ]View Completed Modules per User
 
 [ ] PROFILE:
 * Log Out Button
@@ -45,7 +50,7 @@
 
 * [ ] Module Pages
 
-* [ ] Blog - FIGMA UPDATES ON SIGNED IN HOME PAGE - Admin create new post button > Form Dialog Material UI + SCROSS DOWN INDICATOR ON HOME PAGE
+* [ ] Blog - FIGMA UPDATES ON SIGNED IN HOME PAGE - Admin create new post button > Modal + SCROSS DOWN INDICATOR ON HOME PAGE
 
 * [ ] Add Bearer
 * [ ] Deploy (Remember to Add Admin Account)
