@@ -46,7 +46,7 @@ class Question extends Component {
   }
 
   render () {
-    const {questions, radioValue, user} = this.state
+    const {questions, radioValue } = this.state
     return (
       <div className="questions">
         {!!questions &&

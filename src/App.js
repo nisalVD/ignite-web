@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from 'react';
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
+import React, { Component } from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
-import SignInForm from './components/SignInForm'
 import HomePage from './components/HomePage'
 import SignInPage from './components/SignInPage'
 import SignUpPage from './components/SignUpPage'

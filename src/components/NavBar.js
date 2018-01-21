@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
 import IgniteLogo from '../img/ignite_logo.png';
 import CalendarIcon from '../img/Google-Calendar-icon.png'
 import FacebookIcon from '../img/facebook-icon.svg.png'
@@ -40,7 +37,7 @@ function NavBar({
             {!!isAuthenticated ? (
                 <div className="nav-parent-div">
                     <a href="./calendar"><img src={CalendarIcon} alt="Google Calendar Icon" className="nav-icon"/></a>
-                    <a href="https://www.facebook.com" target="_blank"><img src={FacebookIcon} alt="Facebook Icon" className="nav-icon"/></a>
+                    <a href="https://www.facebook.com" rel="noopener noreferrer" target="_blank"><img src={FacebookIcon} alt="Facebook Icon" className="nav-icon"/></a>
                     <a href="./live-chat"><img src={LiveChatIcon} alt="Live Chat Icon" className="nav-icon"/></a>
                     {/* <a href="./blog">blog</a>  */}
                 <div className="annoying-div">
