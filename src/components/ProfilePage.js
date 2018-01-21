@@ -1,6 +1,7 @@
 import React from 'react';
 import Avatar from 'material-ui/Avatar';
 import LetterAvatar from './Avatar';
+import UpdateDetailsButton from './UpdateDetailsButton'
 
 
 function ProfilePage ({
@@ -18,7 +19,7 @@ function ProfilePage ({
                         <br /><br />
                         <button className="sign-out-button" onClick={(event => onSignOut())}>SIGN OUT</button>
                         <br /><br />
-                        <button className="update-details-button" onClick={(event => onSignOut())}>UPDATE MY DETAILS</button>
+                        <UpdateDetailsButton/>
                         <br /><br />
                         <div class="modules-container">
                             <div className="profile-left">

@@ -27,6 +27,7 @@
 * [x] List of All Modules
 * [x] List question count for a module
 * [x] Log Out Button on Profile Page
+* [x] Support Section - Admin contact details to profile page under Support section (Phone Number + Email)
 
 
 ---------------------------------------------------------------
@@ -47,8 +48,6 @@
 [ ] PROFILE:
 * [N/D] Completed Modules + Other Checklist and a button link to Modules
 * [N/D] Change Details Form Button (Modal form)
-* [D] Support Section - Admin contact details to profile page under Support section (Phone Number + Email)
-
 * [N/D] Blog - FIGMA UPDATES ON SIGNED IN HOME PAGE - Admin create new post button > Modal > Draft.js
 
 
@@ -57,6 +56,8 @@
 
 * LATER --------------
 * [ ] Add Bearer
+* [ ] Remake NavBar from Scratch
+* [ ] Style Admin Panel (esp. Modals)
 * [ ] Image / File Uploading (Photo ID, Working w/ Children's Check?) (Profile Page)
 * [ ] SCROLL DOWN INDICATOR ON HOME PAGE
 * [ ] View and Download Uploaded Files per User
