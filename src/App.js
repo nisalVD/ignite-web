@@ -23,9 +23,9 @@ class App extends Component {
     error: null
   }
 
-  onSignUp = ({ email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state }) => {
+  onSignUp = ({ email, password, passwordConfirmation, firstName, lastName, mobileNumber, dateOfBirth, address, postCode, state }) => {
     // console.log('App Recieved', {email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state})
-    signUp({email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state})
+    signUp({email, password, passwordConfirmation, firstName, lastName, mobileNumber, dateOfBirth, address, postCode, state})
       .then(decodedToken => {
         this.setState({ decodedToken })
       })

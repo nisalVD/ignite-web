@@ -30,16 +30,17 @@ class ModuleList extends Component {
     this.setState({selectedModule})
     const questionUrl = `module/${selectedModule._id}/questions`
     this.setState({questionUrl})
-    // const questionUrl = `module/${selectedModule._id}/questions`
-    // this.setState({questionUrl})
   }
   isModuleCompleted(module) {
-    console.log('module', module)
+    // const {currentUserMarkingData} = this.state
+    // let moduleCompleted = false
+    // currentUserMarkingData && currentUserMarkingData.forEach(item => {
+      return true
+  
   }
 
   render () {
     const {modules, selectedModule, questionUrl, currentUserMarkingData} = this.state
-    console.log('currentUser Marking data', currentUserMarkingData)
     return (
         <div className="back-bit">
           { modules && 
