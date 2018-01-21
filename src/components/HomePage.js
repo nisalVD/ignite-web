@@ -10,7 +10,7 @@ function HomePage ({
     return (
 
         <div className="container">
-                <img src={IgniteBanner} alt="Ignite Banner" class="ignite-banner"/>
+                <img src={IgniteBanner} alt="Ignite Banner" className="ignite-banner"/>
                 <div className="volunteer-title">
                     <h1>VOLUNTEER PORTAL</h1>
                     <button onClick={(event => onSignOut())}>LOG OUT</button>

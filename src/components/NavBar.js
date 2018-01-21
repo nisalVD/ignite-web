@@ -31,17 +31,17 @@ function NavBar({
 }) {
   return (
     <div className={classes.root}>
-      <AppBar position="fixed" color="#FAFAFA">
+      <AppBar position="fixed" color="default">
         <Toolbar>
 
             <div className="annoying-div-2">
-                <a href="/"><img src={IgniteLogo} alt="Ignite Logo" class="ignite-logo"/></a>
+                <a href="/"><img src={IgniteLogo} alt="Ignite Logo" className="ignite-logo"/></a>
             </div>
             {!!isAuthenticated ? (
                 <div className="nav-parent-div">
-                    <a href="./calendar"><img src={CalendarIcon} alt="Google Calendar Icon" class="nav-icon"/></a>
-                    <a href="https://www.facebook.com" target="_blank"><img src={FacebookIcon} alt="Facebook Icon" class="nav-icon"/></a>
-                    <a href="./live-chat"><img src={LiveChatIcon} alt="Live Chat Icon" class="nav-icon"/></a>
+                    <a href="./calendar"><img src={CalendarIcon} alt="Google Calendar Icon" className="nav-icon"/></a>
+                    <a href="https://www.facebook.com" target="_blank"><img src={FacebookIcon} alt="Facebook Icon" className="nav-icon"/></a>
+                    <a href="./live-chat"><img src={LiveChatIcon} alt="Live Chat Icon" className="nav-icon"/></a>
                     {/* <a href="./blog">blog</a>  */}
                 <div className="annoying-div">
                     <a href="./profile"><button type="button" className="user-button">

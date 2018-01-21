@@ -12,29 +12,17 @@ class ModuleList extends Component {
     modalOpen: false,
     content: '',
     selectedModule: '',
-    questionUrl: null,
-    isModuleFinished: {}
+    questionUrl: '',
+    currentUserMarkingData: null
   }
   componentDidMount () {
     listModules()
       .then(modules => this.setState({modules}))
-      .then(() => {
-        checkMarking(this.props.userId)
-        .then(userMarking => {
-          userMarking.map(marking => {
-              const moduleId = marking.module
-            if (marking.correct === false) {
-              this.setState({isModuleFinished: {
-                [moduleId]: false
-              }})
-            }
-            else {
-              this.setState({isModuleFinished: {
-                [moduleId]: true
-              }})
-            }
-          })
-        })
+      .catch(error => console.log(error))
+
+    checkMarking(this.props.userId) 
+      .then(currentUserMarkingData => {
+        this.setState({currentUserMarkingData})
       })
   }
    clickModule(e, selectedModule) {
@@ -45,15 +33,18 @@ class ModuleList extends Component {
     // const questionUrl = `module/${selectedModule._id}/questions`
     // this.setState({questionUrl})
   }
+  isModuleCompleted(module) {
+    console.log('module', module)
+  }
+
   render () {
-    const {modules, selectedModule, questionUrl, isModuleFinished} = this.state
-    console.log('selected Module', selectedModule)
-    console.log('questionUrl',  questionUrl)
+    const {modules, selectedModule, questionUrl, currentUserMarkingData} = this.state
+    console.log('currentUser Marking data', currentUserMarkingData)
     return (
         <div className="back-bit">
           { modules && 
             modules.map(module => {
-            return <Module isCompleted={isModuleFinished[module._id]} 
+            return <Module isCompleted={this.isModuleCompleted.bind(this, module)()} 
               selectedModule={module} 
               clickModule={this.clickModule.bind(this)} 
               key={module._id} 
