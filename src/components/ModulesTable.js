@@ -36,16 +36,17 @@ class ModulesTable extends Component {
     deleteModuleData(this.state.selectedID._id)
     .then(( ) => console.log("deleted"))
     .then(() => {
-        const mappedModuleData = this.state.moduleData.map((moduleData, id, arr) => {
-            if (moduleData._id === this.state.selectedID){
-                arr.splice(id, 1)
+
+        const {moduleData, selectedID} = this.state
+
+        const mappedModule = moduleData.reduce((acc, next) => {
+            if (next._id !== selectedID._id) {
+              acc.push(next)
             }
-            return arr
-        })
-        console.log("mapped module data", mappedModuleData)
-        this.setState({moduleData: mappedModuleData})
-        this.setState({modalOpen: false})
-        console.log("this.state.moduleData", this.state.moduleData)
+            return acc
+          },[])
+          this.setState({moduleData: mappedModule}) 
+          this.setState({modalOpen: false})       
     }) 
 }
 
