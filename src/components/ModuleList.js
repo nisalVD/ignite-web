@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Modal from 'react-modal'
 
 import { listModules } from '../api/module'
+import { checkMarking } from '../api/question'
 
 class ModuleList extends Component {
   state = {
@@ -11,32 +12,52 @@ class ModuleList extends Component {
     modalOpen: false,
     content: '',
     selectedModule: '',
-    questionUrl: null
+    questionUrl: null,
+    isModuleFinished: {}
   }
   componentDidMount () {
     listModules()
       .then(modules => this.setState({modules}))
+      .then(() => {
+        checkMarking(this.props.userId)
+        .then(userMarking => {
+          userMarking.map(marking => {
+              const moduleId = marking.module
+            if (marking.correct === false) {
+              this.setState({isModuleFinished: {
+                [moduleId]: false
+              }})
+            }
+            else {
+              this.setState({isModuleFinished: {
+                [moduleId]: true
+              }})
+            }
+          })
+        })
+      })
   }
-  clickModule(e, moduleId) {
+   clickModule(e, selectedModule) {
     this.setState({modalOpen: true})
-    const {modules} = this.state
-    const selectedModule = modules.map(module => {
-        if (module._id === moduleId){
-          return module
-        }
-      }).filter(module => module!=null)[0]
     this.setState({selectedModule})
-
     const questionUrl = `module/${selectedModule._id}/questions`
     this.setState({questionUrl})
+    // const questionUrl = `module/${selectedModule._id}/questions`
+    // this.setState({questionUrl})
   }
   render () {
-    const {modules, selectedModule, questionUrl} = this.state
+    const {modules, selectedModule, questionUrl, isModuleFinished} = this.state
+    console.log('selected Module', selectedModule)
+    console.log('questionUrl',  questionUrl)
     return (
         <div className="back-bit">
           { modules && 
             modules.map(module => {
-            return <Module moduleId={module._id} clickModule={this.clickModule.bind(this)} key={module._id} name={module.name} />
+            return <Module isCompleted={isModuleFinished[module._id]} 
+              selectedModule={module} 
+              clickModule={this.clickModule.bind(this)} 
+              key={module._id} 
+              name={module.name} />
             })
           }
           <Modal

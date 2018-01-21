@@ -307,3 +307,9 @@ iframe {
   color: white;
   font-weight: bold;
 }
+
+/* change all these */
+.module-completed {
+  background: greenyellow;
+  align-content: right;
+}

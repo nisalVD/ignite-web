@@ -12,13 +12,17 @@ const style = {
 const Module = ({
   name,
   clickModule,
-  moduleId
+  selectedModule,
+  isCompleted
 }) => (
   <div onClick={(e) => {
-    clickModule(e, moduleId)
+    clickModule(e, selectedModule)
   }} className="modules">
     <Paper style={style} zDepth={3} >
-        {name}
+      {name}
+      <div classname={!!isCompleted && "module-completed"} >
+        <strong>Completed</strong>
+      </div>
     </Paper>
   </div>
 );

@@ -36,6 +36,7 @@ class Question extends Component {
     markingData.user = this.props.userId
     markingData.quiz = radioValue
     markingData.module = this.props.moduleId
+    console.log(markingData)
     addMarking(markingData)
       .then(res => console.log(res.data))
       .then(
