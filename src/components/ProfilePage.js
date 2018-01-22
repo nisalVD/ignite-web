@@ -25,20 +25,6 @@ function ProfilePage ({
                             <div className="profile-left">
                                 Modules Completed:
                                 <br /><br />
-                                <form>
-                                  <label>
-                                    <input type="radio" value="option1" checked={true} />
-                                    Option 1
-                                  </label>
-                                  <label>
-                                    <input type="radio" value="option2" />
-                                    Option 2
-                                  </label>
-                                  <label>
-                                    <input type="radio" value="option3" />
-                                    Option 3
-                                  </label>
-                              </form>
                                 Code of Conduct
                                 <br />
                                 OH&S
@@ -46,17 +32,67 @@ function ProfilePage ({
                                 Camping
                                 <br />
                                 Mentoring
+                                <br />
+                                OH&S
+                                <br />
+                                Camping
+                                <br />
+                                Mentoring
                                 <br /> 
+                                OH&S
+                                <br />
+                                Camping
+                                <br />
+                                Mentoring
+                                <br /> 
+                                OH&S
+                                <br />
+                                Camping
+                                <br />
+                                Mentoring
+                                <br />  
                             </div>
                             <div className="profile-right">
                                 <a href="./modules"><button type="button" className="modules-button">MODULES</button></a>
                             </div>
+                        </div>
+                        <br /><br />
+                              <div className="induction-box">
+                              <div className="induction-instructions">
+                                In order to qualify to volunteer at Ignite you must complete the list of requirements.
+                                <br /> 
+                                Please ensure you have:
+                              </div>
+                                <br />
+                              <div className="induction-list">
+                                <form className="induction-form">
+                                  <label>
+                                    <input className="induction-radio" type="radio" value="option1" />
+                                    Completed Modules
+                                  </label>
+                                  <br />
+                                  <label>
+                                    <input className="induction-radio" type="radio" value="option2" />
+                                    Sent Photo ID to Ignite
+                                  </label>
+                                  <br />
+                                  <label>
+                                    <input className="induction-radio" type="radio" value="option3" />
+                                    Working With Children Check
+                                  </label>
+                                  <br /><br />
+                                  <input type="submit"></input>
+                                  <br /><br />
+                                  <input type="reset"/>
+                              </form>
+                              </div>
+                              </div>
+                        <br /><br />
                             <div className="support-div">
                             Need help?
                             <br />
                             Contact us at ignite@gmail.com or on 040909090
                             </div>
-                        </div>
                         <div className="admin-page-padder"/>
                     </div>
 

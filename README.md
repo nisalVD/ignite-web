@@ -72,3 +72,4 @@
 * [ ] Mobile responsiveness - Later!
 * [ ] Autofill sign in and profile page change details fields
 * [ ] Add camping, mentoring and sports Ignite icons (google drive) to relevant modules
+* [ ] Fix favicon
