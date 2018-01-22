@@ -1,5 +1,4 @@
 import React from 'react';
-import Avatar from 'material-ui/Avatar';
 import LetterAvatar from './Avatar';
 import UpdateDetailsButton from './UpdateDetailsButton'
 import CheckList from './CheckList'

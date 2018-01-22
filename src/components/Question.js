@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { 
   listQuestions, 
-  addMarking 
+  addMarking,
+  checkMarking
 } from '../api/question'
 
 
@@ -31,19 +32,21 @@ class Question extends Component {
     this.setState({radioValue: newObj})
   }
 
-  onClick(e) {
+   onClick(e) {
     const {radioValue} = this.state
     const markingData = {}
     markingData.user = this.props.userId
     markingData.quiz = radioValue
     markingData.module = this.props.moduleId
-    console.log(markingData)
     addMarking(markingData)
       .then(res => console.log(res.data))
-      .then(
-        this.setState({redirect: true})
-      )
-      .catch(error => console.log(error.message))
+      .then(() => {
+        checkMarking(this.props.userId)
+          .then(data =>{
+            console.log(data)
+          })
+      })
+      .catch(error => console.log(error))
   }
 
   render () {

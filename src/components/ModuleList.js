@@ -51,16 +51,21 @@ class ModuleList extends Component {
       }
       return acc
     },[])
-    let isComplete = false
-    const evenMoreMapped = mappedMarking && mappedMarking.forEach(item => {
-      if (item.correct === true){
-        isComplete = true
+    function isEveryTrue(element){
+      return element.correct === true
+    }
+    console.log(mappedMarking)
+
+    let isCorrect = false
+    if (!!mappedMarking){
+      if(mappedMarking.length > 0) {
+        isCorrect = mappedMarking.every(isEveryTrue)
       } else {
-        isComplete = false
+        isCorrect = false
       }
-    })
-    return isComplete
-  }
+    }
+    return isCorrect
+ }
 
   componentDidUpdate() {
    this.props.location.state && this.props.location.state.finishedQuestions && 
