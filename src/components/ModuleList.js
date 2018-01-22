@@ -13,18 +13,29 @@ class ModuleList extends Component {
     content: '',
     selectedModule: '',
     questionUrl: '',
-    currentUserMarkingData: null
+    currentUserMarkingData: null,
+    markingNeedsToBeUpdated: false
   }
   componentDidMount () {
+    this.loadModules()
+    this.checkMarkingLoad()
+  }
+
+  // call to load all the modules
+  loadModules() {
     listModules()
       .then(modules => this.setState({modules}))
       .catch(error => console.log(error))
-
-    checkMarking(this.props.userId) 
-      .then(currentUserMarkingData => {
-        this.setState({currentUserMarkingData})
-      })
   }
+
+  checkMarkingLoad() {
+    checkMarking(this.props.userId) 
+    .then(currentUserMarkingData => {
+      this.setState({currentUserMarkingData})
+    })
+  }
+
+
    clickModule(e, selectedModule) {
     this.setState({modalOpen: true})
     this.setState({selectedModule})
@@ -33,7 +44,6 @@ class ModuleList extends Component {
   }
   isModuleCompleted(module) {
     const {currentUserMarkingData} = this.state
-    // console.log(currentUserMarkingData)
     const mappedMarking = currentUserMarkingData && currentUserMarkingData.reduce((acc,next) => {
       if (next.module === module._id){
         acc.push(next)
@@ -51,9 +61,19 @@ class ModuleList extends Component {
     return isComplete
   }
 
+  componentDidUpdate() {
+   this.props.location.state && this.props.location.state.finishedQuestions && 
+   checkMarking(this.props.userId) 
+   .then(currentUserMarkingData => {
+     this.setState({currentUserMarkingData})
+   })
+   .then(() => {
+      this.props.location.state.finishedQuestions = false
+   })
+  }
+
   render () {
     const {modules, selectedModule, questionUrl, currentUserMarkingData} = this.state
-    console.log(questionUrl)
     return (
         <div className="back-bit">
           { modules && 

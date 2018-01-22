@@ -51,7 +51,7 @@ class Question extends Component {
       if (redirect)
       return (<Redirect to={{
           pathname: '/modules',
-          state: { referrer: 'hello from the world' }
+          state: { finishedQuestions: true }
       }} />)
     return (
       <div className="questions">

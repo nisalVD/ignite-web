@@ -89,11 +89,11 @@ class App extends Component {
               )
             )} />
 
-            <Route exact path="/modules" render={()=>
-                <ModuleList userId={decodedToken.sub}/>
+            <Route exact path="/modules" render={(routeProps)=>
+                <ModuleList {...routeProps} userId={decodedToken.sub}/>
               }/>
-            <Route exact path="/module/:id/questions" render={({match})=>
-                <Question moduleId={match.params.id} userId={decodedToken.sub}/>
+            <Route exact path="/module/:id/questions" render={({match, routeProps})=>
+                <Question {...routeProps} moduleId={match.params.id} userId={decodedToken.sub}/>
               }/>
             <Route exact path="/code-of-conduct-module" component={CodeOfConduct}/>                                    
           </Switch>
