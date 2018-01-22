@@ -28,7 +28,7 @@ class ModuleList extends Component {
    clickModule(e, selectedModule) {
     this.setState({modalOpen: true})
     this.setState({selectedModule})
-    const questionUrl = `module/${selectedModule._id}/questions`
+    const questionUrl = `/module/${selectedModule._id}/questions`
     this.setState({questionUrl})
   }
   isModuleCompleted(module) {
@@ -53,6 +53,7 @@ class ModuleList extends Component {
 
   render () {
     const {modules, selectedModule, questionUrl, currentUserMarkingData} = this.state
+    console.log(questionUrl)
     return (
         <div className="back-bit">
           { modules && 
