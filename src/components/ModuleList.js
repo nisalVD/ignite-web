@@ -40,7 +40,10 @@ class ModuleList extends Component {
    clickModule(e, selectedModule) {
     this.setState({modalOpen: true})
     this.setState({selectedModule})
-    const questionUrl = `/module/${selectedModule._id}/questions`
+    let questionUrl = `/module/${selectedModule._id}/questions`
+    // if(this.isModuleCompleted.bind(this)(selectedModule)) {
+    //   questionUrl = '/modules'
+    // }
     this.setState({questionUrl})
   }
   isModuleCompleted(module) {
@@ -82,6 +85,7 @@ class ModuleList extends Component {
     const {modules, selectedModule, questionUrl, currentUserMarkingData} = this.state
     return (
         <div className="back-bit">
+        <h1>Module List</h1>
           { modules && 
             modules.map(module => {
             return <Module isCompleted={this.isModuleCompleted.bind(this, module)()} 
