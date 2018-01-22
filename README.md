@@ -28,6 +28,10 @@
 * [x] List question count for a module
 * [x] Log Out Button on Profile Page
 * [x] Support Section - Admin contact details to profile page under Support section (Phone Number + Email)
+* [x] Other Checklist 
+* [x]Button link to Modules
+* [X] Presentation
+* [X] Refresh on Completed - Nisal
 
 
 ---------------------------------------------------------------
@@ -35,28 +39,31 @@
 
 * MUST GET DONE - MVP -------------
 
+[ ] Modules:
+* [ ] What happens when you get <100% on quiz -Nisal
 
 [ ] ADMIN PANEL:
 
 * [D/N] Add New Modules > Draft.js
-* [D] Style Question and Content pages
 * [N] Add Questions to Modules 
 * [N] View List of Completed Modules per User
 * [N] Link ModuleList Name Cell directly to Module - Nisal
 
-                   DIV CONTAINER IN NAV WITH ITEMS - DISPLAY FLEX AND SPACE AROUND / BETWEEN
 [ ] PROFILE:
-* [N/D] Completed Modules + Other Checklist and a button link to Modules
+* [N] Completed Modules backend
 * [N/D] Change Details Form Button (Modal form)
+
+* [D] Style Question and Content pages
 * [N/D] Blog - FIGMA UPDATES ON SIGNED IN HOME PAGE - Admin create new post button > Modal > Draft.js
 
-
 * [ ] Deploy (Remember to Add Admin Account)
-* [ ] Handover README Notes (Remember to Add Admin Account) / Presentation
+* [ ] Handover README Notes (Remember to Add Admin Account)
 
 * LATER --------------
 * [ ] Add Bearer
-* [ ] Remake NavBar from Scratch
+* [ ] Submit button send email to admins w/ user data
+* [ ] Add forgot your password?
+* [ ] Remake NavBar from Scratch - SPACE-AROUND/BETWEEN 
 * [ ] Style Admin Panel (esp. Modals)
 * [ ] Image / File Uploading (Photo ID, Working w/ Children's Check?) (Profile Page)
 * [ ] SCROLL DOWN INDICATOR ON HOME PAGE

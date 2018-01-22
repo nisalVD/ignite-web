@@ -2,6 +2,7 @@ import React from 'react';
 import Avatar from 'material-ui/Avatar';
 import LetterAvatar from './Avatar';
 import UpdateDetailsButton from './UpdateDetailsButton'
+import CheckList from './CheckList'
 
 
 function ProfilePage ({
@@ -65,7 +66,7 @@ function ProfilePage ({
                               </div>
                                 <br />
                               <div className="induction-list">
-                                <form className="induction-form">
+                                {/* <form className="induction-form">
                                   <label>
                                     <input className="induction-radio" type="radio" value="option1" />
                                     Completed Modules
@@ -84,7 +85,8 @@ function ProfilePage ({
                                   <input type="submit"></input>
                                   <br /><br />
                                   <input type="reset"/>
-                              </form>
+                              </form> */}
+                              <CheckList/>
                               </div>
                               </div>
                         <br /><br />

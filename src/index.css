@@ -349,7 +349,7 @@ iframe {
 .admin-close-button {
   font-size: 30px;
   background: none;
-  border: 1px solid #ccc;
+  border: none;
   color: #ccc;
   position: absolute;
   top: 5%;
@@ -494,5 +494,5 @@ iframe {
 }
 
 .induction-form {
-  width: 100%;
+  width: auto;
 }
