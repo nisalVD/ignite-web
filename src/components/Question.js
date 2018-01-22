@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
+import Modal from 'react-modal'
+
 import { 
   listQuestions, 
   addMarking,
@@ -11,7 +13,9 @@ class Question extends Component {
   state = {
     questions: null,
     radioValue: {},
-    redirect: false
+    redirect: false,
+    modalOpen: false,
+    wrongAnswers: null
   }
 
   componentDidMount(){
@@ -32,25 +36,33 @@ class Question extends Component {
     this.setState({radioValue: newObj})
   }
 
-   onClick(e) {
+   async onClick(e) {
     const {radioValue} = this.state
     const markingData = {}
     markingData.user = this.props.userId
     markingData.quiz = radioValue
     markingData.module = this.props.moduleId
-    addMarking(markingData)
-      .then(res => console.log(res.data))
-      .then(() => {
-        checkMarking(this.props.userId)
-          .then(data =>{
-            console.log(data)
-          })
-      })
-      .catch(error => console.log(error))
+    try {
+      await addMarking(markingData)
+      } catch(e) {
+        console.log(e)
+    }
+    const currentUserMarking = await checkMarking(this.props.userId)
+    const wrongAnswers = currentUserMarking.reduce((acc, next) => {
+      if(next.correct === false){
+        acc.push(next)
+      }
+      return acc
+    },[])
+    console.log(wrongAnswers)
+    if(wrongAnswers.length > 0){
+      this.setState({modalOpen: true})
+      this.setState({wrongAnswers})
+    }
   }
 
   render () {
-    const {questions, radioValue, redirect } = this.state
+    const {questions, radioValue, redirect, wrongAnswers } = this.state
       if (redirect)
       return (<Redirect to={{
           pathname: '/modules',
@@ -58,6 +70,35 @@ class Question extends Component {
       }} />)
     return (
       <div className="questions">
+            <Modal
+            isOpen={this.state.modalOpen}
+            style={customStyles}
+            ariaHideApp={false}
+            aria={{
+              labelledby: "heading",
+              describedby: "full_description"
+            }}>
+              <button onClick={() => this.setState({modalOpen: false})}>Close</button>
+              <div>
+                <h1>You got these wrong</h1>
+                { wrongAnswers && wrongAnswers.map(wrongAnswer => {
+                  return (
+                    <div key={wrongAnswer._id}>
+                      <p>Question ID: {wrongAnswer.question}</p>
+                      <p>Your Answer ID: {wrongAnswer.answer}</p>
+                    </div>
+                  )
+                })}
+                {/* {wrongAnswers && wrongAnswers.map(wrongAnswers => {
+                  return (
+                  <h1>You got these wrong</h1>
+                  // <h1>Question: {wrongAnswers.question}</h1>
+                  <p>Your Answers: {wrongAnswers.answer}</p>
+                  )
+                })
+                } */}
+              </div>
+          </Modal>
         {!!questions &&
           questions.map(question => {
             return (
@@ -86,6 +127,31 @@ class Question extends Component {
         <button onClick={this.onClick.bind(this)}>Submit</button>
       </div>
     )
+  }
+}
+
+const customStyles = {
+  overlay : {
+    position          : 'fixed',
+    top               : 20,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(255, 255, 255, 0.75)'
+  },
+  content : {
+    position                   : 'absolute',
+    top                        : '80px',
+    left                       : '80px',
+    right                      : '80px',
+    bottom                     : '80px',
+    border                     : '1px solid #ccc',
+    background                 : '#fff',
+    overflow                   : 'auto',
+    WebkitOverflowScrolling    : 'touch',
+    borderRadius               : '4px',
+    outline                    : 'none',
+    padding                    : '20px'
   }
 }
 
