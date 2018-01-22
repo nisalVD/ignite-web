@@ -28,6 +28,7 @@ class ModuleList extends Component {
       .catch(error => console.log(error))
   }
 
+  // call to load to all the marking for the current user
   checkMarkingLoad() {
     checkMarking(this.props.userId) 
     .then(currentUserMarkingData => {
