@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {listQuestions} from '../api/question'
+import { findModule } from '../api/module'
+import { listQuestions } from '../api/question'
 
 class AdminQuestions extends Component {
   state = {
@@ -8,6 +9,10 @@ class AdminQuestions extends Component {
   }
 
   componentDidMount() {
+    findModule(this.props.moduleId)
+      .then(currentModule => this.setState({currentModule}))
+      .catch(e => console.log(e))
+
     listQuestions(this.props.moduleId)
       .then(questionList => {
         this.setState({questionList})
@@ -18,11 +23,21 @@ class AdminQuestions extends Component {
 
   render () {
     const {userId, moduleId} = this.props
-    console.log('userId', userId)
-    console.log('moduleId', moduleId)
-    const {questionList} = this.state
+    // console.log('userId', userId)
+    // console.log('moduleId', moduleId)
+    const {questionList, currentModule} = this.state
+    console.log('questionList', questionList)
     return (
-      <div>
+      <div className="admin-questions-div">
+        <h1 className="admin-questions-h1">{currentModule && currentModule.name}</h1>
+        <h3>Current Questions</h3>
+        {questionList && questionList.map(question => {
+          return (
+            <div key={question._id}>
+              <p>{question.content}</p>
+            </div>
+          )
+        })}
       </div>
     )
   }

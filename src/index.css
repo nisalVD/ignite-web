@@ -497,3 +497,13 @@ iframe {
 .induction-form {
   width: auto;
 }
+
+/* AdminQuestions css */
+.admin-questions-div {
+  margin-left: 50px;
+  
+}
+.admin-questions-h1 {
+  text-align: center;
+  margin-right: 50px;
+}
