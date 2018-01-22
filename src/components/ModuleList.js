@@ -52,7 +52,6 @@ class ModuleList extends Component {
   }
 
   render () {
-    console.log('safasfafassfal', !!this.props.location && this.props.location.state.isNewMarkingData)
     const {modules, selectedModule, questionUrl, currentUserMarkingData} = this.state
     return (
         <div className="back-bit">
