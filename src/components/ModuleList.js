@@ -12,48 +12,74 @@ class ModuleList extends Component {
     modalOpen: false,
     content: '',
     selectedModule: '',
-    questionUrl: null,
-    isModuleFinished: {}
+    questionUrl: '',
+    currentUserMarkingData: null,
+    markingNeedsToBeUpdated: false
   }
   componentDidMount () {
+    this.loadModules()
+    this.checkMarkingLoad()
+  }
+
+  // call to load all the modules
+  loadModules() {
     listModules()
       .then(modules => this.setState({modules}))
-      .then(() => {
-        checkMarking(this.props.userId)
-        .then(userMarking => {
-          userMarking.map(marking => {
-              const moduleId = marking.module
-            if (marking.correct === false) {
-              this.setState({isModuleFinished: {
-                [moduleId]: false
-              }})
-            }
-            else {
-              this.setState({isModuleFinished: {
-                [moduleId]: true
-              }})
-            }
-          })
-        })
-      })
+      .catch(error => console.log(error))
   }
+
+  // call to load to all the marking for the current user
+  checkMarkingLoad() {
+    checkMarking(this.props.userId) 
+    .then(currentUserMarkingData => {
+      this.setState({currentUserMarkingData})
+    })
+  }
+
+
    clickModule(e, selectedModule) {
     this.setState({modalOpen: true})
     this.setState({selectedModule})
-    const questionUrl = `module/${selectedModule._id}/questions`
+    const questionUrl = `/module/${selectedModule._id}/questions`
     this.setState({questionUrl})
-    // const questionUrl = `module/${selectedModule._id}/questions`
-    // this.setState({questionUrl})
   }
+  isModuleCompleted(module) {
+    const {currentUserMarkingData} = this.state
+    const mappedMarking = currentUserMarkingData && currentUserMarkingData.reduce((acc,next) => {
+      if (next.module === module._id){
+        acc.push(next)
+      }
+      return acc
+    },[])
+    let isComplete = false
+    const evenMoreMapped = mappedMarking && mappedMarking.forEach(item => {
+      if (item.correct === true){
+        isComplete = true
+      } else {
+        isComplete = false
+      }
+    })
+    return isComplete
+  }
+
+  componentDidUpdate() {
+   this.props.location.state && this.props.location.state.finishedQuestions && 
+   checkMarking(this.props.userId) 
+   .then(currentUserMarkingData => {
+     this.setState({currentUserMarkingData})
+   })
+   .then(() => {
+      this.props.location.state.finishedQuestions = false
+   })
+  }
+
   render () {
-    const {modules, selectedModule, questionUrl, isModuleFinished} = this.state
-    console.log('selected Module', selectedModule)
-    console.log('questionUrl',  questionUrl)
+    const {modules, selectedModule, questionUrl, currentUserMarkingData} = this.state
     return (
         <div className="back-bit">
           { modules && 
             modules.map(module => {
-            return <Module isCompleted={isModuleFinished[module._id]} 
+            return <Module isCompleted={this.isModuleCompleted.bind(this, module)()} 
               selectedModule={module} 
               clickModule={this.clickModule.bind(this)} 
               key={module._id} 

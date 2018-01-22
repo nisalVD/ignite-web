@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router'
+import { Redirect } from 'react-router'
 import { 
   listQuestions, 
   addMarking 
@@ -10,6 +10,7 @@ class Question extends Component {
   state = {
     questions: null,
     radioValue: {},
+    redirect: false
   }
 
   componentDidMount(){
@@ -40,13 +41,18 @@ class Question extends Component {
     addMarking(markingData)
       .then(res => console.log(res.data))
       .then(
-        this.props.history.push('/modules')
+        this.setState({redirect: true})
       )
       .catch(error => console.log(error.message))
   }
 
   render () {
-    const {questions, radioValue, user} = this.state
+    const {questions, radioValue, redirect } = this.state
+      if (redirect)
+      return (<Redirect to={{
+          pathname: '/modules',
+          state: { finishedQuestions: true }
+      }} />)
     return (
       <div className="questions">
         {!!questions &&
@@ -80,4 +86,4 @@ class Question extends Component {
   }
 }
 
-export default withRouter(Question)
+export default Question

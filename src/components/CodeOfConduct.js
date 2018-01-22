@@ -1,8 +1,8 @@
 import React from 'react';
-import Module from './Module'
 
 
-function CodeOfConduct (){
+function CodeOfConduct (props){
+  console.log(props)
     return (
          <div className="content-box">
             <h1>Code of Conduct</h1>            

@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
-import IconButton from 'material-ui/IconButton';
 import IgniteLogo from '../img/ignite_logo.png';
 import CalendarIcon from '../img/Google-Calendar-icon.png'
 import FacebookIcon from '../img/facebook-icon.svg.png'
@@ -31,10 +28,10 @@ function NavBar({
 }) {
   return (
     <div className={classes.root}>
-      <AppBar position="fixed" color="#FAFAFA">
+      <AppBar position="fixed" color="default">
         <Toolbar>
             <div className="annoying-div-2">
-                <a href="/"><img src={IgniteLogo} alt="Ignite Logo" class="ignite-logo"/></a>
+                <a href="/"><img src={IgniteLogo} alt="Ignite Logo" className="ignite-logo"/></a>
             </div>
             {!!isAuthenticated ? (
                 <div className="nav-parent-div">

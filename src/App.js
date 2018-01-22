@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react';
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
-import SignInForm from './components/SignInForm'
+import React, { Component } from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+
 import HomePage from './components/HomePage'
 import ProfilePage from './components/ProfilePage'
 import SignInPage from './components/SignInPage'
@@ -106,11 +106,11 @@ class App extends Component {
               )
             )} />
 
-            <Route exact path="/modules" render={()=>
-                <ModuleList userId={decodedToken.sub}/>
+            <Route exact path="/modules" render={(routeProps)=>
+                <ModuleList {...routeProps} userId={decodedToken.sub}/>
               }/>
-            <Route exact path="/module/:id/questions" render={({match})=>
-                <Question moduleId={match.params.id} userId={decodedToken.sub}/>
+            <Route exact path="/module/:id/questions" render={({match, routeProps})=>
+                <Question {...routeProps} moduleId={match.params.id} userId={decodedToken.sub}/>
               }/>
             <Route exact path="/code-of-conduct-module" component={CodeOfConduct}/>                                    
           </Switch>

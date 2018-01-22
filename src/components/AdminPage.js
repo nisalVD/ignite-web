@@ -2,9 +2,7 @@ import React from 'react'
 import AdminTable from './AdminTable'
 import ModulesTable from './ModulesTable'
 
-function AdminPage ({
-
-})
+function AdminPage ()
 {
     return (
 

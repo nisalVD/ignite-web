@@ -18,11 +18,12 @@ const Module = ({
   <div onClick={(e) => {
     clickModule(e, selectedModule)
   }} className="modules">
-    <Paper style={style} zDepth={3} >
+    <Paper style={style}>
       {name}
-      <div classname={!!isCompleted && "module-completed"} >
+      { 
+        isCompleted && 
         <strong>Completed</strong>
-      </div>
+      }
     </Paper>
   </div>
 );
