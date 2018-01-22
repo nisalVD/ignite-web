@@ -11,6 +11,11 @@ import Modal from 'react-modal';
 import Link from 'react-router';
 
 const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+    width: 20,
+    height: 20
+  },
   root: {
     width: '90%',
     marginLeft: '5%',
@@ -97,8 +102,8 @@ class ModulesTable extends Component {
                 <h1>WARNING:</h1>
                 Are you sure you want to delete {selectedID && selectedID.name}?
                 <br /><br />
-                <button onClick={this.deleteModuleContent.bind(this)}>Yes</button>
-                <button onClick={() => this.setState({modalOpen: false})}>No</button>
+                <Button raised onClick={this.deleteModuleContent.bind(this)}>Yes</Button>
+                <Button className={classes.button} raised onClick={() => this.setState({modalOpen: false})}>No</Button>
                 <button className="admin-close-button" onClick={() => this.setState({modalOpen: false})}>X</button>
               </div>
           </Modal>
@@ -118,13 +123,13 @@ class ModulesTable extends Component {
               <TableRow className="row" hover key={n._id}>
                 <TableCell>{n.name}</TableCell>
                 <TableCell>{this.questionData.bind(this, n)()}</TableCell>
-                <TableCell><button>Add Questions</button></TableCell>
-                <TableCell><button onClick={this.getID.bind(this, n)}>Delete</button></TableCell>
+                <TableCell><Button raised color="primary" >Add Questions</Button></TableCell>
+                <TableCell><Button raised color="primary" onClick={this.getID.bind(this, n)}>Delete</Button></TableCell>
             </TableRow>
             );
           })}
         </TableBody>
-        <TableFooter><button>Add New Module + </button></TableFooter>
+        <TableFooter><Button raised color="primary">Add New Module + </Button></TableFooter>
       </Table>
     </Paper>
     </div>

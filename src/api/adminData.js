@@ -6,8 +6,8 @@ export function getUserData(){
 }
 
 export function getModuleData(){
-    return api.get('/modules')
-    .then(res => res.data)
+  return api.get('/modules')
+  .then(res => res.data)
 }
 
 export function deleteModuleData(id){

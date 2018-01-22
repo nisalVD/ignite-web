@@ -16,6 +16,7 @@ import Redirect from 'react-router-dom/Redirect';
 import ModuleList from './components/ModuleList'
 import CodeOfConduct from './components/CodeOfConduct'
 import Question from './components/Question'
+import AdminQuestions from './components/AdminQuestions'
 
 class App extends Component {
   state = {
@@ -56,7 +57,7 @@ class App extends Component {
   render() {
     const { decodedToken } = this.state
     const signedIn = !!decodedToken
-    // const signedIn = false
+    console.log(decodedToken)
     return (
      
 
@@ -68,7 +69,7 @@ class App extends Component {
             <Route exact path="/" render={()=><HomePage isAuthenticated={signedIn}/>}/>
             {/* <Route exact path="/admin" component={AdminPage}/> */}
             <Route exact path="/admin" render={()=> (
-              decodedToken === null || decodedToken.admin === false ? (
+              decodedToken === null || decodedToken.isAdmin === false ? (
                 <Redirect to='/' />
               ) : (
                 <AdminPage/>
@@ -111,6 +112,9 @@ class App extends Component {
               }/>
             <Route exact path="/module/:id/questions" render={({match, routeProps})=>
                 <Question {...routeProps} moduleId={match.params.id} userId={decodedToken.sub}/>
+              }/>
+              <Route exact path="/admin/module/:id/questions" render={({match, routeProps})=>
+                <AdminQuestions {...routeProps} moduleId={match.params.id} userId={decodedToken.sub}/>
               }/>
             <Route exact path="/code-of-conduct-module" component={CodeOfConduct}/>                                    
           </Switch>
