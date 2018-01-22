@@ -507,3 +507,8 @@ iframe {
   text-align: center;
   margin-right: 50px;
 }
+
+.aq-button-right{
+  text-align: right;
+  padding-right: 50px;
+}
