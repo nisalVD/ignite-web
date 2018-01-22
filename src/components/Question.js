@@ -5,7 +5,8 @@ import Modal from 'react-modal'
 import { 
   listQuestions, 
   addMarking,
-  checkMarking
+  checkMarking,
+  checkIncorrectMarking
 } from '../api/question'
 
 
@@ -47,17 +48,28 @@ class Question extends Component {
       } catch(e) {
         console.log(e)
     }
-    const currentUserMarking = await checkMarking(this.props.userId)
+    const currentUserMarking = await checkIncorrectMarking(this.props.userId)
+    console.log(currentUserMarking)
     const wrongAnswers = currentUserMarking.reduce((acc, next) => {
-      if(next.correct === false){
-        acc.push(next)
-      }
+      let answerContent
+      next.question.answers.forEach(answer => {
+        if(answer._id === next.answer){
+          answerContent = answer.content
+        }
+      })
+      let parsedObj = {}
+      parsedObj.question = next.question.content
+      parsedObj.answer = answerContent
+      acc.push(parsedObj)
+  
       return acc
     },[])
-    console.log(wrongAnswers)
     if(wrongAnswers.length > 0){
       this.setState({modalOpen: true})
       this.setState({wrongAnswers})
+    }
+    else {
+      this.setState({redirect: true})
     }
   }
 
@@ -84,8 +96,8 @@ class Question extends Component {
                 { wrongAnswers && wrongAnswers.map(wrongAnswer => {
                   return (
                     <div key={wrongAnswer._id}>
-                      <p>Question ID: {wrongAnswer.question}</p>
-                      <p>Your Answer ID: {wrongAnswer.answer}</p>
+                      <p><strong>Question</strong>: {wrongAnswer.question}</p>
+                      <p>Your Answer: {wrongAnswer.answer}</p>
                     </div>
                   )
                 })}

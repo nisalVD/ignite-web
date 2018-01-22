@@ -14,3 +14,8 @@ export function checkMarking(userId) {
   return api.get(`/user/${userId}/markings`)
     .then(res => res.data)
 }
+
+export function checkIncorrectMarking(userId){
+  return api.get(`/user/${userId}/markings/incorrect`)
+  .then(res => res.data)
+}
