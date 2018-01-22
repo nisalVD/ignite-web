@@ -20,7 +20,8 @@ const Module = ({
   }} className="modules">
     <Paper style={style}>
       {name}
-      { isCompleted && 
+      { 
+        isCompleted && 
         <strong>Completed</strong>
       }
     </Paper>

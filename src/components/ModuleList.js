@@ -32,14 +32,27 @@ class ModuleList extends Component {
     this.setState({questionUrl})
   }
   isModuleCompleted(module) {
-    // const {currentUserMarkingData} = this.state
-    // let moduleCompleted = false
-    // currentUserMarkingData && currentUserMarkingData.forEach(item => {
-      return true
-  
+    const {currentUserMarkingData} = this.state
+    // console.log(currentUserMarkingData)
+    const mappedMarking = currentUserMarkingData && currentUserMarkingData.reduce((acc,next) => {
+      if (next.module === module._id){
+        acc.push(next)
+      }
+      return acc
+    },[])
+    let isComplete = false
+    const evenMoreMapped = mappedMarking && mappedMarking.forEach(item => {
+      if (item.correct === true){
+        isComplete = true
+      } else {
+        isComplete = false
+      }
+    })
+    return isComplete
   }
 
   render () {
+    console.log('safasfafassfal', !!this.props.location && this.props.location.state.isNewMarkingData)
     const {modules, selectedModule, questionUrl, currentUserMarkingData} = this.state
     return (
         <div className="back-bit">

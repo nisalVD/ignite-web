@@ -40,7 +40,10 @@ class Question extends Component {
     addMarking(markingData)
       .then(res => console.log(res.data))
       .then(
-        this.props.history.push('/modules')
+        this.props.history.push({
+          pathname: '/modules',
+          state: { isNewMarkingData: true }
+        })
       )
       .catch(error => console.log(error.message))
   }
