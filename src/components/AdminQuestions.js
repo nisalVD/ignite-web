@@ -23,7 +23,6 @@ class AdminQuestions extends Component {
     findModule(this.props.moduleId)
       .then(currentModule => this.setState({currentModule}))
       .catch(e => console.log(e))
-
     this.loadQuestions()
   }
 
