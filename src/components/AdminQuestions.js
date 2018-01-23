@@ -114,6 +114,27 @@ class AdminQuestions extends Component {
       .catch(error => console.error(error))
   }
 
+
+  showCurrentAnswer(question) {
+    console.log('question', question)
+    // const questionId = question._id
+    const answers = question.answers
+    const {answerData} = this.state
+    const answerId = answerData && answerData.reduce((acc, next) => {
+      if (next.question === question._id) {
+        acc = next.answer
+      }
+      return acc
+    })
+    const currentAnswer = answers.reduce((acc, next) => {
+      if (next._id === answerId){
+        acc = next
+      }
+      return acc
+    })
+    return currentAnswer.content
+  }
+
   render () {
     const {userId, moduleId} = this.props
     const {questionList, currentModule, answerData} = this.state
@@ -169,8 +190,15 @@ class AdminQuestions extends Component {
           return (
             <div key={question._id}>
               <Button onClick={this.deleteQuestion.bind(this, question._id)} raised color="accent" className={this.props.classes.button}>Delete Question</Button>
+              <br/>
               <p><a className="admin-questions-heading-question">Question</a>: {question.content}</p>
-                <div className="admin-questions-heading-answers">Answers</div>
+              <div className="admin-questions-heading-answers">Answers</div>
+              <br/>
+              <strong>Current Answer:</strong>
+              {
+                this.showCurrentAnswer.bind(this, question)()
+              }
+              <Button onClick={this.deleteCurrentAnswer.bind(this, question._id)} color="accent">Delete Current Answer</Button>
               {question.answers.map(answer => {
                 return (
                   <ul key={answer._id}>
