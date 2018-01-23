@@ -82,6 +82,9 @@ class AdminQuestions extends Component {
       this.setState({modalOpen: false})
       this.loadQuestions()
     })
+    .then(() => {
+      this.setState({answerInput: []})
+    })
     .catch(error => {
       console.log(error)
     })

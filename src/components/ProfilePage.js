@@ -21,36 +21,9 @@ function ProfilePage ({
                         <br /><br />
                         <UpdateDetailsButton/>
                         <br /><br />
-                        <div class="modules-container">
+                        <div className="modules-container">
                             <div className="profile-left">
                                 Modules Completed:
-                                <br /><br />
-                                Code of Conduct
-                                <br />
-                                OH&S
-                                <br />
-                                Camping
-                                <br />
-                                Mentoring
-                                <br />
-                                OH&S
-                                <br />
-                                Camping
-                                <br />
-                                Mentoring
-                                <br /> 
-                                OH&S
-                                <br />
-                                Camping
-                                <br />
-                                Mentoring
-                                <br /> 
-                                OH&S
-                                <br />
-                                Camping
-                                <br />
-                                Mentoring
-                                <br />  
                             </div>
                             <div className="profile-right">
                                 <a href="./modules"><button type="button" className="modules-button">MODULES</button></a>
