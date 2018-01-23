@@ -34,3 +34,8 @@ export function addAnswer({question, answer}) {
   return api.post('/answer', {question, answer})
     .then(res => res.data)
 }
+
+export function deleteQuestion(id) {
+  return api.delete(`/question/${id}`)
+    .then(res => res.data)
+}

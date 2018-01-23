@@ -5,7 +5,7 @@ import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import Modal from 'react-modal';
 
-import { addQuestion, listAnswers } from '../api/adminData'
+import { addQuestion, listAnswers, addAnswer, deleteQuestion } from '../api/adminData'
 
 class AdminQuestions extends Component {
   state = {
@@ -99,9 +99,19 @@ class AdminQuestions extends Component {
   }
 
   handleAddNewAnswer(question, answer) {
-    // console.log('event', e)
-    console.log('question', question._id)
-    console.log('answer', answer._id)
+    addAnswer({question: question._id, answer: answer._id})
+    .then(res => res.data)
+    .then(() => {
+      this.loadAnswers()
+    })
+    .catch(error => console.log('error', error))
+  }
+
+  deleteQuestion(questionId) {
+    deleteQuestion(questionId)
+      .then(res => console.log(res.data))
+      .then(() => this.loadQuestions())
+      .catch(error => console.error(error))
   }
 
   render () {
@@ -158,6 +168,7 @@ class AdminQuestions extends Component {
         {questionList && questionList.map(question => {
           return (
             <div key={question._id}>
+              <Button onClick={this.deleteQuestion.bind(this, question._id)} raised color="accent" className={this.props.classes.button}>Delete Question</Button>
               <p><a className="admin-questions-heading-question">Question</a>: {question.content}</p>
                 <div className="admin-questions-heading-answers">Answers</div>
               {question.answers.map(answer => {
@@ -165,7 +176,7 @@ class AdminQuestions extends Component {
                   <ul key={answer._id}>
                     <li>{answer.content}
                     {!this.isAnswered.bind(this, question._id)() &&
-                    <Button onClick={this.handleAddNewAnswer.bind(this, question, answer)} className={this.props.classes.button2} raised color="accent">Correct Answer</Button>
+                    <Button onClick={this.handleAddNewAnswer.bind(this, question, answer)} className={this.props.classes.button2} raised color="inherit">Correct Answer</Button>
                     }
                     </li>
                   </ul>
