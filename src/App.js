@@ -25,13 +25,14 @@ class App extends Component {
     error: null
   }
 
-  onSignUp = ({ email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state, mobileNumber }) => {
-    // console.log('App Recieved', {email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state, mobileNumber})
+  onSignUp = ({email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state, mobileNumber}) => {
+    console.log('App Recieved', {email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state, mobileNumber})
     signUp({email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state, mobileNumber})
       .then(decodedToken => {
         this.setState({ decodedToken })
       })
       .catch(error => {
+        console.log(error)
         this.setState({error})
       })
   }
@@ -58,6 +59,7 @@ class App extends Component {
     const { decodedToken } = this.state
     const signedIn = !!decodedToken
     console.log(decodedToken)
+    console.log('error', this.state.error)
     return (
      
 
@@ -85,7 +87,7 @@ class App extends Component {
 
             <Route exact path="/profile" render={()=> (
               signedIn ? (
-                <ProfilePage userId={decodedToken.sub} onSignIn={this.onSignIn} onSignOut={this.onSignOut}/>
+                <ProfilePage decodedToken={decodedToken} onSignIn={this.onSignIn} onSignOut={this.onSignOut}/>
               ) : (
                 <Redirect to='/' />
               )

@@ -14,7 +14,7 @@ class ProfilePage extends Component {
 
   componentDidMount() {
 
-    checkMarking(this.props.userId) 
+    checkMarking(this.props.decodedToken.sub) 
     .then(currentUserMarkingData => {
       this.setState({currentUserMarkingData})
     })
@@ -55,7 +55,7 @@ class ProfilePage extends Component {
                     <div className="profile-page-div">
                         <LetterAvatar/>
                         <br/>
-                        {/* {this.props.user.firstName} */}
+                        {this.props.decodedToken.email}
                         <br /><br />
                         <button className="sign-out-button" onClick={(event => this.props.onSignOut())}>SIGN OUT</button>
                         <br /><br />

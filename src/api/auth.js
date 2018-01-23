@@ -10,7 +10,7 @@ export function signIn({ email,password }) {
     })
 }
 
-export function signUp({ email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state, mobileNumber}) {
+export function signUp({email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state, mobileNumber}) {
   return api.post('/auth/register', {email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state, mobileNumber})
     .then(res => {
       const token = res.data.token
