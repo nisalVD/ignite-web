@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { findModule } from '../api/module'
 import { listQuestions } from '../api/question'
+import { listAnswers } from '../api/adminData'
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import Modal from 'react-modal';
@@ -12,6 +13,7 @@ class AdminQuestions extends Component {
     currentModule: null,
     questionList: null,
     modalOpen: false,
+    answerData: null,
     answerInput: []
   }
 
@@ -24,10 +26,18 @@ class AdminQuestions extends Component {
       .then(currentModule => this.setState({currentModule}))
       .catch(e => console.log(e))
     this.loadQuestions()
+    this.loadAnswers()
+  }
+
+  loadAnswers() {
+    listAnswers()
+      .then(answerData => {
+        this.setState({answerData: answerData})
+      })
+      .catch(error => console.log(error))
   }
 
   loadQuestions(){
-
     listQuestions(this.props.moduleId)
       .then(questionList => {
         this.setState({questionList})
@@ -78,14 +88,20 @@ class AdminQuestions extends Component {
     this.setState({answerInput})
   }
 
+  handleAddNewAnswer(e, question, answer) {
+    console.log('event', e)
+    console.log('question', question)
+    console.log('answer', answer)
+  }
+
   render () {
     const {userId, moduleId} = this.props
     // console.log('userId', userId)
     // console.log('moduleId', moduleId)
-    const {questionList, currentModule} = this.state
+    const {questionList, currentModule, answerData} = this.state
     const { classes } = this.props;
     const { answerInput } = this.state
-    console.log('answer Input', answerInput)
+    console.log('answer Data', answerData)
 
     return (
       <div className="admin-questions-div">
@@ -141,7 +157,7 @@ class AdminQuestions extends Component {
                 return (
                   <ul key={answer._id}>
                     <li>{answer.content}
-                    <Button className={this.props.classes.button2} raised color="accent">correct Answer</Button>
+                    <Button onClick={this.handleAddNewAnswer.bind(this, question, answer)} className={this.props.classes.button2} raised color="accent">correct Answer</Button>
                     </li>
                   </ul>
                 )
