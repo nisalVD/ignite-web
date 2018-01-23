@@ -85,7 +85,7 @@ class App extends Component {
 
             <Route exact path="/profile" render={()=> (
               signedIn ? (
-                <ProfilePage onSignIn={this.onSignIn} onSignOut={this.onSignOut}/>
+                <ProfilePage userId={decodedToken.sub} onSignIn={this.onSignIn} onSignOut={this.onSignOut}/>
               ) : (
                 <Redirect to='/' />
               )
@@ -116,7 +116,6 @@ class App extends Component {
               <Route exact path="/admin/module/:id/questions" render={({match, routeProps})=>
                 <AdminQuestions {...routeProps} moduleId={match.params.id} userId={decodedToken.sub}/>
               }/>
-            <Route exact path="/code-of-conduct-module" component={CodeOfConduct}/>                                    
           </Switch>
           <Footer/>
         </div>

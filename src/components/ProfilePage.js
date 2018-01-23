@@ -2,18 +2,27 @@ import React, { Component } from 'react'
 import LetterAvatar from './Avatar';
 import UpdateDetailsButton from './UpdateDetailsButton'
 import CheckList from './CheckList'
+
+import { listModules } from '../api/module'
 import { checkMarking } from '../api/question'
 
 class ProfilePage extends Component {
   state = {
     currentUserMarkingData: null,
+    modules: null
   }
 
   componentDidMount() {
+
     checkMarking(this.props.userId) 
     .then(currentUserMarkingData => {
       this.setState({currentUserMarkingData})
     })
+    .catch(error => console.log(error))
+
+    listModules()
+    .then(modules => this.setState({modules}))
+    .catch(error => console.log(error))
   }
 
   isModuleCompleted(module) {
@@ -27,8 +36,6 @@ class ProfilePage extends Component {
     function isEveryTrue(element){
       return element.correct === true
     }
-    console.log(mappedMarking)
-
     let isCorrect = false
     if (!!mappedMarking){
       if(mappedMarking.length > 0) {
@@ -41,14 +48,14 @@ class ProfilePage extends Component {
  }
 
   render () {
-
+    const {modules} = this.state
         return (
             <div>
                <div className="profile-page">
                     <div className="profile-page-div">
                         <LetterAvatar/>
                         <br/>
-                        Nisal Don
+                        {/* {this.props.user.firstName} */}
                         <br /><br />
                         <button className="sign-out-button" onClick={(event => this.props.onSignOut())}>SIGN OUT</button>
                         <br /><br />
@@ -57,6 +64,16 @@ class ProfilePage extends Component {
                         <div className="modules-container">
                             <div className="profile-left">
                                 Modules Completed:
+                                { modules && modules.map(module => {
+                                  return (
+                                    <div>
+                                    {this.isModuleCompleted.bind(this, module)() && 
+                                      <p>{module.name}</p>
+                                    }
+                                    </div>
+                                  )
+                                })
+                                }
                             </div>
                             <div className="profile-right">
                                 <a href="./modules"><button type="button" className="modules-button">MODULES</button></a>
