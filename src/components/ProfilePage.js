@@ -1,14 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react'
 import LetterAvatar from './Avatar';
 import UpdateDetailsButton from './UpdateDetailsButton'
 import CheckList from './CheckList'
+import { checkMarking } from '../api/question'
 
+class ProfilePage extends Component {
+  state = {
+    currentUserMarkingData: null,
+  }
 
-function ProfilePage ({
-    onSignUp,
-    onSignOut
-})
-    {
+  componentDidMount() {
+    checkMarking(this.props.userId) 
+    .then(currentUserMarkingData => {
+      this.setState({currentUserMarkingData})
+    })
+  }
+
+  isModuleCompleted(module) {
+    const {currentUserMarkingData} = this.state
+    const mappedMarking = currentUserMarkingData && currentUserMarkingData.reduce((acc,next) => {
+      if (next.module === module._id){
+        acc.push(next)
+      }
+      return acc
+    },[])
+    function isEveryTrue(element){
+      return element.correct === true
+    }
+    console.log(mappedMarking)
+
+    let isCorrect = false
+    if (!!mappedMarking){
+      if(mappedMarking.length > 0) {
+        isCorrect = mappedMarking.every(isEveryTrue)
+      } else {
+        isCorrect = false
+      }
+    }
+    return isCorrect
+ }
+
+  render () {
+
         return (
             <div>
                <div className="profile-page">
@@ -17,7 +50,7 @@ function ProfilePage ({
                         <br/>
                         Nisal Don
                         <br /><br />
-                        <button className="sign-out-button" onClick={(event => onSignOut())}>SIGN OUT</button>
+                        <button className="sign-out-button" onClick={(event => this.props.onSignOut())}>SIGN OUT</button>
                         <br /><br />
                         <UpdateDetailsButton/>
                         <br /><br />
@@ -72,9 +105,8 @@ function ProfilePage ({
 
                 </div>
             </div>
-        )
-    }
-
-
+    )
+  }
+}
 
 export default ProfilePage
