@@ -39,3 +39,8 @@ export function deleteQuestion(id) {
   return api.delete(`/question/${id}`)
     .then(res => res.data)
 }
+
+export function deleteAnswer(id) {
+  return api.delete(`/question/${id}/answer`)
+    .then(res => res.data)
+}

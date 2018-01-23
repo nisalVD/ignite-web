@@ -5,7 +5,7 @@ import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import Modal from 'react-modal';
 
-import { addQuestion, listAnswers, addAnswer, deleteQuestion } from '../api/adminData'
+import { addQuestion, listAnswers, addAnswer, deleteQuestion, deleteAnswer } from '../api/adminData'
 
 class AdminQuestions extends Component {
   state = {
@@ -114,7 +114,6 @@ class AdminQuestions extends Component {
       .catch(error => console.error(error))
   }
 
-
   showCurrentAnswer(question) {
     console.log('question', question)
     // const questionId = question._id
@@ -133,6 +132,9 @@ class AdminQuestions extends Component {
       return acc
     })
     return currentAnswer.content
+  }
+
+  deleteCurrentAnswer(questionId) {
   }
 
   render () {
