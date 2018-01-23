@@ -89,7 +89,7 @@ class App extends Component {
             <Route exact path="/" render={()=><HomePage isAuthenticated={signedIn}/>}/>
             {/* <Route exact path="/admin" component={AdminPage}/> */}
             <Route exact path="/admin" render={()=> (
-              decodedToken === null || decodedToken.isAdmin === false ? (
+              decodedToken === null || decodedToken.admin === false ? (
                 <Redirect to='/' />
               ) : (
                 <AdminPage/>
@@ -115,7 +115,7 @@ class App extends Component {
               signedIn ? (
                 <Redirect to='/' />
               ) : (
-                <SignUpPage onSignUr={this.onSignUp}/>
+                <SignUpPage onSignUp={this.onSignUp}/>
               )
             )} />
 
@@ -134,7 +134,11 @@ class App extends Component {
                 <Question {...routeProps} moduleId={match.params.id} userId={decodedToken.sub}/>
               }/>
               <Route exact path="/admin/module/:id/questions" render={({match, routeProps})=>
-                <AdminQuestions {...routeProps} moduleId={match.params.id} userId={decodedToken.sub}/>
+                decodedToken === null || decodedToken.admin === false ? (
+                  <Redirect to='/' />
+                ) : (
+                  <AdminQuestions {...routeProps} moduleId={match.params.id} userId={decodedToken.sub}/>
+                )
               }/>
           </Switch>
           <Footer/>
