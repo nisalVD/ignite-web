@@ -100,7 +100,6 @@ class AdminQuestions extends Component {
 
   handleAddNewAnswer(question, answer) {
     addAnswer({question: question._id, answer: answer._id})
-    .then(res => res.data)
     .then(() => {
       this.loadAnswers()
     })
@@ -109,7 +108,6 @@ class AdminQuestions extends Component {
 
   deleteQuestion(questionId) {
     deleteQuestion(questionId)
-      .then(res => console.log(res.data))
       .then(() => this.loadQuestions())
       .catch(error => console.error(error))
   }
@@ -135,6 +133,10 @@ class AdminQuestions extends Component {
   }
 
   deleteCurrentAnswer(questionId) {
+    console.log('questionId', questionId)
+    deleteAnswer(questionId)
+      .then(() => this.loadAnswers())
+      .catch(error => console.error(error))
   }
 
   render () {
@@ -196,11 +198,14 @@ class AdminQuestions extends Component {
               <p><a className="admin-questions-heading-question">Question</a>: {question.content}</p>
               <div className="admin-questions-heading-answers">Answers</div>
               <br/>
-              <strong>Current Answer:</strong>
               {
-                this.showCurrentAnswer.bind(this, question)()
+                this.isAnswered.bind(this, question._id)() &&
+                <div>
+                  <strong>Current Answer:</strong>
+                  {this.showCurrentAnswer.bind(this, question)()}
+                  <Button onClick={this.deleteCurrentAnswer.bind(this, question._id)} color="accent">Delete Current Answer</Button>
+                </div>
               }
-              <Button onClick={this.deleteCurrentAnswer.bind(this, question._id)} color="accent">Delete Current Answer</Button>
               {question.answers.map(answer => {
                 return (
                   <ul key={answer._id}>
