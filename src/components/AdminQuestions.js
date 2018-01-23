@@ -140,7 +140,9 @@ class AdminQuestions extends Component {
               {question.answers.map(answer => {
                 return (
                   <ul key={answer._id}>
-                    <li>{answer.content}</li>
+                    <li>{answer.content}
+                    <Button className={this.props.classes.button2} raised color="accent">correct Answer</Button>
+                    </li>
                   </ul>
                 )
               })
@@ -182,6 +184,9 @@ const customStyles = {
 
 const styles = theme => ({
   button: {
+    margin: theme.spacing.unit,
+  },
+  button2: {
     margin: theme.spacing.unit,
   }
 });
