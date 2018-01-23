@@ -30,7 +30,7 @@ export function listAnswers() {
     .then(res => res.data)
 }
 
-export function addAnswer(answer) {
-  return api.post('/answer', answer)
+export function addAnswer({question, answer}) {
+  return api.post('/answer', {question, answer})
     .then(res => res.data)
 }
