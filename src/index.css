@@ -520,6 +520,19 @@ iframe {
   font-weight: 300;
   /* bordor-color: #ccc; */
 }
+.admin-questions-heading-question {
+  font-weight: 600;
+  color: #444444 ;
+}
+.admin-questions-heading-answers {
+  font-weight: 600;
+  color: #444444;
+}
+
+.admin-question-hr {
+  transform: translate(-50%, -50%);
+  width: 830px;
+}
 
 .mb-1 { margin-bottom: 0.25rem }
 .mb-2 { margin-bottom: 0.5rem }

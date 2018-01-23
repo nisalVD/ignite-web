@@ -135,7 +135,8 @@ class AdminQuestions extends Component {
         {questionList && questionList.map(question => {
           return (
             <div key={question._id}>
-              <p>{question.content}</p>
+              <p><a className="admin-questions-heading-question">Question</a>: {question.content}</p>
+                <div className="admin-questions-heading-answers">Answers</div>
               {question.answers.map(answer => {
                 return (
                   <ul key={answer._id}>
@@ -144,6 +145,7 @@ class AdminQuestions extends Component {
                 )
               })
               }
+              <hr className="admin-question-hr"/>
             </div>
           )
         })}
