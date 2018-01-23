@@ -40,10 +40,8 @@ class App extends Component {
   }
 
   onSignIn = ({ email, password}) => {
-    // console.log('App Recieved', {email, password})
     signIn({email, password})
       .then(decodedToken => {
-        // console.log('signed in', decodedToken)
         this.setState({ decodedToken })
       })
       .catch(error => {
