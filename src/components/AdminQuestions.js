@@ -4,8 +4,6 @@ import { listQuestions } from '../api/question'
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import Modal from 'react-modal';
-import Input, { InputLabel } from 'material-ui/Input';
-import { FormControl, FormHelperText } from 'material-ui/Form';
 
 class AdminQuestions extends Component {
   state = {
@@ -50,12 +48,13 @@ class AdminQuestions extends Component {
             <button onClick={() => this.setState({modalOpen: false})}>Close</button>
             <div>
               <h3>Add New Question</h3>
-              <div className={classes.container}>
-                <FormControl className={classes.formControl}>
-                  <InputLabel htmlFor="name-simple">Name</InputLabel>
-                  <Input id="name-simple" value={this.state.name} onChange={this.handleChange} />
-                </FormControl>
-            </div>
+                <label className="mb-3">Question Name</label>
+                <br/>
+                <input className="aq-input-field" type="text-area" name="question"/>
+                <br/><br />
+                <strong>Answers</strong>
+                <br/>
+                <Button raised color="primary" className={this.props.classes.button}>Add Answer</Button>
             </div>
           </Modal>
         <h1 className="admin-questions-h1">{currentModule && currentModule.name}</h1>
@@ -112,13 +111,6 @@ const customStyles = {
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
-  },
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  formControl: {
-    margin: 10
   }
 });
 
