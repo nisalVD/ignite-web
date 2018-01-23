@@ -29,3 +29,8 @@ export function listAnswers() {
   return api.get('/answers')
     .then(res => res.data)
 }
+
+export function addAnswer(answer) {
+  return api.post('/answer', answer)
+    .then(res => res.data)
+}

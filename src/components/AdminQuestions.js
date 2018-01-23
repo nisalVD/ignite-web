@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import { findModule } from '../api/module'
 import { listQuestions } from '../api/question'
-import { listAnswers } from '../api/adminData'
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import Modal from 'react-modal';
 
-import {addQuestion} from '../api/adminData'
+import { addQuestion, listAnswers } from '../api/adminData'
 
 class AdminQuestions extends Component {
   state = {
@@ -14,7 +13,7 @@ class AdminQuestions extends Component {
     questionList: null,
     modalOpen: false,
     answerData: null,
-    answerInput: []
+    answerInput: [],
   }
 
   handleAddAnswer() {
@@ -43,6 +42,17 @@ class AdminQuestions extends Component {
         this.setState({questionList})
       })
       .catch(error => console.log(error))
+  }
+
+  isAnswered(questionId) {
+    const { answerData } = this.state
+    let isAnswered = false
+    answerData && answerData.forEach(answer => {
+      if( answer.question === questionId ) {
+        isAnswered = true
+      }
+    })
+    return isAnswered
   }
 
   questionFormSubmit(e) {
@@ -88,20 +98,17 @@ class AdminQuestions extends Component {
     this.setState({answerInput})
   }
 
-  handleAddNewAnswer(e, question, answer) {
-    console.log('event', e)
-    console.log('question', question)
-    console.log('answer', answer)
+  handleAddNewAnswer(question, answer) {
+    // console.log('event', e)
+    console.log('question', question._id)
+    console.log('answer', answer._id)
   }
 
   render () {
     const {userId, moduleId} = this.props
-    // console.log('userId', userId)
-    // console.log('moduleId', moduleId)
     const {questionList, currentModule, answerData} = this.state
     const { classes } = this.props;
     const { answerInput } = this.state
-    console.log('answer Data', answerData)
 
     return (
       <div className="admin-questions-div">
@@ -157,7 +164,9 @@ class AdminQuestions extends Component {
                 return (
                   <ul key={answer._id}>
                     <li>{answer.content}
-                    <Button onClick={this.handleAddNewAnswer.bind(this, question, answer)} className={this.props.classes.button2} raised color="accent">correct Answer</Button>
+                    {!this.isAnswered.bind(this, question._id)() &&
+                    <Button onClick={this.handleAddNewAnswer.bind(this, question, answer)} className={this.props.classes.button2} raised color="accent">Correct Answer</Button>
+                    }
                     </li>
                   </ul>
                 )
