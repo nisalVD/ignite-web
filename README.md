@@ -32,6 +32,8 @@
 * [x]Button link to Modules
 * [X] Presentation
 * [X] Refresh on Completed - Nisal
+* [x] What happens when you get <100% on quiz -Nisal
+* [N] Add Questions to Modules 
 
 
 ---------------------------------------------------------------
@@ -39,15 +41,10 @@
 
 * MUST GET DONE - MVP -------------
 
-[ ] Modules:
-* [ ] What happens when you get <100% on quiz -Nisal
-
 [ ] ADMIN PANEL:
 
 * [D/N] Add New Modules > Draft.js
-* [N] Add Questions to Modules 
 * [N] View List of Completed Modules per User
-* [N] Link ModuleList Name Cell directly to Module - Nisal
 
 [ ] PROFILE:
 * [N] Completed Modules backend
@@ -61,6 +58,7 @@
 
 * LATER --------------
 * [ ] Add Bearer
+* [N] Link ModuleList Name Cell directly to Module - Nisal
 * [ ] Submit button send email to admins w/ user data
 * [ ] Add forgot your password?
 * [ ] Remake NavBar from Scratch - SPACE-AROUND/BETWEEN 

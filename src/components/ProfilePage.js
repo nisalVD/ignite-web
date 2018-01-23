@@ -7,7 +7,8 @@ import CheckList from './CheckList'
 
 function ProfilePage ({
     onSignUp,
-    onSignOut
+    onSignOut,
+    onUpdateUser
 })
     {
         return (
@@ -20,7 +21,7 @@ function ProfilePage ({
                         <br /><br />
                         <button className="sign-out-button" onClick={(event => onSignOut())}>SIGN OUT</button>
                         <br /><br />
-                        <UpdateDetailsButton/>
+                        <UpdateDetailsButton onUpdateUser={onUpdateUser}/>
                         <br /><br />
                         <div class="modules-container">
                             <div className="profile-left">
