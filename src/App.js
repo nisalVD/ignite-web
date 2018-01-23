@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 import HomePage from './components/HomePage'
@@ -17,12 +17,14 @@ import ModuleList from './components/ModuleList'
 import CodeOfConduct from './components/CodeOfConduct'
 import Question from './components/Question'
 import AdminQuestions from './components/AdminQuestions'
+import Modal from 'react-modal'
 
 class App extends Component {
   state = {
     // Restore the previous signed in data
     decodedToken: getDecodedToken(),
-    error: null
+    error: null,
+    modalOpen: false
   }
 
   onSignUp = ({email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state, mobileNumber}) => {
@@ -46,6 +48,7 @@ class App extends Component {
       })
       .catch(error => {
         this.setState({error})
+        this.setState({modalOpen: true})
       })
   }
 
@@ -55,14 +58,31 @@ class App extends Component {
     this.setState({ decodedToken: null })
   }
 
+  handleCloseModal () {
+    this.setState({ modalOpen: false });
+  }
+
   render() {
     const { decodedToken } = this.state
     const signedIn = !!decodedToken
     console.log(decodedToken)
-    console.log('error', this.state.error)
+    console.log('error', this.state.error && this.state.error)
     return (
-     
-
+      <Fragment>
+        <Modal
+        isOpen={this.state.modalOpen}
+        onRequestClose={this.handleCloseModal.bind(this)}
+        style={customStyles}
+        ariaHideApp={false}
+        aria={{
+          labelledby: "heading",
+          describedby: "full_description"
+        }}>
+          <div>
+            <p>{this.state.error && this.state.error}</p>
+            <button className="admin-close-button" onClick={() => this.setState({modalOpen: false})}>X</button>
+          </div>
+      </Modal>
       <Router>
         <div className="App">
           <NavBar isAuthenticated={signedIn}/>
@@ -97,7 +117,7 @@ class App extends Component {
               signedIn ? (
                 <Redirect to='/' />
               ) : (
-                <SignUpPage onSignUp={this.onSignUp}/>
+                <SignUpPage onSignUr={this.onSignUp}/>
               )
             )} />
 
@@ -122,6 +142,7 @@ class App extends Component {
           <Footer/>
         </div>
       </Router>
+      </Fragment>
     );
   }
 
@@ -134,6 +155,31 @@ class App extends Component {
       .catch(error => {
         console.error('error loading status', error)
       })
+  }
+}
+
+const customStyles = {
+  overlay : {
+    position          : 'fixed',
+    top               : 0,
+    left              : 0,
+    right             : 0,
+    bottom            : 0,
+    backgroundColor   : 'rgba(255, 255, 255, 0.75)'
+  },
+  content : {
+    position                   : 'absolute',
+    top                        : '30%',
+    left                       : '30%',
+    right                      : '30%',
+    bottom                     : '50%',
+    border                     : '1px solid #ccc',
+    background                 : '#fff',
+    overflow                   : 'auto',
+    WebkitOverflowScrolling    : 'touch',
+    borderRadius               : '4px',
+    outline                    : 'none',
+    padding                    : '5%',
   }
 }
 

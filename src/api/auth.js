@@ -10,7 +10,7 @@ export function signIn({ email,password }) {
     })
     .catch((error) => {
       if (/ 401/.test(error.message)) {
-        error = new Error('The email/password combination was incorrect')
+        error = ('The email/password combination was incorrect')
       }
 
       throw error
