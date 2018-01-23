@@ -43,7 +43,6 @@ class AdminTable extends Component {
   
   render(){
     
-    // console.log(this.state.userData)
     const { classes } = this.props;
     console.log(this.state.selectedID && this.state.selectedID._id)
     const { userData, selectedID, firstName } = this.state;
