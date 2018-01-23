@@ -118,7 +118,7 @@ class ModulesTable extends Component {
               <TableRow className="row" hover key={n._id}>
                 <TableCell>{n.name}</TableCell>
                 <TableCell>{this.questionData.bind(this, n)()}</TableCell>
-                <TableCell><button>Add Questions</button></TableCell>
+                <TableCell><a href="www.google.com"><button>Add Questions</button></a></TableCell>
                 <TableCell><button onClick={this.getID.bind(this, n)}>Delete</button></TableCell>
             </TableRow>
             );

@@ -60,6 +60,7 @@
 * [ ] Add Bearer
 * [N] Link ModuleList Name Cell directly to Module - Nisal
 * [ ] Submit button send email to admins w/ user data
+* [ ] Change hrefs to Links
 * [ ] Add forgot your password?
 * [ ] Remake NavBar from Scratch - SPACE-AROUND/BETWEEN 
 * [ ] Style Admin Panel (esp. Modals)

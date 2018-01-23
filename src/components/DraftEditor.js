@@ -89,8 +89,6 @@ class DraftEditor extends Component {
           <br />
           {this.state.value.toString('html')}
         </div>
-
-        <button onClick="onSubmit()">Submit</button>
       </div>
     );
   }
