@@ -19,3 +19,8 @@ export function getQuestionData(){
     return api.get(`/questions`)
     .then(res => res.data)
 }
+
+export function addQuestion(data){
+  return api.post('/question', data)
+    .then(res => res.data)
+}

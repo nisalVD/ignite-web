@@ -5,17 +5,29 @@ import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import Modal from 'react-modal';
 
+import {addQuestion} from '../api/adminData'
+
 class AdminQuestions extends Component {
   state = {
     currentModule: null,
     questionList: null,
-    modalOpen: false
+    modalOpen: false,
+    answerInput: []
+  }
+
+  handleAddAnswer() {
+    this.setState({answerInput: this.state.answerInput.concat('answerInput')})
   }
 
   componentDidMount() {
     findModule(this.props.moduleId)
       .then(currentModule => this.setState({currentModule}))
       .catch(e => console.log(e))
+
+    this.loadQuestions()
+  }
+
+  loadQuestions(){
 
     listQuestions(this.props.moduleId)
       .then(questionList => {
@@ -24,8 +36,47 @@ class AdminQuestions extends Component {
       .catch(error => console.log(error))
   }
 
+  questionFormSubmit(e) {
+    e.preventDefault()
+    const form = e.target
+    const elements = form.elements
+    const {answerInput} = this.state
+
+    const question = elements.question.value
+    const reducedAnswerInput = answerInput.reduce((acc, next, idx) => {
+      const parsedAnswer = elements[`${next}${idx}`].value
+      let parsedAnswerObj = {}
+      parsedAnswerObj.content = parsedAnswer
+      acc.push(parsedAnswerObj)
+      return acc
+    },[])
+    console.log('reduced Answer Input', reducedAnswerInput)
+
+    let newQuestionObj = {}
+    newQuestionObj.module = this.props.moduleId
+    newQuestionObj.content = question
+    newQuestionObj.answers = reducedAnswerInput
+    newQuestionObj.post
+
+    addQuestion(newQuestionObj)
+    .then(res => {
+      this.setState({modalOpen: false})
+      this.loadQuestions()
+    })
+    .catch(error => {
+      console.log(error)
+    })
+
+  }
   addQuestion(e) {
     this.setState({modalOpen: true})
+  }
+
+  deleteAnswerInput(e, answer, idx) {
+    console.log('deleted soon')
+    const {answerInput} = this.state
+    answerInput.splice(idx, 1)
+    this.setState({answerInput})
   }
 
   render () {
@@ -34,7 +85,9 @@ class AdminQuestions extends Component {
     // console.log('moduleId', moduleId)
     const {questionList, currentModule} = this.state
     const { classes } = this.props;
-    console.log('questionList', questionList)
+    const { answerInput } = this.state
+    console.log('answer Input', answerInput)
+
     return (
       <div className="admin-questions-div">
         <Modal
@@ -48,13 +101,31 @@ class AdminQuestions extends Component {
             <button onClick={() => this.setState({modalOpen: false})}>Close</button>
             <div>
               <h3>Add New Question</h3>
-                <label className="mb-3">Question Name</label>
-                <br/>
-                <input className="aq-input-field" type="text-area" name="question"/>
-                <br/><br />
-                <strong>Answers</strong>
-                <br/>
-                <Button raised color="primary" className={this.props.classes.button}>Add Answer</Button>
+                <form onSubmit={this.questionFormSubmit.bind(this)}>
+                  <label className="mb-3">Question Name</label>
+                  <br/>
+                  <input className="aq-input-field" type="text-area" name="question"/>
+                  <br/><br />
+                  <strong>Answers</strong>
+                  <br/>
+                  {
+                    answerInput.map((answer, idx) => {
+                      return (
+                        <div key={idx}>
+                          <input className="aq-input-field"
+                            type="text-input" 
+                            name={`${answer}${idx}`} 
+                            placeholder={`Answer #${idx}`}
+                            />
+                          <Button onClick={this.deleteAnswerInput.bind(this, answer, idx)} raised color="accent"
+                           className={this.props.classes.button}>Remove</Button>
+                        </div>
+                      )
+                    })
+                  }
+                  <Button onClick={this.handleAddAnswer.bind(this)} raised color="primary" className={this.props.classes.button}>Add Answer</Button>
+                  <Button type="submit" raised color="primary" className={this.props.classes.button}>Submit</Button>
+                </form>
             </div>
           </Modal>
         <h1 className="admin-questions-h1">{currentModule && currentModule.name}</h1>
