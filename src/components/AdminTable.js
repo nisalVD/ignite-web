@@ -9,6 +9,8 @@ import Button from 'material-ui/Button';
 import { getUserData } from '../api/adminData'
 import Modal from 'react-modal';
 
+import { listModules } from '../api/module'
+import { checkMarking } from '../api/question'
 
 const styles = theme => ({
   root: {
@@ -28,24 +30,59 @@ class AdminTable extends Component {
   state = {
     userData: null,
     selectedID: null,
-    modalOpen: false
+    modalOpen: false,
+    currentUserMarkingData: null,
+    modules: null
   }
 
   getID(selectedID){
     this.setState({selectedID})
     this.setState({modalOpen: true})
+    console.log(selectedID)
+    checkMarking(selectedID._id) 
+    .then(currentUserMarkingData => {
+      this.setState({currentUserMarkingData})
+    })
+    .catch(error => console.log(error))
   }
   
   componentDidMount(){
     getUserData()
     .then(userData => this.setState({userData}) )
+    .catch(error => console.log(error))
+
+    listModules()
+    .then(modules => this.setState({modules}))
+    .catch(error => console.log(error))
   }
+
+  isModuleCompleted(module) {
+    const {currentUserMarkingData} = this.state
+    const mappedMarking = currentUserMarkingData && currentUserMarkingData.reduce((acc,next) => {
+      if (next.module === module._id){
+        acc.push(next)
+      }
+      return acc
+    },[])
+    function isEveryTrue(element){
+      return element.correct === true
+    }
+    let isCorrect = false
+    if (!!mappedMarking){
+      if(mappedMarking.length > 0) {
+        isCorrect = mappedMarking.every(isEveryTrue)
+      } else {
+        isCorrect = false
+      }
+    }
+    return isCorrect
+ }
   
   render(){
     
     const { classes } = this.props;
     console.log(this.state.selectedID && this.state.selectedID._id)
-    const { userData, selectedID, firstName } = this.state;
+    const { userData, selectedID, firstName, modules } = this.state;
 
   return (
     <div>
@@ -68,7 +105,17 @@ class AdminTable extends Component {
                 Mobile: {selectedID && selectedID.mobileNumber}
                 <br /><br />
                 Address: {selectedID && selectedID.address}, {selectedID && selectedID.postCode} {selectedID && selectedID.state}
-                Modules Completed: 
+                <h3>Modules Completed:</h3>
+                  { modules && modules.map(module => {
+                    return (
+                      <div>
+                      {this.isModuleCompleted.bind(this, module)() && 
+                        <p>{module.name}</p>
+                      }
+                      </div>
+                    )
+                  })
+                  }
               <button className="admin-close-button" onClick={() => this.setState({modalOpen: false})}>X</button>
               </div>
           </Modal>
