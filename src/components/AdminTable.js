@@ -68,7 +68,7 @@ class AdminTable extends Component {
                 Mobile: {selectedID && selectedID.mobileNumber}
                 <br /><br />
                 Address: {selectedID && selectedID.address}, {selectedID && selectedID.postCode} {selectedID && selectedID.state}
-
+                Modules Completed: 
               <button className="admin-close-button" onClick={() => this.setState({modalOpen: false})}>X</button>
               </div>
           </Modal>

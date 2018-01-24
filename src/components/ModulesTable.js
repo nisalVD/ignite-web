@@ -79,8 +79,8 @@ class ModulesTable extends Component {
     
   }
 
+
   openModulePage(name) {
-    console.log('name', name._id)
     this.props.history.push(`/admin/module/${name._id}/view`)
   }
   
