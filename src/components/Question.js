@@ -101,14 +101,6 @@ class Question extends Component {
                     </div>
                   )
                 })}
-                {/* {wrongAnswers && wrongAnswers.map(wrongAnswers => {
-                  return (
-                  <h1>You got these wrong</h1>
-                  // <h1>Question: {wrongAnswers.question}</h1>
-                  <p>Your Answers: {wrongAnswers.answer}</p>
-                  )
-                })
-                } */}
               </div>
           </Modal>
         {!!questions &&
