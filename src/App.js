@@ -88,7 +88,6 @@ class App extends Component {
 
           <Switch>
             <Route exact path="/" render={()=><HomePage isAuthenticated={signedIn}/>}/>
-            {/* <Route exact path="/admin" component={AdminPage}/> */}
             <Route exact path="/admin" render={()=> (
               decodedToken === null || decodedToken.admin === false ? (
                 <Redirect to='/' />
