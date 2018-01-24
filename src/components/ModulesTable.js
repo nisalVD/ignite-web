@@ -78,6 +78,11 @@ class ModulesTable extends Component {
     this.setState({questionData: questionData})
     
   }
+
+  openModulePage(name) {
+    console.log('name', name._id)
+    this.props.history.push(`/admin/module/${name._id}/view`)
+  }
   
   render(){
 
@@ -121,7 +126,7 @@ class ModulesTable extends Component {
           {!!moduleData && moduleData.map(n => {
               return (
               <TableRow className="row" hover key={n._id}>
-                <TableCell>{n.name}</TableCell>
+                <TableCell onClick={this.openModulePage.bind(this,n)}>{n.name}</TableCell>
                 <TableCell>{this.questionData.bind(this, n)()}</TableCell>
                 <TableCell><Button component={Link} to={`/admin/module/${n._id}/questions`} 
                   raised color="primary" >Add Questions</Button></TableCell>

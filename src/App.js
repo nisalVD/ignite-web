@@ -19,6 +19,7 @@ import CodeOfConduct from './components/CodeOfConduct'
 import Question from './components/Question'
 import AdminQuestions from './components/AdminQuestions'
 import Modal from 'react-modal'
+import AdminModuleView from './components/AdminModuleView'
 
 class App extends Component {
   state = {
@@ -127,9 +128,13 @@ class App extends Component {
               )
             )} />
             
-            <Route exact path="/admin/module/new" render={({routeProps})=>
+            <Route exact path="/admin/module/new" render={(routeProps)=>
                 <AddModulePage {...routeProps}/>
               }/>
+
+            <Route exact path="/admin/module/:id/view" render={({match})=>
+                <AdminModuleView selectedModuleId={match.params.id} />
+            }/>
 
             <Route exact path="/modules" render={(routeProps)=>
                 <ModuleList {...routeProps} userId={decodedToken.sub}/>
