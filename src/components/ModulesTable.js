@@ -130,7 +130,7 @@ class ModulesTable extends Component {
             );
           })}
         </TableBody>
-        <TableFooter><Button raised color="primary">Add New Module + </Button></TableFooter>
+        <TableFooter><Link className="button" to="admin/module/new">Add New Module + </Link></TableFooter>
       </Table>
     </Paper>
     </div>

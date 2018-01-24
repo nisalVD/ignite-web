@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 import HomePage from './components/HomePage'
 import ProfilePage from './components/ProfilePage'
+import AddModulePage from './components/AddModulePage'
 import SignInPage from './components/SignInPage'
 import SignUpPage from './components/SignUpPage'
 import CalendarPage from './components/CalendarPage'
@@ -126,6 +127,10 @@ class App extends Component {
                 <Redirect to='/' />
               )
             )} />
+            
+            <Route exact path="/admin/module/new" render={({routeProps})=>
+                <AddModulePage {...routeProps}/>
+              }/>
 
             <Route exact path="/modules" render={(routeProps)=>
                 <ModuleList {...routeProps} userId={decodedToken.sub}/>

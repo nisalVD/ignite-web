@@ -59,7 +59,7 @@ class ProfilePage extends Component {
                         <br /><br />
                         <button className="sign-out-button" onClick={(event => this.props.onSignOut())}>SIGN OUT</button>
                         <br /><br />
-                        <UpdateDetailsButton/>
+                        <UpdateDetailsButton onUpdateUser={onUpdateUser}/>
                         <br /><br />
                         <div className="modules-container">
                             <div className="profile-left">

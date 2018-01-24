@@ -42,5 +42,8 @@ export function deleteQuestion(id) {
 
 export function deleteAnswer(id) {
   return api.delete(`/question/${id}/answer`)
+
+export function postNewModule(name, content){
+    return api.post('/module', {name, content})
     .then(res => res.data)
 }
