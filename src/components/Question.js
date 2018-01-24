@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import Modal from 'react-modal'
+import Button from 'material-ui/Button';
 
 import { 
   listQuestions, 
@@ -9,6 +10,7 @@ import {
   checkIncorrectMarking
 } from '../api/question'
 
+import { findModule } from '../api/module'
 
 class Question extends Component {
   state = {
@@ -16,12 +18,17 @@ class Question extends Component {
     radioValue: {},
     redirect: false,
     modalOpen: false,
-    wrongAnswers: null
+    wrongAnswers: null,
+    currentModule: ''
   }
 
   componentDidMount(){
     listQuestions(this.props.moduleId)
       .then(questions => this.setState({questions}))
+      .catch(error => console.log(error))
+
+      findModule(this.props.moduleId) 
+        .then(currentModule => this.setState({currentModule}))
   }
 
   onChange(e) {
@@ -74,7 +81,7 @@ class Question extends Component {
   }
 
   render () {
-    const {questions, radioValue, redirect, wrongAnswers } = this.state
+    const {questions, radioValue, redirect, wrongAnswers, currentModule } = this.state
       if (redirect)
       return (<Redirect to={{
           pathname: '/modules',
@@ -103,15 +110,18 @@ class Question extends Component {
                 })}
               </div>
           </Modal>
+          <h1>{currentModule.name}</h1>
+          <br/>
         {!!questions &&
           questions.map(question => {
             return (
               <div key={question._id}>
-                {question.content}
+                <strong>{question.content}</strong>
+                <br/>
                 {question.answers.map(answer => {
                   return (
                     <div key={answer._id}>
-                      {answer.content}
+                       {answer.content}
                       {radioValue &&
                         <input
                           type="radio"
@@ -128,7 +138,8 @@ class Question extends Component {
             )
           })
         }
-        <button onClick={this.onClick.bind(this)}>Submit</button>
+        <br/>
+        <Button raised color="primary" onClick={this.onClick.bind(this)}>Submit</Button>
       </div>
     )
   }
