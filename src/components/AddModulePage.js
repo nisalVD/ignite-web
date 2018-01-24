@@ -2,6 +2,11 @@ import React, {Component} from 'react'
 import DraftEditor from './DraftEditor'
 import PropTypes from 'prop-types';
 import RichTextEditor from 'react-rte';
+import {postNewModule} from '../api/adminData'
+import { withStyles } from 'material-ui/styles';
+import Button from 'material-ui/Button';
+import {Redirect} from 'react-router-dom';
+
 
 
 
@@ -12,9 +17,8 @@ class AddModulePage extends Component {
       };
 
     state = {
-        value: RichTextEditor.createEmptyValue()
-
-        
+        value: RichTextEditor.createEmptyValue(),
+        redirect: false
     }
 
     handleSubmit(event){
@@ -24,16 +28,22 @@ class AddModulePage extends Component {
         const form = event.target
         const elements = form.elements
         // Get entered values
-        const heading = elements.heading.value
-        const content = this.state.value
+        const name = elements.name.value
+        const content = this.state.value.toString('html') 
         console.log(elements)
-        // onSubmit({ heading })
+        // onSubmit({ name })
+
+        postNewModule(name, this.state.value.toString('html'))
+        .then(res => console.log(res.data))
+        .then(() => this.setState({redirect: true}))
+
+        
     }
 
     onChange = (value) => {
         this.setState({value});
-        // console.log(this.state.value.toString('html'))
-        console.log(this.state.value)
+        console.log(this.state.value.toString('html'))
+        // console.log(this.state.value)
 
         // if (this.props.onChange) {
         //   // Send the changes up to the parent component as an HTML string.
@@ -46,7 +56,10 @@ class AddModulePage extends Component {
       };
 
     render(){
-    
+    if (this.state.redirect)
+        return (<Redirect to={{
+            pathname: '/admin',
+    }} />)
     return (
         <div className="admin-page">
             <div>
@@ -61,25 +74,30 @@ class AddModulePage extends Component {
                     <br />
                     <input
                     type="text"
-                    name="heading"
+                    name="name"
                     autoFocus="true"
+                    className="add-module-name"
                     />
                     <br /><br />
                     <label>
                     {'Content'}
                     </label>
-                    <br /><br />
-                    <div>
+                    <br />
+                    <div className="editor-container">
                         <RichTextEditor
                             value={this.state.value}
                             onChange={this.onChange}
                         />
-                        <div>
-                        {this.state.value.toString('html')}
-                        </div>
                     </div>
                     <br /><br />
-                    <button type="submit">Submit</button>
+                    <Button
+                    raised 
+                    type="submit"
+                    color="primary"
+                    className={this.props.classes.button}
+                    >
+                    CREATE MODULE
+                    </Button>                
                 </form>                    
             </div>     
         </div>
@@ -87,4 +105,12 @@ class AddModulePage extends Component {
 }
 }
 
-export default AddModulePage
+const styles = theme => ({
+    button: {
+      margin: theme.spacing.unit,
+      width: 500,
+      height: 100
+    }
+  });
+
+  export default withStyles(styles)(AddModulePage);

@@ -83,6 +83,7 @@ class DraftEditor extends Component {
         <RichTextEditor
           value={this.state.value}
           onChange={this.onChange}
+          className="editor"
         />
         <div>
           {this.state.value.toString('markdown')}

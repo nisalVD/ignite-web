@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Module from './Module'
 import { Link } from 'react-router-dom'
 import Modal from 'react-modal'
-
 import { listModules } from '../api/module'
 import { checkMarking } from '../api/question'
 
@@ -96,7 +95,8 @@ class ModuleList extends Component {
             }}>
               <button onClick={() => this.setState({modalOpen: false})}>Close</button>
               <div>
-                <p>{selectedModule.content}</p>
+                <h1>{selectedModule.name}</h1>
+                <div dangerouslySetInnerHTML={{ __html: selectedModule.content}}/>
                 <Link className="button" to={questionUrl}>Questions</Link>
               </div>
           </Modal>

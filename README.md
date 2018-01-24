@@ -34,6 +34,9 @@
 * [X] Refresh on Completed - Nisal
 * [x] What happens when you get <100% on quiz -Nisal
 * [N] Add Questions to Modules 
+* [X] Add New Modules > Draft.js
+* [N] Completed Modules backend
+* [N] View List of Completed Modules per User
 
 
 ---------------------------------------------------------------
@@ -43,23 +46,23 @@
 
 [ ] ADMIN PANEL:
 
-* [D/N] Add New Modules > Draft.js
-* [N] View List of Completed Modules per User
 
 [ ] PROFILE:
-* [N] Completed Modules backend
+* [ ] Deploy Front end (Remember to Add Admin Account) + GO THROUGH ENTIRE USER JOURNEY + README
 * [N/D] Change Details Form Button (Modal form)
+* [D] Style Question and Content pages - and Add Module Page - Change details Page
 
-* [D] Style Question and Content pages
 * [N/D] Blog - FIGMA UPDATES ON SIGNED IN HOME PAGE - Admin create new post button > Modal > Draft.js
 
-* [ ] Deploy (Remember to Add Admin Account)
-* [ ] Handover README Notes (Remember to Add Admin Account)
+
 
 * LATER --------------
 * [ ] Add Bearer
-* [N] Link ModuleList Name Cell directly to Module - Nisal
+* [ ] Link ModuleList Name Cell directly to Module - Nisal
+* [ ] Handover README Notes (Remember to Add Admin Account)
 * [ ] Submit button send email to admins w/ user data
+* [ ] Make Add Module page presence true for name and content
+* [ ] Display User Info on Profile Page
 * [ ] Change hrefs to Links
 * [ ] Add forgot your password?
 * [ ] Remake NavBar from Scratch - SPACE-AROUND/BETWEEN 

@@ -8,7 +8,7 @@ import TableSortLabel from 'material-ui/Table/TableSortLabel';
 import Button from 'material-ui/Button';
 import { getModuleData, deleteModuleData, getQuestionData } from '../api/adminData';
 import Modal from 'react-modal';
-import Link from 'react-router';
+import {Link} from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -118,13 +118,13 @@ class ModulesTable extends Component {
               <TableRow className="row" hover key={n._id}>
                 <TableCell>{n.name}</TableCell>
                 <TableCell>{this.questionData.bind(this, n)()}</TableCell>
-                <TableCell><a href="www.google.com"><button>Add Questions</button></a></TableCell>
+                <TableCell><button>Add Questions</button></TableCell>
                 <TableCell><button onClick={this.getID.bind(this, n)}>Delete</button></TableCell>
             </TableRow>
             );
           })}
         </TableBody>
-        <TableFooter><button>Add New Module + </button></TableFooter>
+        <TableFooter><Link className="button" to="admin/module/new">Add New Module + </Link></TableFooter>
       </Table>
     </Paper>
     </div>

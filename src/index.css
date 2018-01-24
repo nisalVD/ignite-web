@@ -509,7 +509,13 @@ iframe {
 }
 
 .editor-container {
-  width: 800px;
+  width: 80%;
   min-height: 200px;
+  padding-left: 10%;
   height: auto;
 }
+
+.add-module-name {
+  max-width: 50%;
+}
+

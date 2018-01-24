@@ -19,3 +19,8 @@ export function getQuestionData(){
     return api.get(`/questions`)
     .then(res => res.data)
 }
+
+export function postNewModule(name, content){
+    return api.post('/module', {name, content})
+    .then(res => res.data)
+}
