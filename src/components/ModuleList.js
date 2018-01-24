@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Module from './Module'
 import { Link } from 'react-router-dom'
+import Button from 'material-ui/Button';
 import Modal from 'react-modal'
 import { listModules } from '../api/module'
 import { checkMarking } from '../api/question'
@@ -106,7 +107,7 @@ class ModuleList extends Component {
               <div>
                 <h1>{selectedModule.name}</h1>
                 <div dangerouslySetInnerHTML={{ __html: selectedModule.content}}/>
-                <Link className="button" to={questionUrl}>Questions</Link>
+                <Button component={Link} to={questionUrl} raised color="primary" >Questions</Button>
               </div>
           </Modal>
         </div>

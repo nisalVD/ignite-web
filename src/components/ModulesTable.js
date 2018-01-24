@@ -10,6 +10,7 @@ import { getModuleData, deleteModuleData, getQuestionData } from '../api/adminDa
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 
+
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
@@ -130,7 +131,7 @@ class ModulesTable extends Component {
             );
           })}
         </TableBody>
-        <TableFooter><Link className="button" to="admin/module/new">Add New Module + </Link></TableFooter>
+        <TableFooter><Button component={Link} className="table-footer-button" raised color="primary" to="admin/module/new">Add New Module + </Button></TableFooter>
       </Table>
     </Paper>
     </div>

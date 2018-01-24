@@ -37,6 +37,10 @@
 * [X] Add New Modules > Draft.js
 * [N] Completed Modules backend
 * [N] View List of Completed Modules per User
+* [x] Add Bearer
+* [x] Deploy Front end (Remember to Add Admin Account) + GO THROUGH ENTIRE USER JOURNEY
+* [x] Admin show modules completed per user
+* [x] Style Question and Content pages + Change details Page
 
 
 ---------------------------------------------------------------
@@ -48,17 +52,15 @@
 
 
 [ ] PROFILE:
-* [ ] Deploy Front end (Remember to Add Admin Account) + GO THROUGH ENTIRE USER JOURNEY + README
 * [N/D] Change Details Form Button (Modal form)
-* [D] Style Question and Content pages - and Add Module Page - Change details Page
 
 * [N/D] Blog - FIGMA UPDATES ON SIGNED IN HOME PAGE - Admin create new post button > Modal > Draft.js
 
 
 
 * LATER --------------
-* [ ] Add Bearer
 * [ ] Link ModuleList Name Cell directly to Module - Nisal
+* [ ] README complete with everything
 * [ ] Handover README Notes (Remember to Add Admin Account)
 * [ ] Submit button send email to admins w/ user data
 * [ ] Make Add Module page presence true for name and content
@@ -82,3 +84,7 @@
 * [ ] Autofill sign in and profile page change details fields
 * [ ] Add camping, mentoring and sports Ignite icons (google drive) to relevant modules
 * [ ] Fix favicon
+* [ ] Add words to icons
+* [ ] All modals close on click away and same X exit button styling
+* [ ] Grey Scale image when signed out - color when signed in (change state of className)
+* [ ] Update buttons to material UI ones

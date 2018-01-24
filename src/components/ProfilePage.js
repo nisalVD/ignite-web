@@ -63,7 +63,7 @@ class ProfilePage extends Component {
                         <br /><br />
                         <div className="modules-container">
                             <div className="profile-left">
-                                Modules Completed:
+                                <h3>Modules Completed: </h3>
                                 { modules && modules.map(module => {
                                   return (
                                     <div>
