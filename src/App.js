@@ -129,11 +129,19 @@ class App extends Component {
             )} />
             
             <Route exact path="/admin/module/new" render={(routeProps)=>
-                <AddModulePage {...routeProps}/>
+                decodedToken === null || decodedToken.admin === false ? (
+                  <Redirect to='/' />
+                ) : (
+                  <AddModulePage {...routeProps}/>
+                )
               }/>
 
             <Route exact path="/admin/module/:id/view" render={({match})=>
-                <AdminModuleView selectedModuleId={match.params.id} />
+                decodedToken === null || decodedToken.admin === false ? (
+                  <Redirect to='/' />
+                ) : (
+                  <AdminModuleView selectedModuleId={match.params.id} />
+                )
             }/>
 
             <Route exact path="/modules" render={(routeProps)=>
