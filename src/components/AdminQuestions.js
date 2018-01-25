@@ -4,6 +4,7 @@ import { listQuestions } from '../api/question'
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import Modal from 'react-modal';
+import {Link} from 'react-router-dom';
 
 import { addQuestion, listAnswers, addAnswer, deleteQuestion, deleteAnswer } from '../api/adminData'
 
@@ -191,24 +192,23 @@ class AdminQuestions extends Component {
         <h1 className="admin-questions-h1">{currentModule && currentModule.name}</h1>
         <div className="aq-button-right">
           <Button onClick={this.addQuestion.bind(this)} raised color="primary" className={this.props.classes.button}>Add Question</Button>
+          <Button component={Link} to={'/admin'} raised>Back to Admin</Button>
+
         </div>
-        <h3>Current Questions</h3>
+        <div className="add-questions-div">
+        <h1>Current Questions</h1>         
+        <br />
         {questionList && questionList.map(question => {
           return (
             <div key={question._id}>
-              <Button onClick={this.deleteQuestion.bind(this, question._id)} raised color="accent" className={this.props.classes.button}>Delete Question</Button>
+              {/* <Button onClick={this.deleteQuestion.bind(this, question._id)} raised color="accent" className={this.props.classes.button}>Delete Question</Button> */}
               <br/>
-              <p><a className="admin-questions-heading-question">Question</a>: {question.content}</p>
-              <div className="admin-questions-heading-answers">Answers</div>
+              <p>
+                <a className="admin-questions-heading-question">Question</a>: {question.content}
+                <Button onClick={this.deleteQuestion.bind(this, question._id)} raised color="accent" className={this.props.classes.button}>Delete Question</Button>
+              </p>
+              <div className="admin-questions-heading-answers">Answers:</div>
               <br/>
-              {
-                this.isAnswered.bind(this, question._id)() &&
-                <div>
-                  <strong>Current Answer:</strong>
-                  {this.showCurrentAnswer.bind(this, question)()}
-                  <Button onClick={this.deleteCurrentAnswer.bind(this, question._id)} color="accent">Delete Current Answer</Button>
-                </div>
-              }
               {question.answers.map(answer => {
                 return (
                   <ul key={answer._id}>
@@ -221,10 +221,19 @@ class AdminQuestions extends Component {
                 )
               })
               }
+              {
+                this.isAnswered.bind(this, question._id)() &&
+                <div>
+                  <strong>Current Answer: </strong>
+                  {this.showCurrentAnswer.bind(this, question)()}
+                  <Button onClick={this.deleteCurrentAnswer.bind(this, question._id)} color="accent">Delete Current Answer</Button>
+                </div>
+              }
               <hr className="admin-question-hr"/>
             </div>
           )
         })}
+        </div>
       </div>
     )
   }
