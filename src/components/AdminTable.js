@@ -12,6 +12,8 @@ import Modal from 'react-modal';
 import { listModules } from '../api/module'
 import { checkMarking } from '../api/question'
 
+import { listMarkings } from '../api/adminData'
+
 const styles = theme => ({
   root: {
     width: '90%',
@@ -32,20 +34,10 @@ class AdminTable extends Component {
     selectedID: null,
     modalOpen: false,
     currentUserMarkingData: null,
-    modules: null
+    modules: null,
+    markingData: null
   }
 
-  getID(selectedID){
-    this.setState({selectedID})
-    this.setState({modalOpen: true})
-    console.log(selectedID)
-    checkMarking(selectedID._id) 
-    .then(currentUserMarkingData => {
-      this.setState({currentUserMarkingData})
-    })
-    .catch(error => console.log(error))
-  }
-  
   componentDidMount(){
     getUserData()
     .then(userData => this.setState({userData}) )
@@ -54,6 +46,21 @@ class AdminTable extends Component {
     listModules()
     .then(modules => this.setState({modules}))
     .catch(error => console.log(error))
+
+    listMarkings()
+      .then(markingData => this.setState({markingData}))
+      .catch(error => console.log(error))
+  }
+
+  getID(selectedID){
+    this.setState({selectedID})
+    this.setState({modalOpen: true})
+    console.log(selectedID)
+    const {markingData} = this.state
+    console.log('markingData', markingData)
+    const currentUserMarkingData = markingData && markingData.filter(marking => marking.user === selectedID._id)
+    console.log('currentUserMarkingData', currentUserMarkingData)
+    this.setState({currentUserMarkingData})
   }
 
   isModuleCompleted(module) {

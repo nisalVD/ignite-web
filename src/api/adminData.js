@@ -49,3 +49,8 @@ export function postNewModule(name, content){
     return api.post('/module', {name, content})
     .then(res => res.data)
 }
+
+export function listMarkings() {
+  return api.get('/markings')
+    .then(res => res.data)
+}
