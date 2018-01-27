@@ -55,11 +55,8 @@ class Question extends Component {
       } catch(e) {
         console.log(e)
     }
-    const currentUserMarking = await checkIncorrectMarking(this.props.userId)
-    const filteredModuleUserMarking = currentUserMarking.filter(userMarking => 
-      userMarking.module === this.props.moduleId)
-    console.log(currentUserMarking)
-    const wrongAnswers = filteredModuleUserMarking.reduce((acc, next) => {
+    const currentUserMarking = await checkIncorrectMarking(this.props.userId, this.props.moduleId)
+    const wrongAnswers = currentUserMarking.reduce((acc, next) => {
       let answerContent
       let answerId
       next.question.answers.forEach(answer => {
