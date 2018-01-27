@@ -59,12 +59,15 @@ class Question extends Component {
     console.log(currentUserMarking)
     const wrongAnswers = currentUserMarking.reduce((acc, next) => {
       let answerContent
+      let answerId
       next.question.answers.forEach(answer => {
         if(answer._id === next.answer){
           answerContent = answer.content
+          answerId = answer._id
         }
       })
       let parsedObj = {}
+      parsedObj._id = answerId
       parsedObj.question = next.question.content
       parsedObj.answer = answerContent
       acc.push(parsedObj)
