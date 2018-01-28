@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 import HomePage from './components/HomePage'
 import ProfilePage from './components/ProfilePage'
-import AddModulePage from './components/AddModulePage'
+import AddModulePage from './components/AdminPanel/AddModulePage'
 import SignInPage from './components/SignInPage'
 import SignUpPage from './components/SignUpPage'
 import CalendarPage from './components/CalendarPage'
@@ -17,9 +17,9 @@ import Redirect from 'react-router-dom/Redirect';
 import ModuleList from './components/ModuleList'
 import CodeOfConduct from './components/CodeOfConduct'
 import Question from './components/Question'
-import AdminQuestions from './components/AdminQuestions'
+import AdminQuestions from './components/AdminPanel/AdminQuestions'
 import Modal from 'react-modal'
-import AdminModuleView from './components/AdminModuleView'
+import AdminModuleView from './components/AdminPanel/AdminModuleView'
 
 class App extends Component {
   state = {
