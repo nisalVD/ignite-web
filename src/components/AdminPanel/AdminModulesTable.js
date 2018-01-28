@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import { deleteModuleData, getQuestionData } from '../../api/adminData';
 
 
-class ModulesTable extends Component {
+class AdminModulesTable extends Component {
 
   state = {
     selectedID: null,
@@ -117,7 +117,7 @@ class ModulesTable extends Component {
  }
 }
 
-ModulesTable.propTypes = {
+AdminModulesTable.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
@@ -163,4 +163,4 @@ const styles = theme => ({
   },
 });
 
-export default withStyles(styles)(ModulesTable);
+export default withStyles(styles)(AdminModulesTable);

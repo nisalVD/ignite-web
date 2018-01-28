@@ -13,7 +13,7 @@ import { checkMarking } from '../../api/question'
 import { listMarkings, getUserData } from '../../api/adminData'
 
 
-class UserTable extends Component {
+class AdminUserTable extends Component {
 
   state = {
     userData: null,
@@ -135,7 +135,7 @@ class UserTable extends Component {
  }
 }
 
-UserTable.propTypes = {
+AdminUserTable.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
@@ -176,4 +176,4 @@ const customStyles = {
   }
 }
 
-export default withStyles(styles)(UserTable);
+export default withStyles(styles)(AdminUserTable);

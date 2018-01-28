@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import UserTable from './UserTable'
-import ModulesTable from './ModulesTable'
+import AdminUserTable from './AdminUserTable'
+import AdminModulesTable from './AdminModulesTable'
 import { getModuleData } from '../../api/adminData'
 
 class AdminIndex extends  Component {
@@ -21,9 +21,9 @@ class AdminIndex extends  Component {
         ADMIN CONTROL PANEL
         <div className="admin-page-div">
             <h3> Modules </h3>
-            <ModulesTable {...this.props} moduleData={moduleData} />
+            <AdminModulesTable {...this.props} moduleData={moduleData} />
             <h3>Volunteers</h3>
-            <UserTable {...this.props} moduleData={moduleData} />
+            <AdminUserTable {...this.props} moduleData={moduleData} />
             <div className="admin-page-padder"/>
         </div>     
       </div>
