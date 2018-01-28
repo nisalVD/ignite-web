@@ -1,25 +1,35 @@
 import React, { Component, Fragment } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Modal from 'react-modal'
+import Redirect from 'react-router-dom/Redirect';
 
+// static pages
 import HomePage from './components/HomePage'
 import ProfilePage from './components/ProfilePage'
-import AddModulePage from './components/AdminPanel/AddModulePage'
+import CalendarPage from './components/CalendarPage'
+
+// SignIn And SignUp
 import SignInPage from './components/SignInPage'
 import SignUpPage from './components/SignUpPage'
-import CalendarPage from './components/CalendarPage'
+
+// Navbar And Footer
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
+
+// api calls 
 import { signUp, signIn, signOutNow } from './api/auth'
 import { getStatus } from './api/status'
 import { getDecodedToken } from './api/token'
-import AdminIndex from './components/AdminPanel/AdminIndex';
-import Redirect from 'react-router-dom/Redirect';
+
+// Module and questions
 import ModuleList from './components/ModuleList'
-import CodeOfConduct from './components/CodeOfConduct'
 import Question from './components/Question'
-import AdminQuestions from './components/AdminPanel/AdminQuestions'
-import Modal from 'react-modal'
+
+// Admin Panel
 import AdminModuleView from './components/AdminPanel/AdminModuleView'
+import AdminQuestions from './components/AdminPanel/AdminQuestions'
+import AdminIndex from './components/AdminPanel/AdminIndex';
+import AddModulePage from './components/AdminPanel/AddModulePage'
 
 class App extends Component {
   state = {

@@ -1,7 +1,6 @@
 import React from 'react'
 import IgniteBanner from '../img/ignite_banner.jpg'; 
 
-
 function HomePage ({
     isAuthenticated = false,
 })
