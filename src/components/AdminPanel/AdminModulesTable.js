@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 
 import { deleteModuleData, getQuestionData } from '../../api/adminData';
 
-
 class AdminModulesTable extends Component {
 
   state = {
