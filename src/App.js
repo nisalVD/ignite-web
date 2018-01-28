@@ -12,7 +12,7 @@ import Footer from './components/Footer'
 import { signUp, signIn, signOutNow } from './api/auth'
 import { getStatus } from './api/status'
 import { getDecodedToken } from './api/token'
-import AdminPage from './components/AdminPage';
+import AdminIndex from './components/AdminPanel/AdminIndex';
 import Redirect from 'react-router-dom/Redirect';
 import ModuleList from './components/ModuleList'
 import CodeOfConduct from './components/CodeOfConduct'
@@ -93,7 +93,7 @@ class App extends Component {
               decodedToken === null || decodedToken.admin === false ? (
                 <Redirect to='/' />
               ) : (
-                <AdminPage {...routeProps}/>
+                <AdminIndex {...routeProps}/>
               )
             )} />
             <Route exact path="/sign-in" render={()=> (

@@ -6,28 +6,14 @@ import Paper from 'material-ui/Paper';
 import TableFooter from 'material-ui/Table/TableFooter';
 import TableSortLabel from 'material-ui/Table/TableSortLabel';
 import Button from 'material-ui/Button';
-import { getUserData } from '../api/adminData'
 import Modal from 'react-modal';
 
-import { listModules } from '../api/module'
-import { checkMarking } from '../api/question'
-
-import { listMarkings } from '../api/adminData'
-
-const styles = theme => ({
-  root: {
-    width: '90%',
-    marginLeft: '5%',
-    marginTop: theme.spacing.unit * 3,
-    overflowX: 'auto',
-  },
-  table: {
-    minWidth: 700,
-  },
-});
+import { listModules } from '../../api/module'
+import { checkMarking } from '../../api/question'
+import { listMarkings, getUserData } from '../../api/adminData'
 
 
-class AdminTable extends Component {
+class UserTable extends Component {
 
   state = {
     userData: null,
@@ -35,7 +21,6 @@ class AdminTable extends Component {
     modalOpen: false,
     currentUserMarkingData: null,
     modules: null,
-    markingData: null
   }
 
   componentDidMount(){
@@ -47,16 +32,13 @@ class AdminTable extends Component {
     .then(modules => this.setState({modules}))
     .catch(error => console.log(error))
 
-    listMarkings()
-      .then(markingData => this.setState({markingData}))
-      .catch(error => console.log(error))
   }
 
   getID(selectedID){
     this.setState({selectedID})
     this.setState({modalOpen: true})
     console.log(selectedID)
-    const {markingData} = this.state
+    const {markingData} = this.props
     console.log('markingData', markingData)
     const currentUserMarkingData = markingData && markingData.filter(marking => marking.user === selectedID._id)
     console.log('currentUserMarkingData', currentUserMarkingData)
@@ -153,9 +135,21 @@ class AdminTable extends Component {
  }
 }
 
-AdminTable.propTypes = {
+UserTable.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
+const styles = theme => ({
+  root: {
+    width: '90%',
+    marginLeft: '5%',
+    marginTop: theme.spacing.unit * 3,
+    overflowX: 'auto',
+  },
+  table: {
+    minWidth: 700,
+  },
+});
 
 const customStyles = {
   overlay : {
@@ -182,4 +176,4 @@ const customStyles = {
   }
 }
 
-export default withStyles(styles)(AdminTable);
+export default withStyles(styles)(UserTable);

@@ -6,56 +6,37 @@ import Paper from 'material-ui/Paper';
 import TableFooter from 'material-ui/Table/TableFooter';
 import TableSortLabel from 'material-ui/Table/TableSortLabel';
 import Button from 'material-ui/Button';
-import { getModuleData, deleteModuleData, getQuestionData } from '../api/adminData';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 
-
-const styles = theme => ({
-  button: {
-    margin: theme.spacing.unit,
-    width: 20,
-    height: 20
-  },
-  root: {
-    width: '90%',
-    marginLeft: '5%',
-    marginTop: theme.spacing.unit * 3,
-    overflowX: 'auto',
-  },
-  table: {
-    minWidth: 700,
-  },
-});
+import { deleteModuleData, getQuestionData } from '../../api/adminData';
 
 
 class ModulesTable extends Component {
 
   state = {
-    moduleData: null,
     selectedID: null,
     modalOpen: false,
     questionData: 0,
 }
 
   deleteModuleContent(){
-    // console.log(!!this.state.selectedID && this.state.selectedID)
     deleteModuleData(this.state.selectedID._id)
     .then(( ) => console.log("deleted"))
     .then(() => {
+      const {selectedID} = this.state
+      const {moduleData} = this.props
 
-        const {moduleData, selectedID} = this.state
-
-        const mappedModule = moduleData.reduce((acc, next) => {
-            if (next._id !== selectedID._id) {
-              acc.push(next)
-            }
-            return acc
-          },[])
-          this.setState({moduleData: mappedModule}) 
-          this.setState({modalOpen: false})       
+      const mappedModule = moduleData.reduce((acc, next) => {
+          if (next._id !== selectedID._id) {
+            acc.push(next)
+          }
+          return acc
+        },[])
+        this.setState({moduleData: mappedModule}) 
+        this.setState({modalOpen: false})       
     }) 
-}
+  }
 
   handleCloseModal () {
     this.setState({ modalOpen: false });
@@ -71,15 +52,6 @@ class ModulesTable extends Component {
     this.setState({selectedID})
     this.setState({modalOpen: true})
   }
-  
-  async componentDidMount(){
-    getModuleData()
-    .then(moduleData => this.setState({moduleData}))
-    const questionData = await getQuestionData()
-    this.setState({questionData: questionData})
-    
-  }
-
 
   openModulePage(name) {
     this.props.history.push(`/admin/module/${name._id}/view`)
@@ -91,7 +63,8 @@ class ModulesTable extends Component {
     console.log("moduleData", this.state.moduleData)
     const { classes } = this.props;
     console.log(this.state.selectedID && this.state.selectedID._id)
-    const { moduleData, selectedID, firstName } = this.state;
+    const {  selectedID, firstName } = this.state;
+    const { moduleData } = this.props
 
   return (
     <div>
@@ -172,5 +145,22 @@ const customStyles = {
     padding                    : '5%',
   }
 }
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+    width: 20,
+    height: 20
+  },
+  root: {
+    width: '90%',
+    marginLeft: '5%',
+    marginTop: theme.spacing.unit * 3,
+    overflowX: 'auto',
+  },
+  table: {
+    minWidth: 700,
+  },
+});
 
 export default withStyles(styles)(ModulesTable);
