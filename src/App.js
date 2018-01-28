@@ -4,7 +4,7 @@ import Modal from 'react-modal'
 import Redirect from 'react-router-dom/Redirect';
 
 // static pages
-import HomePage from './components/HomePage'
+import HomePage from './components/StaticPages/HomePage'
 import ProfilePage from './components/ProfilePage'
 import CalendarPage from './components/CalendarPage'
 
