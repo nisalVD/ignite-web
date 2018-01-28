@@ -18,7 +18,6 @@ import Footer from './components/Footer'
 
 // api calls 
 import { signUp, signIn, signOutNow } from './api/auth'
-import { getStatus } from './api/status'
 import { getDecodedToken } from './api/token'
 
 // Module and questions
@@ -175,16 +174,6 @@ class App extends Component {
     );
   }
 
-  // When app first appears on screen
-  componentDidMount() {
-    getStatus()
-      .then(status => {
-        console.log(status)
-      })
-      .catch(error => {
-        console.error('error loading status', error)
-      })
-  }
 }
 
 const customStyles = {
