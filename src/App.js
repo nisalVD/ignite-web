@@ -22,7 +22,7 @@ import { getDecodedToken } from './api/token'
 
 // Module and questions
 import ModuleList from './components/Modules/ModuleList'
-import Question from './components/Question'
+import Question from './components/Modules/Question'
 
 // Admin Panel
 import AdminModuleView from './components/AdminPanel/AdminModuleView'
