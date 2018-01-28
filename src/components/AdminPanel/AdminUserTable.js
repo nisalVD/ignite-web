@@ -20,7 +20,7 @@ class AdminUserTable extends Component {
     selectedID: null,
     modalOpen: false,
     currentUserMarkingData: null,
-    modules: null,
+    markingData: null
   }
 
   componentDidMount(){
@@ -28,20 +28,16 @@ class AdminUserTable extends Component {
     .then(userData => this.setState({userData}) )
     .catch(error => console.log(error))
 
-    listModules()
-    .then(modules => this.setState({modules}))
+    listMarkings()
+    .then(markingData => this.setState({markingData}))
     .catch(error => console.log(error))
-
   }
 
   getID(selectedID){
     this.setState({selectedID})
     this.setState({modalOpen: true})
-    console.log(selectedID)
-    const {markingData} = this.props
-    console.log('markingData', markingData)
+    const {markingData} = this.state
     const currentUserMarkingData = markingData && markingData.filter(marking => marking.user === selectedID._id)
-    console.log('currentUserMarkingData', currentUserMarkingData)
     this.setState({currentUserMarkingData})
   }
 
@@ -68,10 +64,9 @@ class AdminUserTable extends Component {
  }
   
   render(){
-    
     const { classes } = this.props;
-    console.log(this.state.selectedID && this.state.selectedID._id)
-    const { userData, selectedID, firstName, modules } = this.state;
+    const { userData, selectedID, firstName  } = this.state;
+    const { moduleData } = this.props
 
   return (
     <div>
@@ -95,7 +90,7 @@ class AdminUserTable extends Component {
                 <br /><br />
                 Address: {selectedID && selectedID.address}, {selectedID && selectedID.postCode} {selectedID && selectedID.state}
                 <h3>Modules Completed:</h3>
-                  { modules && modules.map(module => {
+                  { moduleData && moduleData.map(module => {
                     return (
                       <div>
                       {this.isModuleCompleted.bind(this, module)() && 
