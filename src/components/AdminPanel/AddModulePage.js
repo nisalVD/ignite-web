@@ -2,14 +2,11 @@ import React, {Component} from 'react'
 import DraftEditor from './DraftEditor'
 import PropTypes from 'prop-types';
 import RichTextEditor from 'react-rte';
-import {postNewModule} from '../api/adminData'
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import {Redirect} from 'react-router-dom';
 
-
-
-
+import {postNewModule} from '../../api/adminData'
 class AddModulePage extends Component {
 
     static propTypes = {
@@ -42,17 +39,6 @@ class AddModulePage extends Component {
 
     onChange = (value) => {
         this.setState({value});
-        console.log(this.state.value.toString('html'))
-        // console.log(this.state.value)
-
-        // if (this.props.onChange) {
-        //   // Send the changes up to the parent component as an HTML string.
-        //   // This is here to demonstrate using `.toString()` but in a real app it
-        //   // would be better to avoid generating a string on each change.
-        //   this.props.onChange(
-        //     value.toString('html')
-        //   );
-        // }
       };
 
     render(){

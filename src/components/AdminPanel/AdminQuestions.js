@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { findModule } from '../api/module'
-import { listQuestions } from '../api/question'
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import Modal from 'react-modal';
 import {Link} from 'react-router-dom';
 
-import { addQuestion, listAnswers, addAnswer, deleteQuestion, deleteAnswer } from '../api/adminData'
+import { addQuestion, listAnswers, addAnswer, deleteQuestion, deleteAnswer } from '../../api/adminData'
+import { findModule } from '../../api/module'
+import { listQuestions } from '../../api/question'
 
 class AdminQuestions extends Component {
   state = {
