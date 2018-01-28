@@ -584,3 +584,9 @@ iframe {
   padding-left: 100px;
   margin-bottom: 800px;
 }
+
+.admin-search-input {
+  width: 14rem;
+  font-size: 1em;
+  height: 1rem;
+}

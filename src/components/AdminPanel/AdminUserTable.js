@@ -20,12 +20,18 @@ class AdminUserTable extends Component {
     selectedID: null,
     modalOpen: false,
     currentUserMarkingData: null,
-    markingData: null
+    markingData: null,
+    searchValue: null,
+    filteredUserData: null
   }
 
   componentDidMount(){
     getUserData()
-    .then(userData => this.setState({userData}) )
+    .then(userData => {
+      this.setState({userData})
+      return userData
+    })
+    .then((filteredUserData) => this.setState({filteredUserData}))
     .catch(error => console.log(error))
 
     listMarkings()
@@ -62,10 +68,19 @@ class AdminUserTable extends Component {
     }
     return isCorrect
  }
+
+ handleSearch = (event) => {
+   this.setState({searchValue: event.target.value})
+   const { userData } = this.state
+   const filteredUserData = userData.filter(user => {
+     return user.firstName.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1
+   })
+   this.setState({filteredUserData})
+ }
   
   render(){
     const { classes } = this.props;
-    const { userData, selectedID, firstName  } = this.state;
+    const { userData, selectedID, firstName, searchValue, filteredUserData } = this.state;
     const { moduleData } = this.props
 
   return (
@@ -110,10 +125,19 @@ class AdminUserTable extends Component {
             <TableCell>First Name</TableCell>
             <TableCell>Last Name</TableCell>
             <TableCell>Email</TableCell>
+            <TableCell>Search{' '}
+              <input 
+                class="admin-search-input"
+                type="text" 
+                value={searchValue} 
+                placeholder="search by first name"
+                onChange={this.handleSearch}
+              />
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {userData && userData.map(n => {
+          {filteredUserData && filteredUserData.map(n => {
               return (
               <TableRow onClick={this.getID.bind(this, n)} className="row" hover key={n._id}>
                 <TableCell>{n.firstName}</TableCell>
