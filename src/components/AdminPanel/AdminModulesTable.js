@@ -16,7 +16,6 @@ class AdminModulesTable extends Component {
   state = {
     selectedID: null,
     modalOpen: false,
-    questionData: 0,
 }
 
   deleteModuleContent(){
@@ -41,12 +40,6 @@ class AdminModulesTable extends Component {
     this.setState({ modalOpen: false });
   }
 
-  questionData(n){
-    const questionData = this.state.questionData
-    const mappedQuestion = questionData && questionData.filter(questionData => questionData.module === n._id )
-    return mappedQuestion.length
-  }
-
   getID(selectedID){
     this.setState({selectedID})
     this.setState({modalOpen: true})
@@ -58,10 +51,7 @@ class AdminModulesTable extends Component {
   
   render(){
 
-    console.log("question data", this.state.questionData )
-    console.log("moduleData", this.state.moduleData)
     const { classes } = this.props;
-    console.log(this.state.selectedID && this.state.selectedID._id)
     const {  selectedID, firstName } = this.state;
     const { moduleData } = this.props
 
@@ -90,7 +80,6 @@ class AdminModulesTable extends Component {
         <TableHead>
           <TableRow>
             <TableCell>Module</TableCell>
-            <TableCell>Questions</TableCell>
             <TableCell>Add Questions?</TableCell>
             <TableCell>Delete?</TableCell>
           </TableRow>
@@ -100,7 +89,6 @@ class AdminModulesTable extends Component {
               return (
               <TableRow className="row" hover key={n._id}>
                 <TableCell onClick={this.openModulePage.bind(this,n)}>{n.name}</TableCell>
-                <TableCell>{this.questionData.bind(this, n)()}</TableCell>
                 <TableCell><Button component={Link} to={`/admin/module/${n._id}/questions`} 
                   raised color="primary" >Add Questions</Button></TableCell>
                 <TableCell><Button raised color="primary" onClick={this.getID.bind(this, n)}>Delete</Button></TableCell>
