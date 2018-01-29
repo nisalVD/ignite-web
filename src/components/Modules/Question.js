@@ -46,10 +46,11 @@ class Question extends Component {
 
    async onClick(e) {
     const {radioValue} = this.state
-    const markingData = {}
-    markingData.user = this.props.userId
-    markingData.quiz = radioValue
-    markingData.module = this.props.moduleId
+    const markingData = {
+      user: this.props.userId,
+      quiz: radioValue,
+      module: this.props.moduleId
+    }
     try {
       await addMarking(markingData)
       } catch(e) {
@@ -65,10 +66,11 @@ class Question extends Component {
           answerId = answer._id
         }
       })
-      let parsedObj = {}
-      parsedObj._id = answerId
-      parsedObj.question = next.question.content
-      parsedObj.answer = answerContent
+      const parsedObj = {
+        _id: answerId,
+        question: next.question.content,
+        answer: answerContent
+      }
       acc.push(parsedObj)
   
       return acc
