@@ -21,8 +21,8 @@ import { signUp, signIn, signOutNow } from './api/auth'
 import { getDecodedToken } from './api/token'
 
 // Module and questions
-import ModuleList from './components/Modules/ModuleList'
-import Question from './components/Modules/Question'
+import ModuleList from './Modules/ModuleList'
+import Question from './Modules/Question'
 
 // Admin Panel
 import AdminModuleView from './AdminPanel/AdminModuleView'

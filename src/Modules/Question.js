@@ -8,9 +8,9 @@ import {
   addMarking,
   checkMarking,
   checkIncorrectMarking
-} from '../../api/question'
+} from '../api/question'
 
-import { findModule } from '../../api/module'
+import { findModule } from '../api/module'
 
 class Question extends Component {
   state = {
