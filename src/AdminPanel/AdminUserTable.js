@@ -8,9 +8,9 @@ import TableSortLabel from 'material-ui/Table/TableSortLabel';
 import Button from 'material-ui/Button';
 import Modal from 'react-modal';
 
-import { listModules } from '../../api/module'
-import { checkMarking } from '../../api/question'
-import { listMarkings, getUserData } from '../../api/adminData'
+import { listModules } from '../api/module'
+import { checkMarking } from '../api/question'
+import { listMarkings, getUserData } from '../api/adminData'
 
 
 class AdminUserTable extends Component {

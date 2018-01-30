@@ -25,10 +25,10 @@ import ModuleList from './components/Modules/ModuleList'
 import Question from './components/Modules/Question'
 
 // Admin Panel
-import AdminModuleView from './components/AdminPanel/AdminModuleView'
-import AdminQuestions from './components/AdminPanel/AdminQuestions'
-import AdminIndex from './components/AdminPanel/AdminIndex';
-import AddModulePage from './components/AdminPanel/AddModulePage'
+import AdminModuleView from './AdminPanel/AdminModuleView'
+import AdminQuestions from './AdminPanel/AdminQuestions'
+import AdminIndex from './AdminPanel/AdminIndex';
+import AddModulePage from './AdminPanel/AddModulePage'
 
 class App extends Component {
   state = {

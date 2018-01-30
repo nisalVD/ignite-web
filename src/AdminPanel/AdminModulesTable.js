@@ -9,7 +9,7 @@ import Button from 'material-ui/Button';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 
-import { deleteModuleData, getQuestionData } from '../../api/adminData';
+import { deleteModuleData, getQuestionData } from '../api/adminData';
 
 class AdminModulesTable extends Component {
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AdminUserTable from './AdminUserTable'
 import AdminModulesTable from './AdminModulesTable'
-import { getModuleData } from '../../api/adminData'
+import { getModuleData } from '../api/adminData'
 
 class AdminIndex extends  Component {
   state = {

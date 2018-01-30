@@ -6,7 +6,7 @@ import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import {Redirect} from 'react-router-dom';
 
-import {postNewModule} from '../../api/adminData'
+import {postNewModule} from '../api/adminData'
 
 class AddModulePage extends Component {
 
