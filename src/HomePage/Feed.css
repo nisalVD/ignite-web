@@ -1,12 +1,30 @@
 .feed-box {
+  padding: 10px;
   margin: 0;
-  height: 250px;
-  border: solid;
+  min-height: 250px;
+  height: auto;
 }
-.primary {
+
+
+.feed-primary {
   background-color: #fff;
 }
 
-.secondary {
+.feed-secondary {
   background-color: #f6f6f6;
+}
+
+.feed-heading {
+  padding: 0 5%;
+  color: #4F5153;
+}
+
+.date-span {
+  font-weight: 300;
+  font-size: 12px;
+  float: right;
+}
+
+.feed-content {
+  padding: 10px 5% 0px 5%;
 }
