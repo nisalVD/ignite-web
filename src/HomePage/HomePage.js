@@ -4,39 +4,43 @@ import { withStyles } from 'material-ui/styles';
 import ButtonBase from 'material-ui/ButtonBase';
 import Typography from 'material-ui/Typography';
 
-
+import Feed from './Feed'
 function ButtonBases(props) {
   const { classes } = props;
 
   return (
-    <div className={classes.root}>
-        <ButtonBase
-          focusRipple
-          key={image.title}
-          className={classes.image}
-          style={{
-            width: image.width,
-          }}
-        >
-          <span
-            className={classes.imageSrc}
+    <div>
+      <div className={classes.root}>
+          <ButtonBase
+            focusRipple
+            key={image.title}
+            className={classes.image}
             style={{
-              backgroundImage: `url(${image.url})`,
+              width: image.width,
             }}
-          />
-          <span className={classes.imageBackdrop} />
-          <span className={classes.imageButton}>
-            <Typography
-              component="span"
-              type="subheading"
-              color="inherit"
-              className={classes.imageTitle}
-            >
-              {image.title}
-              <span className={classes.imageMarked} />
-            </Typography>
-          </span>
-        </ButtonBase>
+          >
+            <span
+              className={classes.imageSrc}
+              style={{
+                backgroundImage: `url(${image.url})`,
+              }}
+            />
+            <span className={classes.imageBackdrop} />
+            <span className={classes.imageButton}>
+              <Typography
+                component="span"
+                type="subheading"
+                color="inherit"
+                className={classes.imageTitle}
+              >
+                {image.title}
+                <span className={classes.imageMarked} />
+              </Typography>
+            </span>
+          </ButtonBase>
+      </div>
+      <Feed color="primary"/>
+      <Feed color="secondary"/>
     </div>
   );
 }
