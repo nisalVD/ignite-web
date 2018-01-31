@@ -1,0 +1,12 @@
+.feed-box {
+  margin: 0;
+  height: 250px;
+  border: solid;
+}
+.primary {
+  background-color: #fff;
+}
+
+.secondary {
+  background-color: #f6f6f6;
+}
