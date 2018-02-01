@@ -54,7 +54,7 @@ class ButtonBases extends Component {
             </ButtonBase>
         </div>
           { feedData && 
-          feedData.map((feed, idx) => {
+          feedData.reverse().map((feed, idx) => {
             let color = 'primary'
             if (idx%2 == 0) {
               color = 'secondary'
