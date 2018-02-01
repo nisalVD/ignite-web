@@ -1,48 +1,71 @@
-import React from 'react';
+import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import ButtonBase from 'material-ui/ButtonBase';
 import Typography from 'material-ui/Typography';
 
+import { listFeeds } from '../api/feed'
 import Feed from './Feed'
-function ButtonBases(props) {
-  const { classes } = props;
 
-  return (
-    <div>
-      <div className={classes.root}>
-          <ButtonBase
-            focusRipple
-            key={image.title}
-            className={classes.image}
-            style={{
-              width: image.width,
-            }}
-          >
-            <span
-              className={classes.imageSrc}
+class ButtonBases extends Component {
+  state = {
+    feedData: null
+  }
+
+  componentDidMount() {
+    listFeeds()
+      .then(feedData => this.setState({feedData}))
+      .catch(error => console.log(error))
+  }
+
+  render () {
+    const { classes } = this.props
+    const { feedData } = this.state
+
+    return (
+      <div>
+        <div className={classes.root}>
+            <ButtonBase
+              focusRipple
+              key={image.title}
+              className={classes.image}
               style={{
-                backgroundImage: `url(${image.url})`,
+                width: image.width,
               }}
-            />
-            <span className={classes.imageBackdrop} />
-            <span className={classes.imageButton}>
-              <Typography
-                component="span"
-                type="subheading"
-                color="inherit"
-                className={classes.imageTitle}
-              >
-                {image.title}
-                <span className={classes.imageMarked} />
-              </Typography>
-            </span>
-          </ButtonBase>
+            >
+              <span
+                className={classes.imageSrc}
+                style={{
+                  backgroundImage: `url(${image.url})`,
+                }}
+              />
+              <span className={classes.imageBackdrop} />
+              <span className={classes.imageButton}>
+                <Typography
+                  component="span"
+                  type="subheading"
+                  color="inherit"
+                  className={classes.imageTitle}
+                >
+                  {image.title}
+                  <span className={classes.imageMarked} />
+                </Typography>
+              </span>
+            </ButtonBase>
+        </div>
+          { feedData && 
+          feedData.map((feed, idx) => {
+            let color = 'primary'
+            if (idx%2 == 0) {
+              color = 'secondary'
+            }
+              return <Feed key={feed._id} heading={feed.heading} color={color} content={feed.content} date={feed.timePosted}/>
+            }
+          )
+        }
       </div>
-      <Feed color="primary"/>
-      <Feed color="secondary"/>
-    </div>
-  );
+    )
+  }
 }
 
 const styles = theme => ({
