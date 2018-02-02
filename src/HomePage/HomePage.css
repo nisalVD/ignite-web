@@ -11,7 +11,7 @@
 .homepage-module-button {
   position: absolute;
   width: 14em;
-  height: 3em;
+  height: 4em;
   top: 50%;
   transform: translateY(-50%);
 }
