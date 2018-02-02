@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Button from 'material-ui/Button';
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import Button from 'material-ui/Button'
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 
 
 import { listFeeds } from '../api/feed'
@@ -50,6 +50,6 @@ const theme = createMuiTheme({
   palette: {
     primary: { main: '#FF7115' } 
   },
-});
+})
 
 export default HomePage
