@@ -25,9 +25,16 @@ class HomePage extends Component {
       <MuiThemeProvider theme={theme}>
         <div>
           <div className="bg-image">
-            <Button raised color="primary" className="homepage-module-button" component={Link} to="/modules">
-              Module
-            </Button>
+            {this.props.userId ? (
+              <Button raised color="primary" className="homepage-module-button" component={Link} to="/modules">
+                Module
+              </Button>
+              ): (
+              <Button raised color="primary" className="homepage-module-button" component={Link} to="/sign-in">
+                Sign In
+              </Button>
+              )
+            }
           </div>
           <div>
               { feedData && 

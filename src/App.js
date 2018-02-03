@@ -154,7 +154,11 @@ class App extends Component {
             }/>
 
             <Route exact path="/modules" render={(routeProps)=>
-                <ModuleList {...routeProps} userId={decodedToken.sub}/>
+                !signedIn ? (
+                  <Redirect to='/' />
+                ) : (
+                  <ModuleList {...routeProps} userId={decodedToken.sub}/>
+                )
               }/>
             <Route exact path="/module/:id/questions" render={({match, routeProps})=>
                 <Question {...routeProps} moduleId={match.params.id} userId={decodedToken.sub}/>
