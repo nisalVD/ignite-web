@@ -39,13 +39,11 @@ class App extends Component {
   }
 
   onSignUp = ({email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state, mobileNumber}) => {
-    console.log('App Recieved', {email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state, mobileNumber})
     signUp({email, password, passwordConfirmation, firstName, lastName, dateOfBirth, address, postCode, state, mobileNumber})
       .then(decodedToken => {
         this.setState({ decodedToken })
       })
       .catch(error => {
-        console.log(error)
         this.setState({error})
       })
   }
@@ -62,7 +60,6 @@ class App extends Component {
   }
 
   onSignOut = () => {
-    console.log("onSignOut")
     signOutNow()
     this.setState({ decodedToken: null })
   }
@@ -74,8 +71,6 @@ class App extends Component {
   render() {
     const { decodedToken } = this.state
     const signedIn = !!decodedToken
-    console.log(decodedToken)
-    console.log('error', this.state.error && this.state.error)
     return (
       <Fragment>
         <Modal
