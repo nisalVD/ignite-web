@@ -1,5 +1,6 @@
 import React from 'react'
 import UserInfoFormSignIn from "./UserInfoFormSignIn"
+import { Link } from "react-router-dom"
 
 
 function SignInPage ({
@@ -12,7 +13,7 @@ function SignInPage ({
                 <div className="sign-in-blue-box">
                     <div className="sign-in-page-spacer">
                         <p> Don't have an account? </p>
-                        <a href="./sign-up"><button type="button" className="sign-up-button-2">SIGN UP NOW</button></a>
+                        <Link to={`./sign-up`}><button type="button" className="sign-up-button-2">SIGN UP NOW</button></Link>
                     </div>
                 </div>
 

@@ -4,7 +4,8 @@
   background-size: cover;
   background-position: center center;
   color: #fff;
-  height: 42em;
+  /* height: 42em; */
+  height: 100em;
   text-align: center;
 }
 
