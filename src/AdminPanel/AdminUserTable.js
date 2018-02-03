@@ -21,7 +21,6 @@ class AdminUserTable extends Component {
     modalOpen: false,
     currentUserMarkingData: null,
     markingData: null,
-    searchValue: null,
     filteredUserData: null
   }
 
@@ -70,7 +69,6 @@ class AdminUserTable extends Component {
  }
 
  handleSearch = (event) => {
-   this.setState({searchValue: event.target.value})
    const { userData } = this.state
    const filteredUserData = userData.filter(user => {
      return user.firstName.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1
@@ -80,7 +78,7 @@ class AdminUserTable extends Component {
   
   render(){
     const { classes } = this.props;
-    const { userData, selectedID, firstName, searchValue, filteredUserData } = this.state;
+    const { userData, selectedID, firstName, filteredUserData } = this.state;
     const { moduleData } = this.props
 
   return (
@@ -129,8 +127,6 @@ class AdminUserTable extends Component {
               <input 
                 class="admin-search-input"
                 type="text" 
-                value={searchValue} 
-                placeholder="search by first name"
                 onChange={this.handleSearch}
               />
             </TableCell>
