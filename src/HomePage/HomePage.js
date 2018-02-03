@@ -25,9 +25,9 @@ class HomePage extends Component {
       <MuiThemeProvider theme={theme}>
         <div>
           <div className="bg-image">
-            {this.props.userId ? (
+            {!!this.props.isAuthenticated ? (
               <Button raised color="primary" className="homepage-module-button" component={Link} to="/modules">
-                Module
+                Modules
               </Button>
               ): (
               <Button raised color="primary" className="homepage-module-button" component={Link} to="/sign-in">
