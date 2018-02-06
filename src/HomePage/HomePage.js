@@ -36,7 +36,7 @@ class HomePage extends Component {
               )
             }
           </div>
-          <div>
+          <div id="blog">
               { feedData && 
               feedData.reverse().map((feed, idx) => {
                 let color = 'primary'

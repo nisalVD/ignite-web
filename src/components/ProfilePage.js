@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import LetterAvatar from './Avatar';
 import UpdateDetailsButton from './UpdateDetailsButton'
 import CheckList from './CheckList'
-
+import { Link } from "react-router-dom"
 import { listModules } from '../api/module'
 import { checkMarking } from '../api/question'
 
@@ -75,8 +75,8 @@ class ProfilePage extends Component {
                                 })
                                 }
                             </div>
-                            <div className="profile-right">
-                                <a href="./modules"><button type="button" className="modules-button">MODULES</button></a>
+                            <div className="profile-right">                        
+                              <Link to={`./modules`}><button type="button" className="modules-button">MODULES</button></Link>
                             </div>
                         </div>
                         <br /><br />

@@ -41,6 +41,7 @@
 * [x] Deploy Front end (Remember to Add Admin Account) + GO THROUGH ENTIRE USER JOURNEY
 * [x] Admin show modules completed per user
 * [x] Style Question and Content pages + Change details Page
+* [x] Change hrefs to Links
 
 ## To-Do sometime these days
 * [ ] Fix unanswered questions displaying correct message in module 
@@ -51,34 +52,28 @@
 
 * MUST GET DONE - MVP -------------
 
-[ ] ADMIN PANEL:
+* [N] Change Details Form Button (Modal form)
 
+* [ ] Front End of Adding New Blog
 
-[ ] PROFILE:
-* [N/D] Change Details Form Button (Modal form)
+* [ ] Submit button send email to admins w/ user data
 
-* [N/D] Blog - FIGMA UPDATES ON SIGNED IN HOME PAGE - Admin create new post button > Modal > Draft.js
-
-
+* [ ] Remake NavBar from Scratch - SPACE-AROUND/BETWEEN 
 
 * LATER --------------
+* [ ] CSS Grid? 
 * [ ] Link ModuleList Name Cell directly to Module - Nisal
 * [ ] README complete with everything
 * [ ] Handover README Notes (Remember to Add Admin Account)
-* [ ] Submit button send email to admins w/ user data
 * [ ] Make Add Module page presence true for name and content
 * [ ] Display User Info on Profile Page
-* [ ] Change hrefs to Links
 * [ ] Add forgot your password?
-* [ ] Remake NavBar from Scratch - SPACE-AROUND/BETWEEN 
-* [ ] Style Admin Panel (esp. Modals)
 * [ ] Image / File Uploading (Photo ID, Working w/ Children's Check?) (Profile Page)
 * [ ] SCROLL DOWN INDICATOR ON HOME PAGE
 * [ ] View and Download Uploaded Files per User
 * [ ] Send SMS + Email Updates to All Users From Admin Console
 * [ ] Profile Image on Profile Page
 * [ ] Password Confirmation on Sign Up - verification on front end
-* [ ] Better Admin Panel Table?https://devexpress.github.io/devextreme-reactive/react/grid/demos/featured/controlled-mode/
 * [ ] First Name on User Button - material Letter Avatar instead?
 * [ ] https://www.npmjs.com/package/react-alert FOR SIGNED IN / OUT ALERTS
 * [ ] Set due dates on modules - email progress to Admins and reminder to User if not completed - Fixed by Home Page Blog Updates
