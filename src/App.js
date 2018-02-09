@@ -8,9 +8,10 @@ import HomePage from './HomePage/HomePage'
 import ProfilePage from './components/ProfilePage'
 import CalendarPage from './components/CalendarPage'
 
-// SignIn And SignUp
+// SignIn And SignUp Update User
 import SignInPage from './components/SignInPage'
 import SignUpPage from './components/SignUpPage'
+import UserChangePassword from './components/UserChangePassword'
 
 // Navbar And Footer
 import NavBar from './components/NavBar'
@@ -121,6 +122,14 @@ class App extends Component {
                 <Redirect to='/' />
               ) : (
                 <SignUpPage onSignUp={this.onSignUp}/>
+              )
+            )} />
+            {/*###### Change Password */}
+            <Route exect path="/user/change-password" render={()=> (
+              signedIn ? (
+                <UserChangePassword/>
+              ) : (
+                <Redirect to='/' />
               )
             )} />
 
