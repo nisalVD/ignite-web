@@ -8,8 +8,6 @@ import CalendarIcon from '../img/Google-Calendar-icon.png'
 import FacebookIcon from '../img/facebook-icon.svg.png'
 import LiveChatIcon from '../img/Live-Chat-Icon.png'
 import { Link } from "react-router-dom"
-import { HashLink } from 'react-router-hash-link';
-// import MenuIcon from 'material-ui-icons/Menu';
 
 const styles = {
   root: {
