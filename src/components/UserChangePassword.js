@@ -12,26 +12,26 @@ class UserChangePassword extends Component {
       const newPassword = elements.newPassword.value
       const newPasswordConfirm = elements.newPasswordConfirm.value
       const oldPassword = elements.oldPassword.value
-      console.log('newPassword', newPassword)
-      console.log('newPasswordConfirm', newPasswordConfirm)
-      changePassword(oldPassword, newPassword)
-        .then(response => {
-          if(response.success !== 'success'){
-            this.setState({error: 'Incorrect Password'})
-          }
-        })
-        .then(() => {
-          const later = (delay, value) =>
-          new Promise(resolve => setTimeout(resolve, delay, value));
-          later(3000, null)
-            .then(error => this.setState({error}))
-        })
-        .catch(error => {
-          this.setState({passwordChanged: error.response.data.sucess})
-          // if(error.response.data.success === true) {
-          //   this.setState({passwordChanged: true})
-          // }
-        })
+      if (newPassword !== newPasswordConfirm) {
+        this.setState({error: "passwords don't match"})
+      }
+      else {
+        changePassword(oldPassword, newPassword)
+          .then(response => {
+            if(response.success !== 'success'){
+              this.setState({error: 'Incorrect Password'})
+            }
+          })
+          .then(() => {
+            const later = (delay, value) =>
+            new Promise(resolve => setTimeout(resolve, delay, value));
+            later(3000, null)
+              .then(error => this.setState({error}))
+          })
+          .catch(error => {
+            this.setState({passwordChanged: error.response.data.sucess})
+          })
+      }
     }
   render () {
     const {error, passwordChanged} = this.state
