@@ -3,30 +3,30 @@ import { changePassword } from '../api/updateUser'
 
 class UserChangePassword extends Component {
   state = {
-    success: null
+    error : null
   }
     handleChangePassword = (event) => {
       event.preventDefault()
       const {elements} = event.target
       const newPassword = elements.newPassword.value
+      const newPasswordConfirm = elements.newPasswordConfirm.value
       const oldPassword = elements.oldPassword.value
+      console.log('newPassword', newPassword)
+      console.log('newPasswordConfirm', newPasswordConfirm)
       changePassword(oldPassword, newPassword)
         .then(response => {
-          this.setState({success: response.success})
+          if(response.success !== 'success'){
+            this.setState({error: 'Incorrect Password'})
+          }
         })
         .catch(error => console.log(error))
     }
   render () {
-    const {success} = this.state
-    console.log('success', success)
+    const {error} = this.state
+    console.log('error', error)
     return (
       <div>
-        {
-          success === false && <p>Incorrect Password</p>
-        }
-        {
-          success === true && <p>Password Changed</p>
-        }
+        <p>{error && error}</p>
         <form onSubmit={this.handleChangePassword}>
           <label>
             OldPassword:
@@ -41,6 +41,13 @@ class UserChangePassword extends Component {
             <input 
               type="text"
               name="newPassword"
+              />
+          </label>
+          <label>
+            Confirm NewPassword:
+            <input 
+              type="text"
+              name="newPasswordConfirm"
               />
           </label>
           <br/>
