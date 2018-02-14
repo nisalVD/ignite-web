@@ -27,18 +27,21 @@ class UserChangePassword extends Component {
             .then(error => this.setState({error}))
         })
         .catch(error => {
-          console.log(error.response.data.success)
+          this.setState({passwordChanged: error.response.data.sucess})
           // if(error.response.data.success === true) {
           //   this.setState({passwordChanged: true})
           // }
         })
     }
   render () {
-    const {error} = this.state
+    const {error, passwordChanged} = this.state
     console.log('error', error)
     console.log('password Changed', this.state.passwordChanged)
     return (
       <div>
+        { passwordChanged &&
+          <p>Password Changed</p>
+        }
         <p>{error && error}</p>
         <form onSubmit={this.handleChangePassword}>
           <label>
