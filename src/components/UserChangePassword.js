@@ -3,7 +3,8 @@ import { changePassword } from '../api/updateUser'
 
 class UserChangePassword extends Component {
   state = {
-    error : null
+    error : null,
+    passwordChanged: false
   }
     handleChangePassword = (event) => {
       event.preventDefault()
@@ -19,11 +20,23 @@ class UserChangePassword extends Component {
             this.setState({error: 'Incorrect Password'})
           }
         })
-        .catch(error => console.log(error))
+        .then(() => {
+          const later = (delay, value) =>
+          new Promise(resolve => setTimeout(resolve, delay, value));
+          later(3000, null)
+            .then(error => this.setState({error}))
+        })
+        .catch(error => {
+          console.log(error.response.data.success)
+          // if(error.response.data.success === true) {
+          //   this.setState({passwordChanged: true})
+          // }
+        })
     }
   render () {
     const {error} = this.state
     console.log('error', error)
+    console.log('password Changed', this.state.passwordChanged)
     return (
       <div>
         <p>{error && error}</p>
