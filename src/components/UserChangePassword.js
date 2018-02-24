@@ -34,8 +34,6 @@ class UserChangePassword extends Component {
   }
   render() {
     const { error, passwordChanged } = this.state
-    console.log("error", error)
-    console.log("password Changed", this.state.passwordChanged)
     return (
       <div>
         {passwordChanged && <p>Password Changed</p>}
