@@ -37,6 +37,11 @@ class UserChangePassword extends Component {
   handleNewPasswordChange = (passwordType, event) => {
     const { newPassword, newPasswordConfirm } = this.state
     this.setState({ [passwordType]: event.target.value })
+    if (newPassword === newPasswordConfirm) {
+      console.log("new password", newPassword)
+      console.log("new password confirm", newPasswordConfirm)
+      this.setState({ error: null })
+    }
     if (newPassword !== newPasswordConfirm) {
       this.setState({ error: "passwords don't match" })
     }
