@@ -37,6 +37,18 @@ class App extends Component {
     decodedToken: getDecodedToken(),
     error: null,
     modalOpen: false,
+    width: window.innerWidth,
+  }
+
+  componentDidMount() {
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
+    window.addEventListener("resize", this.updateWindowDimensions)
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateWindowDimensions)
+  }
+  updateWindowDimensions() {
+    this.setState({width: window.innerWidth})
   }
 
   onSignUp = ({
@@ -94,6 +106,9 @@ class App extends Component {
   render() {
     const {decodedToken} = this.state
     const signedIn = !!decodedToken
+    const {width} = this.state
+    // console.log(width)
+
     return (
       <Fragment>
         <Modal

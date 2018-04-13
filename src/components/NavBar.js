@@ -37,8 +37,7 @@ function NavBar({
                 <div className="nav-parent-div">
                     <Link to={`./calendar`}><img src={CalendarIcon} alt="Google Calendar Icon" className="nav-icon"/></Link>
                     <a href="https://www.facebook.com/Igniteau/" rel="noopener noreferrer" target="_blank"><img src={FacebookIcon} alt="Facebook Icon" className="nav-icon"/></a>
-                    <Link to={`./#blog`}><img src={LiveChatIcon} alt="Blog Icon" className="nav-icon"/></Link>
-                    <a href="./#blog">BLOG</a>
+                    <a href="./#blog"><img src={LiveChatIcon} alt="Blog Icon" className="nav-icon"/></a>
                 <div className="annoying-div">
                     <Link to={`./profile`}>
                       <button type="button" className="user-button">
