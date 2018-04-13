@@ -123,7 +123,7 @@ class ProfilePage extends Component {
                                     Working With Children Check
                                   </label>
                                   <br /><br />
-                                  <input type="submit"></input>
+                                  <input  type="submit"></input>
                                   <br /><br />
                                   <input type="reset"/>
                               </form> */}

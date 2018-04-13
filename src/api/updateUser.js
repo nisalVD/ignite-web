@@ -11,4 +11,9 @@ export function updateDetails(userDetails) {
     .then(res => res.data)
 }
 
+export function userFinishedChecklist() {
+  return api.post('/user/check-list-complete')
+    .then(res => res.data)
+}
+
 export default api
