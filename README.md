@@ -58,9 +58,13 @@
 
 * [ ] Submit button send email to admins w/ user data
 
-* [ ] Remake NavBar from Scratch - SPACE-AROUND/BETWEEN 
+* [ ] Style Module Questions
+
+
+<!-- * [ ] Remake NavBar from Scratch - SPACE-AROUND/BETWEEN  -->
 
 * LATER --------------
+* [ ] Media Query - under 1100 show "must use desktop" screen?
 * [ ] CSS Grid? 
 * [ ] Link ModuleList Name Cell directly to Module - Nisal
 * [ ] README complete with everything
