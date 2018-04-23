@@ -56,8 +56,10 @@
 
 * [ ] Front End of Adding New Blog
 
-* [ ] Submit button send email to admins w/ user data
+<!-- * [ ] Submit button send email to admins w/ user data -->
 
+Style Button on Admin Page
+Spinner Change Password
 * [ ] Style Module Questions
 
 
