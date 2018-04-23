@@ -42,6 +42,10 @@
 * [x] Admin show modules completed per user
 * [x] Style Question and Content pages + Change details Page
 * [x] Change hrefs to Links
+* [x] Submit button send email to admins w/ user data -->
+* [x] Spinner Change Password
+* [x] Style Button on Admin Page
+* [x] Style Module Questions
 
 ## To-Do sometime these days
 * [ ] Fix unanswered questions displaying correct message in module 
@@ -53,14 +57,8 @@
 * MUST GET DONE - MVP -------------
 
 * [N] Change Details Form Button (Modal form)
-
-* [ ] Front End of Adding New Blog
-
-<!-- * [ ] Submit button send email to admins w/ user data -->
-
-Style Button on Admin Page
-Spinner Change Password
-* [ ] Style Module Questions
+* [N] Delete Button On Users
+* [ ] List all Blogs In Admin Section (Add + Delete)
 
 
 <!-- * [ ] Remake NavBar from Scratch - SPACE-AROUND/BETWEEN  -->

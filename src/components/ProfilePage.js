@@ -66,8 +66,8 @@ class ProfilePage extends Component {
             </button>
             <br />
             <br />
-            <Link className="sign-out-button" to="/user/change-password">
-              Change Password
+            <Link to="/user/change-password">
+              <button className="sign-out-button">CHANGE PASSWORD</button>
             </Link>
             <br />
             <br />
@@ -107,26 +107,6 @@ class ProfilePage extends Component {
               </div>
               <br />
               <div className="induction-list">
-                {/* <form className="induction-form">
-                                  <label>
-                                    <input className="induction-radio" type="radio" value="option1" />
-                                    Completed Modules
-                                  </label>
-                                  <br />
-                                  <label>
-                                    <input className="induction-radio" type="radio" value="option2" />
-                                    Sent Photo ID to Ignite
-                                  </label>
-                                  <br />
-                                  <label>
-                                    <input className="induction-radio" type="radio" value="option3" />
-                                    Working With Children Check
-                                  </label>
-                                  <br /><br />
-                                  <input type="submit"></input>
-                                  <br /><br />
-                                  <input type="reset"/>
-                              </form> */}
                 <CheckList />
               </div>
             </div>

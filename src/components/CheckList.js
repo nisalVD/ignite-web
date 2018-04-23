@@ -59,7 +59,7 @@ class CheckList extends Component {
         <br /><br />
                 {
                     this.state.option1Check && this.state.option2Check && this.state.option3Check
-                    && <input onClick={() => this.setState({modalOpen: true})} type="submit"></input>
+                    && <button className="sign-out-button" onClick={() => this.setState({modalOpen: true})}>SUBMIT</button>
             
                 }
     </div>

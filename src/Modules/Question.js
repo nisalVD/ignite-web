@@ -124,10 +124,11 @@ class Question extends Component {
                 <br/>
                 {question.answers.map(answer => {
                   return (
-                    <div key={answer._id}>
-                       {answer.content}
+                    <div style={customStyles.questionDiv} key={answer._id}>
+                      {answer.content}
                       {radioValue &&
                         <input
+                          style={customStyles.radioStyle}
                           type="radio"
                           checked={radioValue[question._id] === answer._id}
                           value={answer._id}
@@ -171,6 +172,20 @@ const customStyles = {
     borderRadius               : '4px',
     outline                    : 'none',
     padding                    : '20px'
+  },
+  questionDiv : {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginTop: 15,
+    marginBottom: 15,
+  },
+  radioStyle : {
+    marginTop: 50,
+    marginBottom: 50,
+    width: '10%',
+    height: 30,
+    alignSelf: 'flex-end',
   }
 }
 

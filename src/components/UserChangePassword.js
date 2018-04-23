@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Button } from "material-ui";
+import { Button, CircularProgress } from "material-ui";
 import { Link } from "react-router-dom";
 import { changePassword } from "../api/updateUser";
 import "./UserChangePassword.css";
-// import 
 
 class UserChangePassword extends Component {
   state = {
@@ -15,7 +14,8 @@ class UserChangePassword extends Component {
     passwordCheck: false,
     passwordCheckText: "",
     passwordCheckTextClass: "redText",
-    disabled: true
+    disabled: true,
+    loading: false
   };
 
   buttonTextCheck() {
@@ -70,21 +70,29 @@ class UserChangePassword extends Component {
 
   async submitPassword() {
     try {
-
       // Show spinner / hide button
+      this.setState({ loading: true });
+      // Change Password function
       const success = await changePassword(
         this.state.oldPassword,
         this.state.newPassword
       );
       console.log(success);
 
-      // Hide Spinner / Show Button
-      // Show Success 
-      
+      this.setState({ 
+        loading: false,
+        passwordCheckText: "Your password was successfully changed.",
+        passwordCheckTextClass: "greenText",
+     });
+      // Change error message to "Password Successfully Changed"
     } catch (error) {
       console.log(error);
-      // Hide Spinner / Show Button
-      // Show Error
+      this.setState({ 
+        loading: false,
+        passwordCheckText: "There was an error changing your password. Please try again.",
+        passwordCheckTextClass: "redText",
+     });
+      // Change error message to "There was an error changing your password. Please try again."
     }
   }
 
@@ -131,6 +139,7 @@ class UserChangePassword extends Component {
           >
             {this.state.buttonText}
           </Button>
+
           <span
             id="password-check-text"
             className={this.state.passwordCheckTextClass}
@@ -138,16 +147,22 @@ class UserChangePassword extends Component {
             {this.state.passwordCheckText}
           </span>
 
-          <Button
-            disabled={this.state.disabled}
-            raised
-            color="primary"
-            id="submit-password-change"
-            className="homepage-module-button"
-            onClick={() => this.submitPassword()}
-          >
-            Submit
-          </Button>
+          {this.state.loading ? (
+            <div id="loader-div">
+              <CircularProgress color="secondary"/>
+            </div>
+          ) : (
+            <Button
+              disabled={this.state.disabled}
+              raised
+              color="primary"
+              id="submit-password-change"
+              className="homepage-module-button"
+              onClick={() => this.submitPassword()}
+            >
+              Submit
+            </Button>
+          )}
         </div>
       </form>
     );
