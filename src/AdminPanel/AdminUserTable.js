@@ -75,7 +75,13 @@ class AdminUserTable extends Component {
    })
    this.setState({filteredUserData})
  }
-  
+
+  parseDate = (date) => {
+    const parsedDateArray = date.split('T')[0].split('-')
+    const parsedDate = `${parsedDateArray[2]}/${parsedDateArray[1]}/${parsedDateArray[0]}`
+    return parsedDate
+  }
+
   render(){
     const { classes } = this.props;
     const { userData, selectedID, firstName, filteredUserData } = this.state;
@@ -95,7 +101,7 @@ class AdminUserTable extends Component {
                 <h1>Volunteer Information</h1>
                 Name: {selectedID && selectedID.firstName} {selectedID && selectedID.lastName}
                 <br /><br />
-                Date of Birth: {selectedID && selectedID.dateOfBirth}
+                Date of Birth: {selectedID && this.parseDate(selectedID.dateOfBirth)}
                 <br /><br />
                 Email: {selectedID && selectedID.email}
                 <br /><br />
@@ -106,7 +112,7 @@ class AdminUserTable extends Component {
                   { moduleData && moduleData.map(module => {
                     return (
                       <div>
-                      {this.isModuleCompleted.bind(this, module)() && 
+                      {this.isModuleCompleted.bind(this, module)() &&
                         <p>{module.name}</p>
                       }
                       </div>
@@ -124,9 +130,9 @@ class AdminUserTable extends Component {
             <TableCell>Last Name</TableCell>
             <TableCell>Email</TableCell>
             <TableCell>Search{' '}
-              <input 
+              <input
                 class="admin-search-input"
-                type="text" 
+                type="text"
                 onChange={this.handleSearch}
               />
             </TableCell>
