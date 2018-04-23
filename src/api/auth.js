@@ -29,3 +29,6 @@ export function signUp({email, password, passwordConfirmation, firstName, lastNa
 export function signOutNow() {
   setToken(null)
 }
+
+
+
