@@ -7,10 +7,12 @@ import TableFooter from 'material-ui/Table/TableFooter';
 import TableSortLabel from 'material-ui/Table/TableSortLabel';
 import Button from 'material-ui/Button';
 import Modal from 'react-modal';
+import './AdminUserTable.css'
+import Dialog, {DialogContent, DialogContentText, DialogTitle, DialogActions} from 'material-ui/Dialog';
 
 import { listModules } from '../api/module'
 import { checkMarking } from '../api/question'
-import { listMarkings, getUserData } from '../api/adminData'
+import { listMarkings, getUserData, deleteUser } from '../api/adminData'
 
 
 class AdminUserTable extends Component {
@@ -21,7 +23,8 @@ class AdminUserTable extends Component {
     modalOpen: false,
     currentUserMarkingData: null,
     markingData: null,
-    filteredUserData: null
+    filteredUserData: null,
+    dialogOpen: false,
   }
 
   componentDidMount(){
@@ -82,13 +85,55 @@ class AdminUserTable extends Component {
     return parsedDate
   }
 
+  handleDeleteUserPrompt = (isDeleteUser) => {
+    const id = this.state.selectedID._id
+    if (isDeleteUser) {
+      deleteUser(id)
+        .then(data => {
+          console.log('data', data)
+          this.setState({dialogOpen: false})
+        })
+    } else {
+      this.setState({dialogOpen: false})
+    }
+  }
+
   render(){
     const { classes } = this.props;
-    const { userData, selectedID, firstName, filteredUserData } = this.state;
+    const { userData, selectedID, firstName, filteredUserData, dialogOpen } = this.state
     const { moduleData } = this.props
 
   return (
     <div>
+        <Dialog
+          open={dialogOpen}
+          onClose={() => this.setState({dialogOpen: false})}
+        >
+            <DialogTitle>
+              Delete User
+            </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+              Are you sure? this is will permanently Delete this user, this action is unreversable
+          </DialogContentText>
+          </DialogContent>
+            <br/>
+            <DialogActions>
+              <Button
+                onClick={this.handleDeleteUserPrompt.bind(this, false)}
+                color="primary"
+              >
+                No
+              </Button>
+              <Button
+                onClick={this.handleDeleteUserPrompt.bind(this, true)}
+                color="primary"
+              >
+              Yes
+            </Button>
+          </DialogActions>
+        </Dialog>
+
        <Modal
             isOpen={this.state.modalOpen}
             style={customStyles}
@@ -98,6 +143,15 @@ class AdminUserTable extends Component {
               describedby: "full_description"
             }}>
               <div>
+                <div className="admin-user-table-button-container">
+                  <Button
+                    onClick={() => this.setState({dialogOpen: true})}
+                    raised
+                    color="primary"
+                  >
+                    Delete User
+                  </Button>
+                </div>
                 <h1>Volunteer Information</h1>
                 Name: {selectedID && selectedID.firstName} {selectedID && selectedID.lastName}
                 <br /><br />

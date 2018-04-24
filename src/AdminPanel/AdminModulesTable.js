@@ -31,9 +31,9 @@ class AdminModulesTable extends Component {
           }
           return acc
         },[])
-        this.setState({moduleData: mappedModule}) 
-        this.setState({modalOpen: false})       
-    }) 
+        this.setState({moduleData: mappedModule})
+        this.setState({modalOpen: false})
+    })
   }
 
   handleCloseModal () {
@@ -48,11 +48,11 @@ class AdminModulesTable extends Component {
   openModulePage(name) {
     this.props.history.push(`/admin/module/${name._id}/view`)
   }
-  
+
   render(){
 
     const { classes } = this.props;
-    const {  selectedID, firstName } = this.state;
+    const { selectedID, firstName } = this.state;
     const { moduleData } = this.props
 
   return (
@@ -89,7 +89,7 @@ class AdminModulesTable extends Component {
               return (
               <TableRow className="row" hover key={n._id}>
                 <TableCell onClick={this.openModulePage.bind(this,n)}>{n.name}</TableCell>
-                <TableCell><Button component={Link} to={`/admin/module/${n._id}/questions`} 
+                <TableCell><Button component={Link} to={`/admin/module/${n._id}/questions`}
                   raised color="primary" >Add Questions</Button></TableCell>
                 <TableCell><Button raised color="primary" onClick={this.getID.bind(this, n)}>Delete</Button></TableCell>
             </TableRow>
