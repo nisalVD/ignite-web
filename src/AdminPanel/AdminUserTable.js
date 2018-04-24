@@ -90,8 +90,16 @@ class AdminUserTable extends Component {
     if (isDeleteUser) {
       deleteUser(id)
         .then(data => {
-          console.log('data', data)
+          const {userData} = this.state
+
+          // remove the delted user Data from current state
+          const filteredUserData = userData.filter(user => {
+            return user._id !== data._id
+          })
+          this.setState({filteredUserData})
+
           this.setState({dialogOpen: false})
+          this.setState({modalOpen: false})
         })
     } else {
       this.setState({dialogOpen: false})
@@ -101,6 +109,7 @@ class AdminUserTable extends Component {
   render(){
     const { classes } = this.props;
     const { userData, selectedID, firstName, filteredUserData, dialogOpen } = this.state
+    console.log('userData', userData)
     const { moduleData } = this.props
 
   return (
