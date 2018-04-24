@@ -14,6 +14,9 @@ import SignUpPage from "./components/SignUpPage"
 import UserChangePassword from "./components/UserChangePassword"
 import UserChangeDetails from "./components/UserChangeDetails.js"
 
+// SignUp Test
+import SignUp from './SignUpAndLogin/SignUp.js'
+
 // Navbar And Footer
 import NavBar from "./components/NavBar"
 import Footer from "./components/Footer"
@@ -190,6 +193,19 @@ class App extends Component {
                   )
                 }
               />
+
+              <Route
+                exact
+                path="/sign-up-test"
+                render={() =>
+                  signedIn ? (
+                    <Redirect to="/" />
+                  ) : (
+                    <SignUp />
+                  )
+                }
+              />
+
               {/*###### Change Password */}
               <Route
                 exect

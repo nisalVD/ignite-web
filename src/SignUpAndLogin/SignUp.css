@@ -1,0 +1,25 @@
+.sign-up-form-container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 300px;
+}
+
+.sign-up-container {
+  max-width: 600px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sign-up-input {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: 300;
+  height: 30px;
+  width: 100%;
+}
+.sign-up-label-style {
+  font-weight: 600;
+}

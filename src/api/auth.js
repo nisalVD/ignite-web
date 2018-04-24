@@ -1,9 +1,15 @@
 import api, { setToken } from './init'
 import { getDecodedToken } from './token'
 
+//check if email is valid
+export function isEmailValid(email) {
+  return api.post('/user/email/is-valid', {email})
+    .then(res => res.data)
+}
+
 export function signIn({ email,password }) {
   return api.post('/auth', { email, password })
-    .then(res => { 
+    .then(res => {
       const token = res.data.token
       setToken(token)
       return getDecodedToken()

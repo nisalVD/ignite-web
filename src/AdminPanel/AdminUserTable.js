@@ -88,6 +88,7 @@ class AdminUserTable extends Component {
   handleDeleteUserPrompt = (isDeleteUser) => {
     const id = this.state.selectedID._id
     if (isDeleteUser) {
+      // if clicked to delete user
       deleteUser(id)
         .then(data => {
           const {userData} = this.state
@@ -101,9 +102,13 @@ class AdminUserTable extends Component {
           this.setState({dialogOpen: false})
           this.setState({modalOpen: false})
         })
+        .catch(error => {
+          console.log('cannot delete admin')
+        })
     } else {
       this.setState({dialogOpen: false})
     }
+
   }
 
   render(){
