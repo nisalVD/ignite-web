@@ -21,5 +21,29 @@
   width: 100%;
 }
 .sign-up-label-style {
+  padding-left: 1px;
   font-weight: 600;
+}
+
+.loading-email-valid-container {
+  text-align: center;
+}
+
+.email-valid-sucess {
+  margin-top: 0px;
+  padding-top: 0px;
+  color: green;
+}
+.empty-div{
+  height: 19px;
+}
+
+.email-valid-fail {
+  color: red;
+}
+
+.sign-up-button-container {
+  text-align: right;
+  padding-top: 30px;
+  padding-right: 195px;
 }
