@@ -1,54 +1,86 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import {CircularProgress, Button} from 'material-ui'
 import './SignUp.css'
 import {isEmailValid} from '../api/auth.js'
 
 class SignUp extends Component {
   state = {
-    email: '',
-    password: '',
-    confirmPassword: '',
+    inputValues: {
+      email: '',
+      password: '',
+      confirmPassword: '',
+      firstName: '',
+      lastName: '',
+      dateOfBirth: null,
+      address: '',
+      postCode: '',
+      state: '',
+      mobileNumber: ''
+    },
     emailValid: null,
     loadingEmailValid: false,
+    page: 1,
     selectedInputValue: {
       email: false,
       password: false,
-      confirmPassword: false
+      confirmPassword: false,
+      firstName: false,
+      lastName: false,
+      dateOfBirth: false,
+      mobileNumber: false,
+      address: false,
+      postCode: false,
+      state: false
     }
   }
 
 
   handleInputPlaceholder = (inputName) => {
     const {selectedInputValue} = this.state
-    if (selectedInputValue === inputName) {
+
+    if (selectedInputValue[inputName]) {
       return ""
     } else {
       return this.convertCamelCaseToSentenceCase(inputName)
     }
   }
 
-  // onFocus
-  handleInputFocus = (inputName) => {
+  // helper function
+  handleSelectedInputValue = (inputName, value) => {
     const selectedInputValue = {
       ...this.state.selectedInputValue,
-      [inputName]: true
+      [inputName]: value
     }
 
     this.setState({selectedInputValue})
+  }
+
+  // onFocus
+  handleInputFocus = (inputName) => {
+    this.handleSelectedInputValue(inputName, true)
   }
 
   // onBlur
   handleInputBlur = (inputName) => {
-    const selectedInputValue = {
-      ...this.state.selectedInputValue,
-      [inputName]: false
+    const {password, confirmPassword} = this.state
+    this.handleSelectedInputValue(inputName, false)
+
+    if (inputName === 'confirmPassword') {
+      // TODO add logic here to check if password is blank
+      // confirm password match with password
+      if (password === confirmPassword) {
+        console.log('passwords match')
+      } else {
+        console.log('passwords dont match')
+      }
     }
-    this.setState({selectedInputValue})
+
   }
 
   // On Email Blur
   checkEmailIsValid = (inputName) => {
-    const {email} = this.state
+    const {inputValues} = this.state
+    const email = inputValues.email
     const emailValid = /^.+@.+$/.test(email.trim())
     if (emailValid === false) {
       this.setState({emailValid: false})
@@ -92,19 +124,67 @@ class SignUp extends Component {
   }
 
   handleButtonDisabled = () => {
-    const {email, password, confirmPassword, emailValid} = this.state
-    if(emailValid && email && password && confirmPassword){
+
+    const {emailValid, inputValues} = this.state
+    const email = inputValues.email
+    const password = inputValues.password
+    const confirmPassword = inputValues.confirmPassword
+
+    const passwordConfirmation = password === confirmPassword
+    if(emailValid && email && password && confirmPassword && passwordConfirmation){
       return false
     } else {
       return true
     }
   }
 
-  render() {
+  handleDisabledSubmitButton = () => {
+    const {inputValues} = this.state
+    const inputValuesArr = Object.keys(inputValues)
+    const inputValuesFilled = inputValuesArr.reduce((acc, next) => {
+      if (!inputValues[next]) {
+        acc = true
+      }
+      return acc
+    }, false)
+    return inputValuesFilled
+  }
 
-    const {email, password, confirmPassword, emailValid, selectedInputValue, loadingEmailValid} = this.state
+
+  handleInputOnChange = (inputName, e) => {
+    const {inputValues} = this.state
+    const newInputValues = {
+      ...inputValues,
+      [inputName]: e.target.value
+    }
+    this.setState({inputValues: newInputValues})
+  }
+
+  // Render the forms
+  renderInput = (inputName) => {
+    return (
+      <Fragment key={inputName}>
+        <label className="sign-up-label-style">{this.handleLabelText(inputName)}</label>
+        <input
+          type={inputName === 'dateOfBirth' ? 'date' : 'text'}
+          className="sign-up-input"
+          name={inputName}
+          onFocus={this.handleInputFocus.bind(this, inputName)}
+          placeholder={this.handleInputPlaceholder(inputName)}
+          onChange={this.handleInputOnChange.bind(this, inputName)}
+          onBlur={this.handleInputBlur.bind(this, inputName)}
+          value={this.state.inputValues.inputName}
+        />
+      </Fragment>
+    )
+  }
+
+
+  render() {
+    const {email, password, confirmPassword, emailValid, selectedInputValue, loadingEmailValid, page, inputValues} = this.state
     // console.log('emailValid', emailValid)
-    // console.log('selectedInputValue', selectedInputValue)
+    console.log('inputValues', inputValues)
+    if (page === 0) {
     return (
       <div className="sign-up-form-container">
         <div className="sign-up-container">
@@ -124,9 +204,9 @@ class SignUp extends Component {
             type="email"
             name="email"
             placeholder={this.handleInputPlaceholder('email')}
-            onChange={(e)=> this.setState({email: e.target.value})}
+            onChange={this.handleInputOnChange.bind(this, 'email')}
             onBlur={this.checkEmailIsValid.bind(this, 'email')}
-            value={email}
+            value={inputValues.email}
           />
           }
           {emailValid === null && <div className="empty-div" />}
@@ -138,10 +218,10 @@ class SignUp extends Component {
             onFocus={this.handleInputFocus.bind(this, 'password')}
             onBlur={this.handleInputBlur.bind(this, 'password')}
             placeholder={this.handleInputPlaceholder('password')}
-            onChange={(e)=> this.setState({password: e.target.value})}
+            onChange={this.handleInputOnChange.bind(this, 'password')}
             type="password"
             name="password"
-            value={password}
+            value={inputValues.password}
           />
           <br/>
           <br/>
@@ -154,12 +234,15 @@ class SignUp extends Component {
             className="sign-up-input"
             type="password"
             name="confirmPassword"
-            onChange={(e)=> this.setState({confirmPassword: e.target.value})}
-            value={confirmPassword}
+            onChange={this.handleInputOnChange.bind(this, 'confirmPassword')}
+            value={inputValues.confirmPassword}
           />
         </div>
+        {inputValues.password && inputValues.confirmPassword && inputValues.password === inputValues.confirmPassword && <div className="sign-up-password-match">Passwords Match</div> }
+        {inputValues.password && inputValues.confirmPassword && inputValues.password !== inputValues.confirmPassword && <div className="sign-up-password-no-match">Passwords Dont Match</div> }
         <div className="sign-up-button-container">
           <Button
+            onClick={() => this.setState({page: 1})}
             disabled={this.handleButtonDisabled()}
             raised
             color="primary"
@@ -168,6 +251,32 @@ class SignUp extends Component {
         </div>
       </div>
     )
+    }
+
+
+    else if (page === 1) {
+      return (
+        <div className="sign-up-form-container">
+          <div className="sign-up-container">
+          <h1>Details</h1>
+          {Object.keys(this.state.inputValues).filter(value => value!=="email" && value!=="password" && value!=="confirmPassword").map(value => {
+            return (
+              this.renderInput(value)
+            )
+          })}
+          <div className="submit-button-container">
+            <Button
+              disabled={this.handleDisabledSubmitButton()}
+              raised
+              color="primary"
+            >
+              Submit
+            </Button>
+          </div>
+        </div>
+        </div>
+      )
+    }
   }
 }
 
