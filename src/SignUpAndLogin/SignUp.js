@@ -19,7 +19,7 @@ class SignUp extends Component {
     },
     emailValid: null,
     loadingEmailValid: false,
-    page: 1,
+    page: 0,
     selectedInputValue: {
       email: false,
       password: false,
@@ -140,14 +140,9 @@ class SignUp extends Component {
 
   handleDisabledSubmitButton = () => {
     const {inputValues} = this.state
-    const inputValuesArr = Object.keys(inputValues)
-    const inputValuesFilled = inputValuesArr.reduce((acc, next) => {
-      if (!inputValues[next]) {
-        acc = true
-      }
-      return acc
-    }, false)
-    return inputValuesFilled
+    const everyValueFilled = Object.values(inputValues).every(value => value)
+    // disabled is oposite
+    return !everyValueFilled
   }
 
 
