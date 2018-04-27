@@ -5,21 +5,22 @@ import {isEmailValid} from '../api/auth.js'
 
 class SignUp extends Component {
   state = {
+      dateOfBirthType: 'text',
     inputValues: {
       email: '',
       password: '',
       confirmPassword: '',
       firstName: '',
       lastName: '',
-      dateOfBirth: null,
+      dateOfBirth: '',
       address: '',
       postCode: '',
       state: '',
-      mobileNumber: ''
+      mobileNumber: '',
     },
     emailValid: null,
     loadingEmailValid: false,
-    page: 0,
+    page: 1,
     selectedInputValue: {
       email: false,
       password: false,
@@ -57,6 +58,9 @@ class SignUp extends Component {
 
   // onFocus
   handleInputFocus = (inputName) => {
+    if (inputName === 'dateOfBirth') {
+      this.setState({dateOfBirthType: 'date'})
+    }
     this.handleSelectedInputValue(inputName, true)
   }
 
@@ -161,7 +165,7 @@ class SignUp extends Component {
       <Fragment key={inputName}>
         <label className="sign-up-label-style">{this.handleLabelText(inputName)}</label>
         <input
-          type={inputName === 'dateOfBirth' ? 'date' : 'text'}
+          type={'text'}
           className="sign-up-input"
           name={inputName}
           onFocus={this.handleInputFocus.bind(this, inputName)}
@@ -255,6 +259,23 @@ class SignUp extends Component {
           <div className="sign-up-container">
           <h1>Details</h1>
           {Object.keys(this.state.inputValues).filter(value => value!=="email" && value!=="password" && value!=="confirmPassword").map(value => {
+          if (value === 'dateOfBirth') {
+            return (
+              <Fragment key="dateOfBirth">
+                <label className="sign-up-label-style">{this.handleLabelText('dateOfBirth')}</label>
+                <input
+                  type={this.state.dateOfBirthType}
+                  className="sign-up-input"
+                  name='dateOfBirth'
+                  onFocus={this.handleInputFocus.bind(this, 'dateOfBirth')}
+                  placeholder={this.handleInputPlaceholder('dateOfBirth')}
+                  onChange={this.handleInputOnChange.bind(this, 'dateOfBirth')}
+                  onBlur={this.handleInputBlur.bind(this, 'dateOfBirth')}
+                  value={this.state.inputValues.dateOfBirth}
+                />
+              </Fragment>
+            )
+          }
             return (
               this.renderInput(value)
             )
