@@ -119,7 +119,7 @@ class SignUp extends Component {
     if (emailValid === false) {
       return 'email-valid-fail'
     }
-  }
+  }
 
   // Helper function
   convertCamelCaseToSentenceCase = (input)  => {
