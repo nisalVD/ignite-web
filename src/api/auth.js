@@ -42,3 +42,8 @@ export function verifyUser(id, token) {
   return api.post('/verify-token', {id, token})
     .then(res => res.data)
 }
+
+export function resendVerificationToken(id) {
+  return api.post('/resend-verify-token', {id})
+    .then(res => res.data)
+}

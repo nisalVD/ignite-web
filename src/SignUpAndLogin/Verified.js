@@ -1,9 +1,21 @@
 import React from 'react'
+import { resendVerificationToken } from '../api/auth.js'
 
-const Verified = (props) => {
+const Verified = ({decodedToken}) => {
   return (
     <div>
-      User is not verified
+      User not verified
+      <button onClick={
+        () => {
+          resendVerificationToken(decodedToken.sub)
+            .then(res => {
+              console.log(res)
+            })
+            .catch(error => {
+              console.log(error)
+            })
+        }
+      }>resend verification</button>
     </div>
   )
 }

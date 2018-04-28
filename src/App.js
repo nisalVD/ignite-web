@@ -124,17 +124,19 @@ class App extends Component {
       return (
         <Router>
           <Switch>
+
             <Route
-              exact
-              path="/"
-              render={() => <Verified/>}
-            />
-            <Route exact
               exact
               path="/verify-account/:id/:token"
               render={(props) =>
                 <VerifyAccount {...props} updateDecodedToken={this.updateDecodedToken} />}
+              />
+
+            <Route
+              path="/"
+              render={() => <Verified decodedToken={decodedToken}/>}
             />
+
           </Switch>
         </Router>
       )
