@@ -17,6 +17,10 @@ import UserChangeDetails from "./components/UserChangeDetails.js"
 // SignUp Test
 import SignUp from './SignUpAndLogin/SignUp.js'
 
+// not verified test
+import VerifyAccount from './SignUpAndLogin/VerifyAccount.js'
+import Verified from './SignUpAndLogin/Verified.js'
+
 // Navbar And Footer
 import NavBar from "./components/NavBar"
 import Footer from "./components/Footer"
@@ -42,6 +46,7 @@ class App extends Component {
     error: null,
     modalOpen: false,
     width: window.innerWidth,
+    decodedTokenUpdated: false
   }
 
   componentDidMount() {
@@ -107,11 +112,33 @@ class App extends Component {
     this.setState({modalOpen: false})
   }
 
+  updateDecodedToken = () => {
+    this.setState({decodedToken: getDecodedToken(), decodedTokenUpdated: true})
+  }
+
   render() {
     const {decodedToken} = this.state
     const signedIn = !!decodedToken
     const {width} = this.state
-    // console.log(width)
+    if (decodedToken && decodedToken.verified === false) {
+      return (
+        <Router>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => <Verified/>}
+            />
+            <Route exact
+              exact
+              path="/verify-account/:id/:token"
+              render={(props) =>
+                <VerifyAccount {...props} updateDecodedToken={this.updateDecodedToken} />}
+            />
+          </Switch>
+        </Router>
+      )
+    }
 
     return (
       <Fragment>
@@ -143,6 +170,13 @@ class App extends Component {
                 path="/"
                 render={() => <HomePage isAuthenticated={signedIn} />}
               />
+
+              <Route exact
+                path="/verify-account/:id/:token"
+                render={(props) =>
+                <VerifyAccount {...props} updateDecodedToken={this.updateDecodedToken} decodedTokenUpdated={this.state.decodedTokenUpdated}/>}
+              />
+
               <Route
                 exact
                 path="/admin"

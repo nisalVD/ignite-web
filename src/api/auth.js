@@ -32,9 +32,13 @@ export function signUp({email, password, passwordConfirmation, firstName, lastNa
     })
 }
 
+
 export function signOutNow() {
   setToken(null)
 }
 
 
-
+export function verifyUser(id, token) {
+  return api.post('/verify-token', {id, token})
+    .then(res => res.data)
+}
