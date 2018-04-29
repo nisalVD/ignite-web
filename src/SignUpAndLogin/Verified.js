@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { resendVerificationToken } from '../api/auth.js'
 import {Button} from 'material-ui'
 import Dialog, {DialogContent, DialogContentText, DialogTitle, DialogActions} from 'material-ui/Dialog';
+import './Verified.css'
 
 class Verified extends Component {
   state = {
@@ -44,9 +45,11 @@ class Verified extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-        User not verified
-        <br />
-        click <button onClick={this.handleVerificationButton}>here</button> to resend verification
+        <div className="email-verification-box">
+          Please check email for verification
+          <br />
+          click <span className="email-verification-button" onClick={this.handleVerificationButton}>here</span> to resend email verification
+        </div>
       </div>
     )
   }

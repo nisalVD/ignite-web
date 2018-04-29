@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import {CircularProgress, Button} from 'material-ui'
 import './SignUp.css'
-import {isEmailValid} from '../api/auth.js'
+import {isEmailValid, signUp} from '../api/auth.js'
 
 class SignUp extends Component {
   state = {
@@ -20,7 +20,7 @@ class SignUp extends Component {
     },
     emailValid: null,
     loadingEmailValid: false,
-    page: 1,
+    page: 0,
     selectedInputValue: {
       email: false,
       password: false,
@@ -35,6 +35,16 @@ class SignUp extends Component {
     }
   }
 
+  handleSubmitButton = () => {
+    const {inputValues} = this.state
+    signUp(inputValues)
+      .then(res => {
+        this.props.history.push('/verify-account-message')
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
 
   handleInputPlaceholder = (inputName) => {
     const {selectedInputValue} = this.state
@@ -282,6 +292,7 @@ class SignUp extends Component {
           })}
           <div className="submit-button-container">
             <Button
+              onClick={this.handleSubmitButton}
               disabled={this.handleDisabledSubmitButton()}
               raised
               color="primary"

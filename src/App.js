@@ -16,6 +16,7 @@ import UserChangeDetails from "./components/UserChangeDetails.js"
 
 // SignUp Test
 import SignUp from './SignUpAndLogin/SignUp.js'
+import Login from './SignUpAndLogin/Login.js'
 
 // not verified test
 import VerifyAccount from './SignUpAndLogin/VerifyAccount.js'
@@ -167,6 +168,8 @@ class App extends Component {
             <NavBar isAuthenticated={signedIn} />
 
             <Switch>
+
+
               <Route
                 exact
                 path="/"
@@ -177,6 +180,14 @@ class App extends Component {
                 path="/verify-account/:id/:token"
                 render={(props) =>
                 <VerifyAccount {...props} updateDecodedToken={this.updateDecodedToken} decodedTokenUpdated={this.state.decodedTokenUpdated}/>}
+              />
+
+              <Route
+                exact
+                path="/verify-account-message"
+                render={() =>
+                    !signedIn && <Verified />
+                }
               />
 
               <Route
@@ -232,12 +243,24 @@ class App extends Component {
 
               <Route
                 exact
-                path="/sign-up-test"
-                render={() =>
+                path="/login-test"
+                render={(props) =>
                   signedIn ? (
                     <Redirect to="/" />
                   ) : (
-                    <SignUp />
+                    <Login {...props}/>
+                  )
+                }
+              />
+
+              <Route
+                exact
+                path="/sign-up-test"
+                render={(props) =>
+                  signedIn ? (
+                    <Redirect to="/" />
+                  ) : (
+                    <SignUp {...props}/>
                   )
                 }
               />
