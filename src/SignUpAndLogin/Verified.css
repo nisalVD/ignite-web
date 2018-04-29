@@ -1,0 +1,12 @@
+.email-verification-box {
+  padding-top: 25px;
+  width: 100%;
+  text-align: center;
+  height: 600px;
+}
+
+.email-verification-button {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
