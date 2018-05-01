@@ -13,6 +13,7 @@ import SignInPage from "./components/SignInPage"
 import SignUpPage from "./components/SignUpPage"
 import UserChangePassword from "./components/UserChangePassword"
 import UserChangeDetails from "./components/UserChangeDetails.js"
+import ForgetPassword from "./SignUpAndLogin/ForgetPassword.js"
 
 // SignUp Test
 import SignUp from './SignUpAndLogin/SignUp.js'
@@ -180,6 +181,14 @@ class App extends Component {
                 path="/verify-account/:id/:token"
                 render={(props) =>
                 <VerifyAccount {...props} updateDecodedToken={this.updateDecodedToken} decodedTokenUpdated={this.state.decodedTokenUpdated}/>}
+              />
+
+              <Route
+                exact
+                path="/user/forget-password"
+                render={() =>
+                    signedIn ? <Redirect to="/" /> :  <ForgetPassword />
+                }
               />
 
               <Route
