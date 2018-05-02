@@ -14,6 +14,7 @@ import SignUpPage from "./components/SignUpPage"
 import UserChangePassword from "./components/UserChangePassword"
 import UserChangeDetails from "./components/UserChangeDetails.js"
 import ForgetPassword from "./SignUpAndLogin/ForgetPassword.js"
+import ChangeForgetPassword from './SignUpAndLogin/ChangeForgetPassword.js'
 
 // SignUp Test
 import SignUp from './SignUpAndLogin/SignUp.js'
@@ -188,6 +189,14 @@ class App extends Component {
                 path="/user/forget-password"
                 render={() =>
                     signedIn ? <Redirect to="/" /> :  <ForgetPassword />
+                }
+              />
+
+              <Route
+                exact
+                path="/user/forget-password/update/:id/:token"
+                render={(props) =>
+                      signedIn ? <Redirect to="/" /> :  <ChangeForgetPassword {...props} />
                 }
               />
 

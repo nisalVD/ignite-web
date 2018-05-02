@@ -13,6 +13,11 @@ export function changePasswordEmailRequest(email) {
     .then(res => res.data)
 }
 
+export function changePasswordEmail(id, verifyToken, newPassword) {
+  return api.patch('/user/password/change-password-email', {id, verifyToken, newPassword})
+    .then(res => res.data)
+}
+
 export function getUserDetails() {
   return api.get('/user/details/get-details')
     .then(res => res.data)
