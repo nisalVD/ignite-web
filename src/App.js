@@ -12,6 +12,7 @@ import CalendarPage from "./components/CalendarPage"
 import SignInPage from "./components/SignInPage"
 import SignUpPage from "./components/SignUpPage"
 import UserChangePassword from "./components/UserChangePassword"
+import UserChangeDetails from "./components/UserChangeDetails.js"
 
 // Navbar And Footer
 import NavBar from "./components/NavBar"
@@ -195,6 +196,13 @@ class App extends Component {
                 path="/user/change-password"
                 render={() =>
                   signedIn ? <UserChangePassword /> : <Redirect to="/" />
+                }
+              />
+              <Route
+                exect
+                path="/user/change-details"
+                render={() =>
+                  signedIn ? <UserChangeDetails /> : <Redirect to="/" />
                 }
               />
 

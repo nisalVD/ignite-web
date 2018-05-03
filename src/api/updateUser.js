@@ -6,8 +6,18 @@ export function changePassword(oldPassword, newPassword) {
     .then(res => res.data)
 }
 
+export function getUserDetails() {
+  return api.get('/user/details/get-details')
+    .then(res => res.data)
+}
+
 export function updateDetails(userDetails) {
-  return api.patch('/user/details/update', {userDetails})
+  return api.patch('/user/details/update', userDetails)
+    .then(res => res.data)
+}
+
+export function userFinishedChecklist() {
+  return api.post('/user/check-list-complete')
     .then(res => res.data)
 }
 
