@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Button} from 'material-ui'
+import Dialog, {DialogContent, DialogContentText, DialogTitle, DialogActions} from 'material-ui/Dialog';
 
 import {changePasswordEmail} from '../api/updateUser.js'
 import './ChangeForgetPassword.css'
@@ -8,6 +9,8 @@ class ChangeForgetPassword extends Component {
   state = {
     password: '',
     confirmPassword: '',
+    dialogOpen: false,
+    message: ''
   }
 
   handleSubmit = () => {
@@ -18,7 +21,12 @@ class ChangeForgetPassword extends Component {
     if (password === confirmPassword) {
       changePasswordEmail(id, token, password)
         .then(res => {
-          console.log(res.message)
+          this.setState({dialogOpen: true})
+          this.setState({message: res.message})
+          // redirect in 3 seconds to homepage
+          setTimeout(() => {
+            this.props.history.push('/')
+          }, 3000);
         })
     } else {
       console.log('passwords dont match')
@@ -33,11 +41,42 @@ class ChangeForgetPassword extends Component {
     return true
   }
 
+  handleDialogOkButton = () => {
+    this.setState({dialogOpen: false})
+    this.props.history.push('/')
+  }
+
   render() {
-    const {password, confirmPassword} = this.state
+    const {password, confirmPassword, dialogOpen, message} = this.state
 
     return (
       <div className="forget-password-container">
+        <Dialog
+          open={dialogOpen}
+          onClose={() => this.setState({dialogOpen: false})}
+          fullWidth={true}
+        >
+            <DialogTitle>
+              Change Password
+            </DialogTitle>
+          <DialogContent>
+            <DialogContentText>
+                This will redirect to homepage in 3 seconds
+          </DialogContentText>
+            <DialogContentText>
+                {message}
+            </DialogContentText>
+          </DialogContent>
+            <br/>
+            <DialogActions>
+              <Button
+                color="primary"
+                onClick={this.handleDialogOkButton}
+              >
+              Ok
+            </Button>
+          </DialogActions>
+        </Dialog>
         <div
           className="forget-password-form-container"
           >
