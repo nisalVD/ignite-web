@@ -22,3 +22,34 @@
   height: 30px;
   width: 100%;
 }
+
+.loading-email-valid-container {
+  text-align: center;
+}
+
+.email-valid-sucess {
+  margin-top: 0px;
+  padding-top: 0px;
+  color: green;
+}
+
+.email-valid-fail {
+  color: red;
+}
+
+.login-label-span-success {
+  padding-left: 450px;
+  color: green;
+  font-weight: 500;
+}
+
+.login-label-span-fail {
+  padding-left: 450px;
+  color: red;
+  font-weight: 500;
+}
+
+.login-button-container {
+  padding-top: 30px;
+  text-align: right;
+}

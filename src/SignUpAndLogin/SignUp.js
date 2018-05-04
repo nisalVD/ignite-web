@@ -5,7 +5,7 @@ import {isEmailValid, signUp} from '../api/auth.js'
 
 class SignUp extends Component {
   state = {
-      dateOfBirthType: 'text',
+    dateOfBirthType: 'text',
     inputValues: {
       email: '',
       password: '',
