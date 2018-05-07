@@ -31,11 +31,11 @@
 * [x] Support Section - Admin contact details to profile page under Support section (Phone Number + Email)
 * [x] Other Checklist
 * [x] Button link to Modules
-* [X] Presentation
-* [X] Refresh on Completed - Nisal
+* [x] Presentation
+* [x] Refresh on Completed - Nisal
 * [x] What happens when you get <100% on quiz -Nisal
 * [N] Add Questions to Modules
-* [X] Add New Modules > Draft.js
+* [x] Add New Modules > Draft.js
 * [N] Completed Modules backend
 * [N] View List of Completed Modules per User
 * [x] Add Bearer
@@ -49,15 +49,14 @@
 * [x] Style Module Questions
 * [x] Change Details Form Button (Modal form)
 * [x] Delete Button On Users
-* [x] Remove footer 
+* [x] Remove footer
 * [ ] Media Query - under 1100 show "must use desktop" screen?
 
 ## To-Do sometime these days
+
 * [ ] Fix unanswered questions displaying correct message in module
 
-
----------------------------------------------------------------
-
+---
 
 * MUST GET DONE - MVP -------------
 
@@ -68,8 +67,6 @@
 * [ ] Add New Domain
 * [ ] Make Admin / Upload / Delete Admin Function / Upload Again
 * [ ] Test Everything Ourselves + Mitch (ADMIN AND USER)
-
-
 
 <!-- * [ ] Remake NavBar from Scratch - SPACE-AROUND/BETWEEN  -->
 
