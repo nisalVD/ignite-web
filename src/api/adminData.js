@@ -59,3 +59,8 @@ export function listMarkings() {
   return api.get('/markings')
     .then(res => res.data)
 }
+
+export function postNewFeed(heading, content) {
+  return api.post('/feed', {heading, content})
+  .then(res => res.data)
+}

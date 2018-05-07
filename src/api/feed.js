@@ -9,3 +9,4 @@ export function deleteFeedData(id){
   return api.delete(`/feed/${id}`)
   .then(res => res.data)
 }
+
