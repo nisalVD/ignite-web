@@ -123,7 +123,7 @@ class App extends Component {
     const {decodedToken} = this.state
     const signedIn = !!decodedToken
     const {width} = this.state
-    if (decodedToken && decodedToken.verified === false || decodedToken && decodedToken.admin === false) {
+    if (decodedToken && decodedToken.verified === false && decodedToken.admin === false) {
       return (
         <Router>
           <Switch>
@@ -369,6 +369,7 @@ class App extends Component {
                 }
               />
             </Switch>
+            <Footer />
           </div>
         </Router>
       </Fragment>
