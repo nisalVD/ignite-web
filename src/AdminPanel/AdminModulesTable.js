@@ -20,20 +20,11 @@ class AdminModulesTable extends Component {
 
   deleteModuleContent(){
     deleteModuleData(this.state.selectedID._id)
-    .then(( ) => console.log("deleted"))
-    .then(() => {
-      const {selectedID} = this.state
-      const {moduleData} = this.props
-
-      const mappedModule = moduleData.reduce((acc, next) => {
-          if (next._id !== selectedID._id) {
-            acc.push(next)
-          }
-          return acc
-        },[])
-        this.setState({moduleData: mappedModule})
+      .then(res => {
+        const id = res._id
+        this.props.removeModuleFromTable(id)
         this.setState({modalOpen: false})
-    })
+      })
   }
 
   handleCloseModal () {

@@ -13,7 +13,7 @@ class Login extends Component {
   checkEmailIsValid = () => {
     const { email } = this.state
     const emailValid = /^.+@.+$/.test(email.trim())
-    if (emailValid === false) {
+    if (email && emailValid === false) {
       this.setState({emailValid: false})
       return
     }
@@ -27,10 +27,9 @@ class Login extends Component {
 
   handleEmailValidLabel = () => {
     const {emailValid} = this.state
-    if (emailValid) {
+    if (!emailValid) {
       return 'email-valid-sucess'
-    }
-    if (emailValid === false) {
+    } else {
       return 'email-valid-fail'
     }
   }
@@ -44,7 +43,7 @@ class Login extends Component {
         <div>
           <h1>Login</h1>
           <label className={`login-label ${this.handleEmailValidLabel()}`}>Email</label>
-          {emailValid!==null && emailValid === true ? <span className="login-label-span-success">Email valid</span> : <span className="login-label-span-fail">Email invalid</span>}
+          {emailValid!==null && !emailValid ? <span className="login-label-span-success">Email valid</span> : <span className="login-label-span-fail">Email invalid</span>}
           {
           loadingEmailValid ?
               <div className="loading-email-valid-container">
@@ -68,6 +67,7 @@ class Login extends Component {
             placeholder="Password"
           />
           <div className="login-button-container">
+            <button onClick={() => this.props.history.push('/user/forget-password')} className="login-forget-password">Forgot Password?</button>
             <Button
               raised
               color="primary"

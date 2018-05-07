@@ -13,9 +13,8 @@ import TableSortLabel from "material-ui/Table/TableSortLabel";
 import Button from "material-ui/Button";
 import Modal from "react-modal";
 import { Link } from "react-router-dom";
-
+import { deleteFeedData, listFeeds } from '../api/feed';
 import { deleteModuleData, getQuestionData, postNewFeed } from "../api/adminData";
-import { deleteFeedData } from "../api/feed";
 
 class AdminFeedTable extends Component {
   state = {
@@ -24,25 +23,25 @@ class AdminFeedTable extends Component {
     feedModalOpen: false,
     submitDisabled: true,
     title: "",
-    body: ""
+    body: "",
+    feedData: null
   };
 
-  deleteFeedContent() {
-    const { feedData } = this.props;
+  componentDidMount() {
+    listFeeds()
+    .then(feedData => this.setState({feedData}));
+  }
 
-    deleteFeedData(this.state.selectedID._id).then(() => {
-      const { selectedID } = this.state;
-      const { feedData } = this.props;
+  deleteFeedContent(){
+    const {feedData} = this.state
 
-      const mappedFeed = feedData.reduce((acc, next) => {
-        if (next._id !== selectedID._id) {
-          acc.push(next);
-        }
-        return acc;
-      }, []);
-      this.setState({ feedData: mappedFeed });
-      this.setState({ modalOpen: false });
-    });
+    deleteFeedData(this.state.selectedID._id)
+    .then((feed) => {
+      const id = feed._id
+      const removedFeedData = feedData.filter(feed => feed._id !== id)
+      this.setState({feedData: removedFeedData})
+      this.setState({modalOpen: false})
+    })
   }
 
   handleCloseModal() {
@@ -85,7 +84,7 @@ class AdminFeedTable extends Component {
   render() {
     const { classes } = this.props;
     const { selectedID, firstName } = this.state;
-    const { feedData } = this.props;
+    const { feedData } = this.state;
 
     return (
       <div>

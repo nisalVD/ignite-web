@@ -5,6 +5,7 @@
   margin-right: auto;
 }
 
+
 .center {
   text-align: center;
 }
@@ -51,5 +52,17 @@
 
 .login-button-container {
   padding-top: 30px;
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
 }
+
+.login-forget-password {
+  color: #4285f4;
+  background-color: "#fff";
+  font-weight: 300;
+  font-size: 14px;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+}
+
