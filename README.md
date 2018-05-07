@@ -5,6 +5,7 @@
 
 ### To-Do
 
+* [ ] Add a message when email is confirmed
 * [x] Add switch statement router
 * [x] Button home page functionality
 * [x] Test container on home page image
@@ -19,21 +20,21 @@
 * [x] Make Sign Up and Sign In forms work
 * [x] User profile button link to profile page
 * [x] ADD MOBILE NUMBER AS REQUIREMENT - BACKEND AND SIGN UP (NEEDED FOR SMS)
-* [x] Add Admin Route security 
+* [x] Add Admin Route security
 * [x] HOOK UP BACKEND TO ADMIN PANEL
-* [x] Make Admin Table Clickable - Dialog 
+* [x] Make Admin Table Clickable - Dialog
 * [x] View User Data Table - Dialog Popup?
 * [x] Delete Modules
 * [x] List of All Modules
 * [x] List question count for a module
 * [x] Log Out Button on Profile Page
 * [x] Support Section - Admin contact details to profile page under Support section (Phone Number + Email)
-* [x] Other Checklist 
+* [x] Other Checklist
 * [x]Button link to Modules
 * [X] Presentation
 * [X] Refresh on Completed - Nisal
 * [x] What happens when you get <100% on quiz -Nisal
-* [N] Add Questions to Modules 
+* [N] Add Questions to Modules
 * [X] Add New Modules > Draft.js
 * [N] Completed Modules backend
 * [N] View List of Completed Modules per User
@@ -50,7 +51,7 @@
 * [x] Delete Button On Users
 
 ## To-Do sometime these days
-* [ ] Fix unanswered questions displaying correct message in module 
+* [ ] Fix unanswered questions displaying correct message in module
 
 
 ---------------------------------------------------------------
@@ -74,7 +75,8 @@
 <!-- * [ ] Remake NavBar from Scratch - SPACE-AROUND/BETWEEN  -->
 
 * LATER --------------
-* [ ] CSS Grid? 
+* [ ] Media Query - under 1100 show "must use desktop" screen?
+* [ ] CSS Grid?
 * [ ] Link ModuleList Name Cell directly to Module - Nisal
 * [ ] README complete with everything
 * [ ] Handover README Notes (Remember to Add Admin Account)

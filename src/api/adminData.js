@@ -1,5 +1,10 @@
 import api from './init'
 
+export function deleteUser(id) {
+  return api.delete(`/admin/user/${id}`)
+    .then(res => res.data)
+}
+
 export function getUserData(){
     return api.get('/users')
     .then(res => res.data)

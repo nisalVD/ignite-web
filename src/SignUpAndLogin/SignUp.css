@@ -1,0 +1,66 @@
+.sign-up-form-container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 300px;
+}
+
+.sign-up-container {
+  max-width: 600px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sign-up-input {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: 300;
+  height: 30px;
+  width: 100%;
+}
+.sign-up-label-style {
+  padding-left: 1px;
+  font-weight: 600;
+}
+
+.loading-email-valid-container {
+  text-align: center;
+}
+
+.email-valid-sucess {
+  margin-top: 0px;
+  padding-top: 0px;
+  color: green;
+}
+.empty-div{
+  height: 19px;
+}
+
+.email-valid-fail {
+  color: red;
+}
+
+.sign-up-button-container {
+  text-align: right;
+  padding-top: 30px;
+  padding-right: 195px;
+}
+
+.sign-up-password-match {
+  text-align: right;
+  padding-right: 195px;
+  color: green;
+}
+
+.sign-up-password-no-match {
+  text-align: right;
+  padding-right: 195px;
+  color: red;
+}
+
+.submit-button-container {
+  padding-top: 20px;
+  text-align: right;
+}

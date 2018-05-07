@@ -13,6 +13,16 @@ import SignInPage from "./components/SignInPage"
 import SignUpPage from "./components/SignUpPage"
 import UserChangePassword from "./components/UserChangePassword"
 import UserChangeDetails from "./components/UserChangeDetails.js"
+import ForgetPassword from "./SignUpAndLogin/ForgetPassword.js"
+import ChangeForgetPassword from './SignUpAndLogin/ChangeForgetPassword.js'
+
+// SignUp Test
+import SignUp from './SignUpAndLogin/SignUp.js'
+import Login from './SignUpAndLogin/Login.js'
+
+// not verified test
+import VerifyAccount from './SignUpAndLogin/VerifyAccount.js'
+import Verified from './SignUpAndLogin/Verified.js'
 
 // Navbar And Footer
 import NavBar from "./components/NavBar"
@@ -39,6 +49,7 @@ class App extends Component {
     error: null,
     modalOpen: false,
     width: window.innerWidth,
+    decodedTokenUpdated: false
   }
 
   componentDidMount() {
@@ -104,11 +115,35 @@ class App extends Component {
     this.setState({modalOpen: false})
   }
 
+  updateDecodedToken = () => {
+    this.setState({decodedToken: getDecodedToken(), decodedTokenUpdated: true})
+  }
+
   render() {
     const {decodedToken} = this.state
     const signedIn = !!decodedToken
     const {width} = this.state
-    // console.log(width)
+    if (decodedToken && decodedToken.verified === false) {
+      return (
+        <Router>
+          <Switch>
+
+            <Route
+              exact
+              path="/verify-account/:id/:token"
+              render={(props) =>
+                <VerifyAccount {...props} updateDecodedToken={this.updateDecodedToken} />}
+              />
+
+            <Route
+              path="/"
+              render={() => <Verified decodedToken={decodedToken}/>}
+            />
+
+          </Switch>
+        </Router>
+      )
+    }
 
     return (
       <Fragment>
@@ -135,11 +170,44 @@ class App extends Component {
             <NavBar isAuthenticated={signedIn} />
 
             <Switch>
+
+
               <Route
                 exact
                 path="/"
                 render={() => <HomePage isAuthenticated={signedIn} />}
               />
+
+              <Route exact
+                path="/verify-account/:id/:token"
+                render={(props) =>
+                <VerifyAccount {...props} updateDecodedToken={this.updateDecodedToken} decodedTokenUpdated={this.state.decodedTokenUpdated}/>}
+              />
+
+              <Route
+                exact
+                path="/user/forget-password"
+                render={() =>
+                    signedIn ? <Redirect to="/" /> :  <ForgetPassword />
+                }
+              />
+
+              <Route
+                exact
+                path="/user/forget-password/update/:id/:token"
+                render={(props) =>
+                      signedIn ? <Redirect to="/" /> :  <ChangeForgetPassword {...props} />
+                }
+              />
+
+              <Route
+                exact
+                path="/verify-account-message"
+                render={() =>
+                    !signedIn && <Verified />
+                }
+              />
+
               <Route
                 exact
                 path="/admin"
@@ -190,6 +258,31 @@ class App extends Component {
                   )
                 }
               />
+
+              <Route
+                exact
+                path="/login-test"
+                render={(props) =>
+                  signedIn ? (
+                    <Redirect to="/" />
+                  ) : (
+                    <Login {...props}/>
+                  )
+                }
+              />
+
+              <Route
+                exact
+                path="/sign-up-test"
+                render={(props) =>
+                  signedIn ? (
+                    <Redirect to="/" />
+                  ) : (
+                    <SignUp {...props}/>
+                  )
+                }
+              />
+
               {/*###### Change Password */}
               <Route
                 exect

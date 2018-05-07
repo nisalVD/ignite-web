@@ -1,0 +1,55 @@
+.login-container {
+  max-width: 600px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.login-label {
+  padding-left: 1px;
+  font-weight: 600;
+}
+
+.login-input {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: 300;
+  height: 30px;
+  width: 100%;
+}
+
+.loading-email-valid-container {
+  text-align: center;
+}
+
+.email-valid-sucess {
+  margin-top: 0px;
+  padding-top: 0px;
+  color: green;
+}
+
+.email-valid-fail {
+  color: red;
+}
+
+.login-label-span-success {
+  padding-left: 450px;
+  color: green;
+  font-weight: 500;
+}
+
+.login-label-span-fail {
+  padding-left: 450px;
+  color: red;
+  font-weight: 500;
+}
+
+.login-button-container {
+  padding-top: 30px;
+  text-align: right;
+}
