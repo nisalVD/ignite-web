@@ -7,13 +7,14 @@ class Login extends Component {
   state = {
     email: '',
     loadingEmailValid: false,
-    emailValid: null
+    emailValid: null,
+    password: ''
   }
 
   checkEmailIsValid = () => {
     const { email } = this.state
     const emailValid = /^.+@.+$/.test(email.trim())
-    if (email && emailValid === false) {
+    if (emailValid === false) {
       this.setState({emailValid: false})
       return
     }
@@ -21,29 +22,47 @@ class Login extends Component {
     this.setState({loadingEmailValid: true})
     isEmailValid(email)
       .then(({message}) => {
-        this.setState({loadingEmailValid: false, emailValid: message})
+        // set opposite because this checks if email exist
+        this.setState({loadingEmailValid: false, emailValid: !message})
       })
   }
 
+
   handleEmailValidLabel = () => {
     const {emailValid} = this.state
-    if (!emailValid) {
-      return 'email-valid-sucess'
-    } else {
+    if (emailValid === true) {
+      return 'email-valid-success'
+    }
+
+    if (emailValid === false) {
       return 'email-valid-fail'
     }
+
+  }
+
+  handleDisableLoginButton= () => {
+    const {emailValid, email, password} = this.state
+    if (password && email && emailValid) {
+      return false
+    }
+    return true
   }
 
   render() {
-    const {loadingEmailValid, emailValid, email} = this.state
-    console.log(email)
+    const {loadingEmailValid, emailValid, email, password} = this.state
+    console.log(emailValid)
 
     return (
       <div className="login-container">
         <div>
           <h1>Login</h1>
           <label className={`login-label ${this.handleEmailValidLabel()}`}>Email</label>
-          {emailValid!==null && !emailValid ? <span className="login-label-span-success">Email valid</span> : <span className="login-label-span-fail">Email invalid</span>}
+          {
+              emailValid === true && <span className="login-label-span-success">Email Valid</span>
+          }
+          {
+            emailValid === false && <span className="login-label-span-fail">Email Invalid</span>
+          }
           {
           loadingEmailValid ?
               <div className="loading-email-valid-container">
@@ -62,6 +81,8 @@ class Login extends Component {
 
           <label className="login-label">Password</label>
           <input
+            value={password}
+            onChange={(e) => this.setState({password: e.target.value})}
             className="login-input"
             type="password"
             placeholder="Password"
@@ -71,6 +92,7 @@ class Login extends Component {
             <Button
               raised
               color="primary"
+              disabled={this.handleDisableLoginButton()}
             >
               Login
             </Button>
