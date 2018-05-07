@@ -123,6 +123,16 @@ class App extends Component {
     const {decodedToken} = this.state
     const signedIn = !!decodedToken
     const {width} = this.state
+
+    if (width < 1100) {
+      return (
+        <center>
+          <h1>Something Went Wrong :(</h1>
+          <p style={{maxWidth:400}}>You may be attempting to access the Ignite Volunteer portal from a device smaller than 1100px in width.<br /> If you are on a mobile or tablet device please try again from a laptop or desktop.</p>
+        </center>
+      )
+    }
+
     if (decodedToken && decodedToken.verified === false && decodedToken.admin === false) {
       return (
         <Router>
@@ -369,7 +379,7 @@ class App extends Component {
                 }
               />
             </Switch>
-            <Footer />
+            {/* <Footer /> */}
           </div>
         </Router>
       </Fragment>
