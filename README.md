@@ -46,6 +46,8 @@
 * [x] Spinner Change Password
 * [x] Style Button on Admin Page
 * [x] Style Module Questions
+* [x] Change Details Form Button (Modal form)
+* [x] Delete Button On Users
 
 ## To-Do sometime these days
 * [ ] Fix unanswered questions displaying correct message in module 
@@ -56,15 +58,22 @@
 
 * MUST GET DONE - MVP -------------
 
-* [N] Change Details Form Button (Modal form)
-* [N] Delete Button On Users
-* [ ] List all Blogs In Admin Section (Add + Delete)
+
+* [ ] List all Blogs In Admin Section (Add + Delete) (Add opens modal)
+* [ ] Media Query - under 1100 show "must use desktop" screen?
+* [ ] Make footer fixed bottom of page
+* [ ] Add Real Calendar Embed Link
+* [ ] Style Module Questions
+
+* [ ] Add New Domain
+* [ ] Make Admin / Upload / Delete Admin Function / Upload Again
+* [ ] Test Everything Ourselves + Mitch (ADMIN AND USER)
+
 
 
 <!-- * [ ] Remake NavBar from Scratch - SPACE-AROUND/BETWEEN  -->
 
 * LATER --------------
-* [ ] Media Query - under 1100 show "must use desktop" screen?
 * [ ] CSS Grid? 
 * [ ] Link ModuleList Name Cell directly to Module - Nisal
 * [ ] README complete with everything
