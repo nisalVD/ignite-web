@@ -39,7 +39,7 @@ class SignUp extends Component {
     const {inputValues} = this.state
     signUp(inputValues)
       .then(res => {
-        this.props.history.push('/verify-account-message')
+        return window.location = "/"
       })
       .catch(error => {
         console.log(error)
