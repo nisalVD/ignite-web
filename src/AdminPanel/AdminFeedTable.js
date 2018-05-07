@@ -10,32 +10,30 @@ import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 
 import { deleteModuleData, getQuestionData } from '../api/adminData';
-import { deleteFeedData } from '../api/feed';
+import { deleteFeedData, listFeeds } from '../api/feed';
 
 class AdminFeedTable extends Component {
 
   state = {
     selectedID: null,
     modalOpen: false,
+    feedData : null
+  }
+
+  componentDidMount() {
+    listFeeds()
+    .then(feedData => this.setState({feedData}));
   }
 
   deleteFeedContent(){
-
-    const {feedData} = this.props
+    const {feedData} = this.state
 
     deleteFeedData(this.state.selectedID._id)
-    .then(() => {
-      const {selectedID} = this.state
-      const {feedData} = this.props
-
-      const mappedFeed = feedData.reduce((acc, next) => {
-          if (next._id !== selectedID._id) {
-            acc.push(next)
-          }
-          return acc
-        },[])
-        this.setState({feedData: mappedFeed})
-        this.setState({modalOpen: false})
+    .then((feed) => {
+      const id = feed._id
+      const removedFeedData = feedData.filter(feed => feed._id !== id)
+      this.setState({feedData: removedFeedData})
+      this.setState({modalOpen: false})
     })
   }
 
@@ -52,7 +50,7 @@ class AdminFeedTable extends Component {
 
     const { classes } = this.props;
     const { selectedID, firstName } = this.state;
-    const { feedData } = this.props
+    const { feedData } = this.state
 
   return (
     <div>
