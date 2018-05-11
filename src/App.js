@@ -95,6 +95,11 @@ class App extends Component {
       })
   }
 
+  handleLogin = (decodedToken) => {
+    console.log(decodedToken)
+    this.setState({decodedToken})
+  }
+
   onSignIn = ({email, password}) => {
     signIn({email, password})
       .then(decodedToken => {
@@ -229,17 +234,6 @@ class App extends Component {
                   )
                 }
               />
-              <Route
-                exact
-                path="/sign-in"
-                render={() =>
-                  signedIn ? (
-                    <Redirect to="/" />
-                  ) : (
-                    <SignInPage onSignIn={this.onSignIn} />
-                  )
-                }
-              />
 
               <Route
                 exact
@@ -259,31 +253,19 @@ class App extends Component {
 
               <Route
                 exact
-                path="/sign-up"
-                render={() =>
-                  signedIn ? (
-                    <Redirect to="/" />
-                  ) : (
-                    <SignUpPage onSignUp={this.onSignUp} />
-                  )
-                }
-              />
-
-              <Route
-                exact
-                path="/login-test"
+                path="/sign-in"
                 render={(props) =>
                   signedIn ? (
                     <Redirect to="/" />
                   ) : (
-                    <Login {...props}/>
+                    <Login {...props} handleLogin={this.handleLogin}/>
                   )
                 }
               />
 
               <Route
                 exact
-                path="/sign-up-test"
+                path="/sign-up"
                 render={(props) =>
                   signedIn ? (
                     <Redirect to="/" />

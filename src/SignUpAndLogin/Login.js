@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import './Login.css'
-import {isEmailValid } from '../api/auth.js'
+import {isEmailValid, signIn } from '../api/auth.js'
 import {CircularProgress, Button} from 'material-ui'
 
 class Login extends Component {
   state = {
-    email: '',
+    loading: false,
     loadingEmailValid: false,
     emailValid: null,
-    password: ''
+    password: '',
+    email: '',
   }
 
   checkEmailIsValid = () => {
@@ -48,9 +49,32 @@ class Login extends Component {
     return true
   }
 
+  handleLoginButton = () => {
+    const {email, password} = this.state
+    const loginDetails = {email, password}
+
+    this.setState({loading: true})
+    signIn(loginDetails)
+      .then(decodedToken => {
+        this.props.handleLogin(decodedToken)
+        this.setState({loading: false})
+        this.props.history.push("/")
+      })
+      .catch(error => {
+        this.setState({loading: false})
+        console.log(error)
+      })
+  }
+
   render() {
     const {loadingEmailValid, emailValid, email, password} = this.state
-    console.log(emailValid)
+    if (this.state.loading) {
+      return (
+        <div className="login-loading-container">
+          <CircularProgress size={80}/>
+        </div>
+      )
+    }
 
     return (
       <div className="login-container">
@@ -93,9 +117,13 @@ class Login extends Component {
               raised
               color="primary"
               disabled={this.handleDisableLoginButton()}
+              onClick={this.handleLoginButton}
             >
               Login
             </Button>
+          </div>
+          <div style={{textAlign: "center"}}>Don't have an account?
+            <button onClick={() => this.props.history.push('/sign-up')} className="sign-up-now-link">Sign Up</button>
           </div>
         </div>
       </div>

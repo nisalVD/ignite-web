@@ -66,3 +66,27 @@
   cursor: pointer;
 }
 
+.login-forget-password:hover {
+  text-decoration: underline;
+}
+
+.sign-up-now-link {
+  color: #4285f4;
+  font-size: 18px;
+  background-color: "#fff";
+  font-weight: 300;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.sign-up-now-link:hover {
+  text-decoration: underline;
+}
+
+.login-loading-container {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+}
+
