@@ -65,6 +65,7 @@
 
 * [ ] Add Real Calendar Embed Link
 * [ ] Add New Domain
+* [ ] Push Live
 * [ ] Make Admin / Upload / Delete Admin Function / Upload Again
 * [ ] Test Everything Ourselves + Mitch (ADMIN AND USER)
 

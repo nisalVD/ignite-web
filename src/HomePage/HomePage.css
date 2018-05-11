@@ -1,11 +1,10 @@
-.bg-image {
+#bg-image {
   position: relative;
   background-image: url("https://api.fluro.io/get/5990f07bb9f6ee2594569e63?w=1920&amp;access_token=%242a%2410%24B4J59VQhzlbkneIVKIprB.FVWxDU5.HMCX11nfAKAkssSEcBLZEle&amp;quality=90");
   background-size: cover;
   background-position: center center;
   color: #fff;
-  /* height: 42em; */
-  height: 100em;
+  height: 50em;
   text-align: center;
 }
 

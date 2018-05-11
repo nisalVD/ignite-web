@@ -23,8 +23,8 @@ class HomePage extends Component {
     const { feedData } = this.state
     return (
       <MuiThemeProvider theme={theme}>
-        <div>
-          <div className="bg-image">
+        <div style={{paddingLeft:150,paddingRight:150}}>
+          <div id="bg-image">
             {!!this.props.isAuthenticated ? (
               <Button raised color="primary" className="homepage-module-button" component={Link} to="/modules">
                 Modules
