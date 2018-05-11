@@ -50,7 +50,8 @@
 * [x] Change Details Form Button (Modal form)
 * [x] Delete Button On Users
 * [x] Remove footer
-* [ ] Media Query - under 1100 show "must use desktop" screen?
+* [x] Media Query - under 1100 show "must use desktop" screen?
+* [x] List all Blogs In Admin Section (Add + Delete) (Add opens modal)
 
 ## To-Do sometime these days
 
@@ -60,7 +61,6 @@
 
 * MUST GET DONE - MVP -------------
 
-* [ ] List all Blogs In Admin Section (Add + Delete) (Add opens modal)
 * [ ] Style Module Questions
 
 * [ ] Add Real Calendar Embed Link
