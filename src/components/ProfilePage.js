@@ -135,7 +135,7 @@ class ProfilePage extends Component {
             <div className="support-div">
               Need help?
               <br />
-              Contact us at ignite@gmail.com or on 040909090
+              Contact us at volunteer@ignite.org.au
             </div>
             <div className="admin-page-padder" />
           </div>
